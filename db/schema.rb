@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 2020_08_18_185046) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,6 +25,15 @@ ActiveRecord::Schema.define(version: 2020_08_18_185046) do
     t.integer "reviewed_id"
   end 
   
+  create_table "orders", force: :cascade do |t|
+    t.boolean "completed"
+    t.integer "price_cent"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -38,7 +48,8 @@ ActiveRecord::Schema.define(version: 2020_08_18_185046) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-
+  end
+  
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
