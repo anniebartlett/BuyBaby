@@ -27,12 +27,24 @@ gem 'redis', '~> 4.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
 gem 'devise'
-
+gem 'pundit'
+gem 'geocoder'
+gem 'bootstrap-datepicker-rails'
+gem 'pg_search', '~> 2.3.0'
+gem 'faker'
+gem 'date_validator', '~> 0.9.0'
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
 gem 'simple_form'
+gem 'money-rails'
+gem 'stripe'
+gem 'stripe_event'
+gem "haml"
+gem 'jquery-rails'
+gem 'cloudinary', '~> 1.12.0'
+gem 'friendly_id', '~> 5.4.0'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
