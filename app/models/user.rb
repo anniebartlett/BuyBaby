@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :orders
   has_many :products
+
+  validates :name, presence: true, uniqueness: true
+  validates :nickname, presence: true, uniqueness: true
+  validates :description, presence: true
 end
