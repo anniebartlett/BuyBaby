@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
+  include Pundit
   skip_before_action :authenticate_user!, only: [:home]
+  skip_after_action :verify_authorized, only: [:home]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home; end
@@ -48,11 +50,13 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( , photos: [])
+    params.require(:product).permit( :name, :description, :location, :longitude,
+      :latitude, :condition, :size, :payment_option, :stripe_plan_name, :price_cents,
+      :delivery_option, photos: [])
   end
 
   def set_product
     @product = Product.find(params[:id])
-    @authorize @product
+    authorize @product
   end
 end
