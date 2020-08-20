@@ -1,10 +1,10 @@
 class Product < ApplicationRecord
   belongs_to :user
 
-  has_many :product_order
-  has_many :orders, through: :product_order
+  has_many :product_orders
+  has_many :orders, through: :product_orders
   has_many_attached :photos
-  geocoded_by :address
+  geocoded_by :location
   after_validation :geocode, if: :will_save_change_to_address?
 
   validates :name, presence: true
