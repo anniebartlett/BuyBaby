@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'pages#home'
+  root to: 'products#home'
 
-  resources :products
-  resources :orders
+  resources :products do
+    resources :orders, only: [ :new, :create ]
+  end
+
+  resources :orders, except: [ :new, :create ]
+
 end
