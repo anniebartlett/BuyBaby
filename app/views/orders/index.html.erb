@@ -1,0 +1,7 @@
+<ul>
+  <% @orders.each do |order| %>
+    <li><%= order.completed %></li>
+    <li><%= order.price_cent %></li>
+    <li><%= order.user %></li>
+  <% end %>
+</ul>
