@@ -14,8 +14,8 @@ class Product < ApplicationRecord
   validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
-  validates :payment_option, inclusion: { in: ("Card Payment", "Cash Payment")}
+  validates :payment_option, inclusion: { in: ["Card Payment", "Cash Payment"]}
   validates :stripe_plan_name, presence: true
   monetize :price_cents
-  validates :delivery_option, inclusion: { in: ("Collect from chosen location", "Deliver Home", "Arrange pick-up")}
+  validates :delivery_option, inclusion: { in: ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]}
 end
