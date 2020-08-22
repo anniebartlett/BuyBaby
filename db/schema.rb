@@ -58,6 +58,9 @@ ActiveRecord::Schema.define(version: 2020_08_22_154807) do
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "state"
+    t.string "product_sku"
+    t.string "checkout_session_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -79,12 +82,12 @@ ActiveRecord::Schema.define(version: 2020_08_22_154807) do
     t.string "colour"
     t.string "payment_options"
     t.string "category"
-    t.string "stripe_plan_name"
-    t.integer "price_cent"
     t.string "deliver_option"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "sku"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 

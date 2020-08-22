@@ -1,12 +1,12 @@
 class Product < ApplicationRecord
   belongs_to :user
 
-  has_many :product_order
-  has_many :orders, through: :product_order
+  has_many :product_orders
+  has_many :orders, through: :product_orders
   has_many_attached :photos
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
-
+  
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
@@ -18,4 +18,5 @@ class Product < ApplicationRecord
   validates :stripe_plan_name, presence: true
   # monetize :price_cents
   validates :deliver_option, inclusion: { in: ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]}
+
 end
