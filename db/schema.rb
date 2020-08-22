@@ -10,45 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2020_08_18_185046) do
-=======
-
-ActiveRecord::Schema.define(version: 2020_08_18_185046) do
-
->>>>>>> 5152cae4b6310caea0c06ea67b3992a4e60c35a0
-=======
 ActiveRecord::Schema.define(version: 2020_08_20_182126) do
->>>>>>> ce4fe7dd9c0f1b7129a360852f1893ba73886dfe
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-<<<<<<< HEAD
-  create_table "reviews", force: :cascade do |t|
-    t.text "comment"
-    t.integer "user_id"
-    t.integer "rating"
-    t.integer "reviewer_id"
-    t.integer "reviewed_id"
-<<<<<<< HEAD
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-=======
-  end 
-  
-  create_table "orders", force: :cascade do |t|
-    t.boolean "completed"
-    t.integer "price_cent"
-    t.bigint "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-=======
->>>>>>> ce4fe7dd9c0f1b7129a360852f1893ba73886dfe
   create_table "chatrooms", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -99,7 +65,6 @@ ActiveRecord::Schema.define(version: 2020_08_20_182126) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
->>>>>>> 5152cae4b6310caea0c06ea67b3992a4e60c35a0
   end
 
   create_table "reviews", force: :cascade do |t|
