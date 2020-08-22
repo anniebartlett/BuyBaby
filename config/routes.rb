@@ -9,9 +9,6 @@ Rails.application.routes.draw do
   resources :orders, except: [ :new, :create ]
 
   resources :reviews, only: [:new, :create]
-  end
+
   resources :reviews, only: [:destroy]
 end
-
-
-
