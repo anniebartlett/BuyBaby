@@ -10,8 +10,6 @@ class Product < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
-  validates :longitude, presence: true
-  validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
   validates :payment_option, inclusion: { in: ["Card Payment", "Cash Payment"]}
