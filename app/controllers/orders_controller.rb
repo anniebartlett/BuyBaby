@@ -1,13 +1,17 @@
 class OrdersController < ApplicationController
 
+ skip_after_action :verify_authorized
+ skip_before_action :authenticate_user!
+
  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
-    @orders = Order.all
+    @orders = policy_scope(Order)
   end
 
-   def show
-   end
+
+  def show
+  end
 
   def new
     @order = Order.new
@@ -15,9 +19,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    @order.save
-
+    @order.user = current_user
+    authorize @order
+    if @order.save
     redirect_to order_path(@order)
+    else
+    render :new
+    end
   end
 
   def edit
@@ -39,7 +47,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:completed, :price_cent, :user)
+    params.require(:order).permit(:state, :user)
   end
 
    def set_order
