@@ -53,8 +53,6 @@ ActiveRecord::Schema.define(version: 2020_08_22_154807) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.boolean "completed", default: false
-    t.integer "price_cent"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

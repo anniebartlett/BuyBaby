@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   has_many_attached :photos
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
-  
+
   validates :name, presence: true
   validates :description, presence: true
   validates :location, presence: true
@@ -15,7 +15,7 @@ class Product < ApplicationRecord
   validates :condition, presence: true
   validates :size, presence: true
   validates :payment_options, inclusion: { in: ["Card Payment", "Cash Payment"]}
-  validates :stripe_plan_name, presence: true
+  # validates :stripe_plan_name, presence: true
   # monetize :price_cents
   validates :deliver_option, inclusion: { in: ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]}
 
