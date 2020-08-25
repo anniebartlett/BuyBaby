@@ -30,9 +30,11 @@ def scrape_product(product)
     doc.search('.productCard').each do |element|
       title = element.search('.productCard_title').text.strip
       price = element.search('.productCard_price').text.strip
-      # img = element.search('img').attribute('data-src').value
+      img = element.search('img').attribute('data-src')&.value
 
-        products = Product.create(
+      unless img.nil? || title.nil?
+
+        products = Product.new(
           user_id: User.first.id,
           name: title,
           description: "In great condition, your kids will love this!",
@@ -40,15 +42,19 @@ def scrape_product(product)
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
           colour: "As per product",
-          payment_options: ["Card Payment", "Cash Payment"].sample,
+          payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
           # stripe_plan_name: "Test",
           # price_cent: price,
-          deliver_option: ["Collect from chosen location", "Deliver home", "Arrange pick-up"].sample
+          deliver_option: Product::DELIVERY_OPTIONS.sample
         )
+          file = URI.open(img)
+          products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
+          products.save!
+
         puts "Created #{products.id} - #{products.name}"
+      end
     end
-  # product.photos.attach(io: file, filename: 'plant.png', content_type: 'image/png')
 end
 
 clean_database
