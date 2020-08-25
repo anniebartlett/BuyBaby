@@ -32,9 +32,11 @@ def scrape_product(product)
       price = element.search('.productCard_price').text.strip
       img = element.search('img').attribute('data-src')&.value
 
+      # p img
+
       unless img.nil? || title.nil?
 
-        products = Product.new(
+        products = Product.create(
           user_id: User.first.id,
           name: title,
           description: "In great condition, your kids will love this!",
@@ -50,7 +52,9 @@ def scrape_product(product)
         )
           file = URI.open(img)
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
-          products.save!
+          if products.photos.attached?
+            products.save
+          end
 
         puts "Created #{products.id} - #{products.name}"
       end
