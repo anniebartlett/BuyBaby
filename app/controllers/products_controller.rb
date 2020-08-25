@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   skip_after_action :verify_authorized
-  skip_before_action :authenticate_user!, only: [:home]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show, :new, :create]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home; end
@@ -25,8 +25,10 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
+
       redirect_to product_path(@product)
     else
+
       render :new
     end
   end

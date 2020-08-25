@@ -11,5 +11,5 @@ class Product < ApplicationRecord
   validates :location, presence: true
   validates :condition, presence: true
   validates :size, presence: true
-  monetize :price_cents
+  #monetize :price_cents
 end
