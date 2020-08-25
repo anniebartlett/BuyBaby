@@ -5,10 +5,12 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
 
+  def edit; end
+
   def create
     @review = Review.new(review)
     @review.user = @user
-  if @review.save
+    if @review.save
     redirect_to user_path(@user)
   else
     render :new
