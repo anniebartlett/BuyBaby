@@ -42,8 +42,8 @@ def scrape_product(product)
           colour: "As per product",
           payment_options: ["Card Payment", "Cash Payment"].sample,
           category: category,
-          stripe_plan_name: "Test",
-          price_cent: price,
+          # stripe_plan_name: "Test",
+          # price_cent: price,
           deliver_option: ["Collect from chosen location", "Deliver home", "Arrange pick-up"].sample
         )
         puts "Created #{products.id} - #{products.name}"
