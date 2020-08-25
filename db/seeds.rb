@@ -66,3 +66,4 @@ scrape_product(boys_clothing)
 scrape_product(girls_clothing)
 
 puts "Finished!"
+

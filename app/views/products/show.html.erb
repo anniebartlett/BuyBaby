@@ -34,3 +34,18 @@
  <ul class="list-group m-3">
  </ul>
 
+<div class="cards d-flex flex-wrap justify-content-around mt-5">
+      <div class="card mb-5 text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h3 class="card-title"><%= @product.name.capitalize %></h3>
+            <% @product.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, alt: "product", height: 300, width: 200, crop: :fill %>
+            <% end %>
+            <h5 class="card-title"><%= @product.description %></h5>
+            <h5 class="card-title"><%= @product.location %></h5>
+
+           <%= link_to "Back to all products", products_path %>
+        </div>
+      </div>
+  </div>
+

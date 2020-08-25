@@ -1,5 +1,16 @@
 <h1>All Products</h1>
 
-  <% @products.each do |product| %>
-    <%= product.name %>
-  <% end %>
+<div class="cards d-flex flex-wrap justify-content-around">
+    <% @products.each do |product| %>
+      <div class="card mb-5 text-center" style="width: 18rem;">
+          <div class="card-body">
+            <h3 class="card-title"><%= product.name.capitalize %></h3>
+            <h5 class="card-title"><%= product.description %></h5>
+            <h5 class="card-title"><%= product.location %></h5>
+
+            <%= link_to 'More details', product_path(product), class: "btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

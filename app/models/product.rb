@@ -17,9 +17,11 @@ class Product < ApplicationRecord
   # validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
+
   validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
   # validates :stripe_plan_name, presence: true
   # monetize :price_cents
 
   validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
+
 end
