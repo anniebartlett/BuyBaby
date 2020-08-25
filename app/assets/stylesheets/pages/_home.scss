@@ -1,1 +1,28 @@
 // Specific CSS for your home-page
+.custom-shape-divider-bottom-1598385432 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1598385432 svg {
+    position: relative;
+    display: block;
+    width: calc(158% + 1.3px);
+    height: 123px;
+}
+
+.custom-shape-divider-bottom-1598385432 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1598385432 svg {
+        width: calc(183% + 1.3px);
+        height: 187px;
+    }
+}
