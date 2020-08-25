@@ -44,6 +44,7 @@ gem "haml"
 gem 'jquery-rails'
 gem 'cloudinary', '~> 1.12.0'
 gem 'friendly_id', '~> 5.4.0'
+gem 'nokogiri'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
