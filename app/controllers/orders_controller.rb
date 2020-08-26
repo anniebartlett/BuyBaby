@@ -7,10 +7,11 @@ class OrdersController < ApplicationController
 
   def index
     @orders = policy_scope(Order)
+
   end
 
-
   def show
+    @order.user = current_user
   end
 
   def new
@@ -47,11 +48,12 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:state, :user)
+    params.require(:order).permit(:state, :user, :product)
   end
 
    def set_order
     @order = Order.find(params[:id])
+    authorize @order
   end
 
 end

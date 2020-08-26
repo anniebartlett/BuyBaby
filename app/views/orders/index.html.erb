@@ -1,1 +1,41 @@
-<p>Hi</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 mt-4 text-center">
+      <h1>Your Orders</h1>
+    </div>
+  </div>
+</div>
+<table>
+  <tr>
+    <th>Customer</th>
+    <td><%= @orders.current_user %></td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+    <td><%= @orders.status %></td>
+  </tr>
+  <tr>
+    <th>Items:</th>
+    <td><%= @orders.count %></td>
+  </tr>
+  <tr>
+    <th>Items</th>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Subtotal</th>
+  </tr>
+  <tr>
+  <% @orders.product_orders.each do |item| %>
+  <td> cl_image_tag </td>
+    <td><strong>Name: </strong><%= item.product.name %></td>
+    <td><strong>Category: </strong><%= item.product.category %></td>
+    <td><strong>Description: </strong><%= item.product.description %></td>
+    <td><strong>Price: </strong>£<%= item.product.price %></td>
+    <td><strong>Location: </strong><%= item.product.location%></td>
+<% end %>
+ </tr>
+</table>
+
+
+

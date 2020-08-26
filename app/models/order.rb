@@ -6,3 +6,4 @@ class Order < ApplicationRecord
   has_many :products, through: :product_orders
 
 end
+
