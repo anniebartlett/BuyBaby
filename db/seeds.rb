@@ -32,8 +32,6 @@ def scrape_product(product)
       price = element.search('.productCard_price').text.strip
       img = element.search('img').attribute('data-src')&.value
 
-      # p img
-
       unless img.nil? || title.nil?
 
         products = Product.create(
@@ -51,10 +49,11 @@ def scrape_product(product)
           deliver_option: Product::DELIVERY_OPTIONS.sample
         )
           file = URI.open(img)
-          products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
-          if products.photos.attached?
-            products.save
+          if file.class == StringIO
+            next
           end
+          products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
+          products.save
 
         puts "Created #{products.id} - #{products.name}"
       end
