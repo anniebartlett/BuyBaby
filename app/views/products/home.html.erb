@@ -1,26 +1,28 @@
 <div class="container">
+  <div class="container search">
+    <%= form_tag products_path, method: :get do %>
+      <div class="input-group mb-3 mr-3">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for an item...",
+          aria: { label: "find", describedby: "basic-addon1" }
+        %>
+        <div class="input-group-prepend">
+          <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
+            <%= button_tag type: "submit", name: "", class: "search-icon" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="container text-center">
       <h1>Buy Baby</h1>
-      <p>A place for parents to shop & swap locally</p>
+      <p>The place for parents to shop & swap locally</p>
 
-      <%= form_tag products_path, method: :get do %>
-        <div class="input-group mb-3 mr-3">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Search for an item...",
-            aria: { label: "find", describedby: "basic-addon1" }
-          %>
-          <div class="input-group-prepend">
-            <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
-              <%= button_tag type: "submit", name: "", class: "search-icon" do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-            </span>
-
-          </div>
-        </div>
-      <% end %>
       <br>
       <p><%= link_to 'Click here for all items', products_path, class: "btn btn-green btn-lg" %></p>
   <div class="custom-shape-divider-bottom-1598385432">
