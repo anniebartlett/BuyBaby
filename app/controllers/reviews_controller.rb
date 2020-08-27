@@ -2,13 +2,16 @@ class ReviewsController < ApplicationController
   before_action :find_user, except: [:destroy]
 
   def new
+    @user = User.find(params [:user_id])
     @review = Review.new
+    authorize @review
   end
 
   def edit; end
 
   def create
-    @review = Review.new(review)
+    @user = Review.find(params[:user_id])
+    @review = Review.new(review_params)
     @review.user = @user
     if @review.save
     redirect_to user_path(@user)
@@ -19,6 +22,7 @@ class ReviewsController < ApplicationController
 
   def destroy
   @review = Review.find(params[:id])
+  @user = @review.user
   @review.destroy
   redirect_to user_path(@review.user)
   end
