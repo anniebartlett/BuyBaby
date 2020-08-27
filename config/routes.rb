@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root to: 'products#home'
 
   resources :products do
-    resources :orders, only: [ :new, :create ]
+    resources :orders, only: [ :new, :create, :show ]
+    resources :product_orders, only: :create
+
+
   end
 
   resources :orders, except: [ :new, :create ]
@@ -11,4 +14,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create]
 
   resources :reviews, only: [:destroy]
+
+  resources :product_orders, only: :destroy
+
 end
