@@ -1,3 +1,33 @@
-<h2><%= @order.completed %></h2>
-<p><%= @order.price_cent %></p>
-<p><%= @order.user %></p>
+<h1>Your Order</h1>
+
+<table>
+  <tr>
+    <th>Customer</th>
+    <td><%= @order.current_user %></td>
+  </tr>
+  <tr>
+    <th>Status:</th>
+    <td><%= @order.status %></td>
+  </tr>
+  <tr>
+    <th>Items:</th>
+    <td><%= @order.product_orders.count %></td>
+  </tr>
+  <tr>
+    <th>Items</th>
+    <th>Title</th>
+    <th>Quantity</th>
+    <th>Unit Price</th>
+    <th>Subtotal</th>
+  </tr>
+  <tr>
+  <% @order.product_orders.each do |item| %>
+  <td> cl_image_tag </td>
+    <td><strong>Name: </strong><%= item.product.name %></td>
+    <td><strong>Category: </strong><%= item.product.category %></td>
+    <td><strong>Description: </strong><%= item.product.description %></td>
+    <td><strong>Price: </strong>£<%= item.product.price %></td>
+    <td><strong>Location: </strong><%= item.product.location%></td>
+<% end %>
+ </tr>
+</table>
