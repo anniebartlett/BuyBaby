@@ -24,12 +24,14 @@ require("channels");
 import "bootstrap";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
+import flatpickr from "flatpickr";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
+  flatpickr(".datepicker", {});
   initSweetalert("#sweet-alert-demo", {
     title: "A nice alert",
     text: "This is a great alert, isn't it?",
