@@ -31,6 +31,7 @@ import { explandableSearchBar } from "../components/expandable_searchbar";
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
+  flatpickr(".datepicker", {});
   initSweetalert("#sweet-alert-demo", {
     title: "A nice alert",
     text: "This is a great alert, isn't it?",
