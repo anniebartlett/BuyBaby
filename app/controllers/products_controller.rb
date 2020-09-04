@@ -6,7 +6,11 @@ class ProductsController < ApplicationController
   def home; end
 
   def index
-    @products = policy_scope(Product)
+    if params[:query].present?
+      @products = Product.search_by_product(params[:query])
+    else
+      @products = policy_scope(Product)
+    end
   end
 
   def show
@@ -50,9 +54,9 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( :name, :description, :location, :longitude,
-      :latitude, :condition, :size, :payment_option, :stripe_plan_name, :price_cents,
-      :delivery_option, photos: [])
+    params.require(:product).permit( :name, :description, :location, :category, :longitude,
+      :latitude, :condition, :size, :payment_options, :price_cents,
+      :deliver_option, photos: [])
   end
 
   def set_product
