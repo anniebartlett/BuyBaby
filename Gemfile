@@ -47,6 +47,8 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'friendly_id', '~> 5.4.0'
 gem 'nokogiri'
 
+gem 'fullpagejs-rails'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
