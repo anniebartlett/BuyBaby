@@ -1,25 +1,25 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :index, :show ]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show, :filter]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home; end
 
   def index
-    @products = policy_scope(Product)
-    @product = Product.where.not(latitude: nil, longitude: nil)
-    @markers = @products.geocoded.map do |product|
-      {
-        lat: product.latitude,
-        lng: product.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { product: product })
-      }
+    # @products = policy_scope(Product)
+    # @product = Product.where.not(latitude: nil, longitude: nil)
+    # @markers = @products.geocoded.map do |product|
+    #   {
+    #     lat: product.latitude,
+    #     lng: product.longitude,
+    #     infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+    #   }
+    # end
     if params[:query].present?
       @products = Product.search_by_product(params[:query])
     else
       @products = policy_scope(Product)
     end
   end
-end
 
   def show
     @product_orders = ProductOrder.new
@@ -70,4 +70,4 @@ end
     @product = Product.find(params[:id])
     authorize @product
   end
-
+end

@@ -1,71 +1,77 @@
-  <div class="container-main text-center">
-    <div class="container header">
-      <div class="home-title">
-        <%= image_tag("bbtext.png", width: "75%") %>
-        <p class="tagline mt-2">Swap & shop for baby items locally</p>
-      </div>
+<div class="header text-center">
+  <div class="home-title p-5" style="height: 25rem">
+    <%= image_tag("bbtext.png", width: "50%") %>
+    <h3 class="tagline mt-2">Swap & shop for baby items locally</h3>
+  </div>
+</div>
+
+<div class="custom-shape-divider-bottom-1598385432">
+  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+  <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+  </svg>
+</div>
+
+<div class="section s2">
+  <div class="descriptive-boxes" style="height: 20rem">
+    <div class="descriptive-box border border-danger p-5 rounded-pill">
+      <h4>Buy items easy & fast from trusted sellers</h4>
     </div>
-
-<!--         <p><%= link_to 'Click here for all items', products_path, class: "btn btn-green btn-lg" %></p>
- -->  </div>
-
-     <div class="custom-shape-divider-bottom-1598385432">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-      </svg>
+    <div class="descriptive-box border border-danger p-5 rounded-pill">
+      <h4>Sell unwanted items to parents nearby</h4>
     </div>
-
-    <div class="section s2">
-      <div class="descriptive-boxes">
-        <div class="descriptive-box border">
-          <h4>Buy items easy & fast from trusted sellers</h4>
-        </div>
-        <div class="descriptive-box border">
-          <h4>Sell unwanted items to parents nearby</h4>
-        </div>
-        <div class="descriptive-box border">
-          <h4>Swap pre-loved items & save money</h4>
-        </div>
-      </div>
-    </div>
-
-    <div class="section s3 p-3 ml-3">
-      <h4 class="title mb-3"><strong>Category</strong></h4>
-      <div class="categories">
-        <div class="category">
-          <%= image_tag("clothing.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>clothing</h6>
-        </div>
-        <div class="category">
-          <%= image_tag("toys.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>toys</h6>
-        </div>
-        <div class="category">
-          <%= image_tag("nursery.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>nursery</h6>
-        </div>
-        <div class="category">
-          <%= image_tag("bathing.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>bathing</h6>
-        </div>
-        <div class="category">
-          <%= image_tag("pushchair.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>pushchairs</h6>
-        </div>
-        <div class="category">
-          <%= image_tag("carseats.jpeg", width: "75px", height: "75px", class: "fillwidth") %>
-          <h6>car seats</h6>
-        </div>
-      </div>
-    </div>
-
-    <div class="section s4 p-3">
-      <h4 class="title mb-3"><strong>Popular items near you</strong></h4>
-
+    <div class="descriptive-box border border-danger p-5 rounded-pill">
+      <h4>Swap pre-loved items & save money</h4>
     </div>
   </div>
 </div>
 
+<div class="section s3 p-3 ml-3">
+  <h1 class="title mb-5">Category</h1>
+  <div class="categories">
+    <div class="category">
+      <%= link_to products_path(query: "Playtime") do %>
+        <%= image_tag("toys.jpeg", width: "160px", height: "160px", class: "fillwidth") %>
+      <% end %>
+      <h5 class="pt-3"><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
+    </div>
 
+    <div class="category" style="height: 12rem">
+      <%= link_to products_path(query: "Boys-clothing") do %>
+        <%= image_tag("clothing.jpeg", width: "160px", height: "160px", class: "fillwidth") %>
+      <% end %>
+      <h5 class="pt-3"><%= link_to "Boys Clothing", products_path(query: "Boys-clothing"), class: "category-links" %></h5>
+    </div>
 
+    <div class="category">
+      <%= link_to products_path(query: "Girls-clothing") do %>
+        <%= image_tag("clothing.jpeg", width: "160px", height: "160px", class: "fillwidth") %>
+      <% end %>
+      <h5 class="pt-3"><%= link_to "Girls Clothing", products_path(query: "Girls-clothing"), class: "category-links" %></h5>
+    </div>
+
+    <div class="category">
+      <%= link_to products_path(query: "Nursery") do %>
+        <%= image_tag("nursery.jpeg", width: "160px", height: "160px", class: "fillwidth") %>
+      <% end %>
+      <h5 class="pt-3"><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h5>
+    </div>
+
+    <div class="category">
+      <%= link_to products_path(query: "Travel") do %>
+        <%= image_tag("pushchair.jpeg", width: "160px", height: "160px", class: "fillwidth") %>
+      <% end %>
+      <h5 class="pt-3"><%= link_to "Travel", products_path(query: "Travel"), class: "category-links" %></h5>
+    </div>
+
+  </div>
+</div>
+ <div class="custom-shape-divider-bottom-1598385432">
+  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+  </svg>
+</div>
+
+<div class="section s4 p-3">
+  <h4 class="title mb-3">Popular items near you</h4>
+</div>
 
