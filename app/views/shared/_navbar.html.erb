@@ -47,7 +47,7 @@
         <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
             <%= current_user.email %>
-            <%= link_to "View your orders", orders_path, class: "dropdown-item" %>
+            <%= link_to "My Account", my_account_path, class: "dropdown-item" %>
             <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "dropdown-item" %>
           <% else %>
             <%= link_to 'Sign in', new_user_session_path, class: "dropdown-item" %>
