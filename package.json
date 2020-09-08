@@ -9,8 +9,7 @@
     "@rails/webpacker": "4.3.0",
     "bootstrap": "^4.5.2",
     "dotenv": "^8.2.0",
-    "fullpage.js": "^3.0.9"
-    
+    "fullpage.js": "^3.0.9",
     "jquery": "^3.5.1",
     "jquery-bar-rating": "^1.2.2",
     "mapbox-gl": "^1.12.0",
