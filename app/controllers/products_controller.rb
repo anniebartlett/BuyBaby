@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_before_action :authenticate_user!, only: [:home, :index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show ]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home; end
@@ -20,6 +19,7 @@ class ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def edit; end
@@ -29,10 +29,8 @@ class ProductsController < ApplicationController
     @product.user = current_user
     authorize @product
     if @product.save
-
       redirect_to product_path(@product)
     else
-
       render :new
     end
   end
@@ -61,5 +59,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 end

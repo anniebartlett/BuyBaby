@@ -25,11 +25,11 @@
             params[:query],
             class: "form-control",
             placeholder: "Explore products...",
-            aria: { label: "find", describedby: "basic-addon1" }
+            aria: { label: "search", describedby: "basic-addon1" }
           %>
           <div class="input-group-prepend">
             <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
-              <%= button_tag type: "submit", name: "", class: "search-icon" do %>
+              <%= button_tag type: "submit", name: "search", class: "search-icon" do %>
                 <i class="fas fa-search"></i>
               <% end %>
             </span>
