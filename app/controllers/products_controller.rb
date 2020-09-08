@@ -7,7 +7,16 @@ class ProductsController < ApplicationController
 
   def index
     @products = policy_scope(Product)
+    @product = Product.where.not(latitude: nil, longitude: nil)
+    @markers = @products.geocoded.map do |product|
+      {
+        lat: product.latitude,
+        lng: product.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+      }
+    end
   end
+end
 
   def show
     @product_orders = ProductOrder.new
@@ -58,4 +67,4 @@ class ProductsController < ApplicationController
   def set_product
     @product = Product.find(params[:id])
   end
-end
+
