@@ -24,10 +24,16 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            id: "search",
-            aria: { label: "find", describedby: "basic-addon1" }
+            placeholder: "Explore products...",
+            aria: { label: "search", describedby: "basic-addon1" }
           %>
-          <i class="fas fa-search" id="search-btn"></i>
+          <div class="input-group-prepend">
+            <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
+              <%= button_tag type: "submit", name: "search", class: "search-icon" do %>
+                <i class="fas fa-search"></i>
+              <% end %>
+            </span>
+          </div>
         </div>
       <% end %>
 
