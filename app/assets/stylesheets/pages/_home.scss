@@ -1,1 +1,75 @@
 // Specific CSS for your home-page
+.custom-shape-divider-bottom-1598385432 {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.custom-shape-divider-bottom-1598385432 svg {
+    position: relative;
+    display: block;
+    width: calc(158% + 1.3px);
+    height: 123px;
+}
+
+.custom-shape-divider-bottom-1598385432 .shape-fill {
+    fill: #FFFFFF;
+}
+
+.card {
+  width: 16rem;
+  height: 26rem;
+}
+
+.s1 {
+  display: grid;
+}
+.s2 {
+  background-color: white;
+}
+
+.descriptive-boxes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.descriptive-box {
+  padding: 8px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  margin: auto;
+  font-size: 28px;
+  margin-bottom: 80px;
+}
+
+.h4 {
+  margin-top: 6px;
+}
+
+.s3 {
+  text-align:center;
+}
+
+.categories {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fillwidth {
+  border-radius: 50%;
+}
+
+.s4 {
+  background: white;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-bottom-1598385432 svg {
+        width: calc(183% + 1.3px);
+        height: 187px;
+    }
+}
