@@ -1,13 +1,29 @@
-<h1>All Products</h1>
-<div class="cards d-flex flex-wrap justify-content-around">
+<div class="container">
+  <div class="m-3">
+    <h1><strong>All Products</strong></h1>
+    <p><%= @products.count %> results</p>
+  </div>
+  <div class="cards d-flex flex-wrap justify-content-around position-relative">
     <% @products.each do |product| %>
-      <div class="card mb-5 text-center" style="width: 18rem;">
-          <div class="card-body">
-            <h3 class="card-title"><%= product.name.capitalize %></h3>
-            <h5 class="card-title"><%= product.description %></h5>
-            <h5 class="card-title"><%= product.location %></h5>
-
-            <%= link_to 'More details', product_path(product), class: "btn btn-danger" %>
+      <div class="card m-2" style="width: 16rem;">
+        <div class="card-body m-0">
+          <div class="text-center m-1">
+            <%= link_to product_path(product) do %>
+              <% product.photos.each_with_index do |photo, index| %>
+                <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+              <% end %>
+            <% end %>
+          </div>
+          <h6 class="card-title"><strong><%= product.name.capitalize %></strong></h6>
+          <p class="card-title m-0">Category: <%= product.category %></p>
+          <p class="card-title m-0">Condition: <%= product.condition %></p>
+          <p class="card-title m-0">Colour: <%= product.colour %></p>
+          <p class="card-title m-0"><%= product.location %></p>
+          <div class="rating text-center position-absolute">
+            <%= button_tag type: "button", name: "", class: "btn btn-heart btn-lg heart-icon" do %>
+              <i class="far fa-heart"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>

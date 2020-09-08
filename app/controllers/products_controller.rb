@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_before_action :authenticate_user!, only: [:home, :index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:home, :index, :show ]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def home; end
@@ -14,6 +13,10 @@ class ProductsController < ApplicationController
         lng: product.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { product: product })
       }
+    if params[:query].present?
+      @products = Product.search_by_product(params[:query])
+    else
+      @products = policy_scope(Product)
     end
   end
 end
@@ -25,6 +28,7 @@ end
 
   def new
     @product = Product.new
+    authorize @product
   end
 
   def edit; end
@@ -34,10 +38,8 @@ end
     @product.user = current_user
     authorize @product
     if @product.save
-
       redirect_to product_path(@product)
     else
-
       render :new
     end
   end
@@ -59,12 +61,13 @@ end
   private
 
   def product_params
-    params.require(:product).permit( :name, :description, :location, :longitude,
-      :latitude, :condition, :size, :payment_option, :stripe_plan_name, :price_cents,
-      :delivery_option, photos: [])
+    params.require(:product).permit( :name, :description, :location, :category, :longitude,
+      :latitude, :condition, :size, :payment_options, :price_cents,
+      :deliver_option, photos: [])
   end
 
   def set_product
     @product = Product.find(params[:id])
+    authorize @product
   end
 

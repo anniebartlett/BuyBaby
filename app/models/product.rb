@@ -1,6 +1,13 @@
 class Product < ApplicationRecord
   belongs_to :user
 
+  include PgSearch::Model
+  pg_search_scope :search_by_product,
+                  against: [ :name, :description, :location, :category],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
@@ -23,5 +30,4 @@ class Product < ApplicationRecord
   # monetize :price_cents
 
   validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
-
 end
