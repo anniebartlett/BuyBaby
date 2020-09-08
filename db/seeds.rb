@@ -1,10 +1,10 @@
 require "open-uri"
 
-prams = "https://www.mamasandpapas.com/en-gb/c/travel/pushchairs/pushchairs-all/pushchairs-prams"
-crib = "https://www.mamasandpapas.com/en-gb/c/nursery/nursery-furniture/cots-cribs-cotbeds"
-toys = "https://www.mamasandpapas.com/en-gb/c/toys-gifts/playtime"
 boys_clothing = "https://www.mamasandpapas.com/en-gb/c/clothing/boys-clothing"
 girls_clothing = "https://www.mamasandpapas.com/en-gb/c/clothing/girls-clothing"
+toys = "https://www.mamasandpapas.com/en-gb/c/toys-gifts/playtime"
+crib = "https://www.mamasandpapas.com/en-gb/c/nursery/nursery-furniture/cots-cribs-cotbeds"
+prams = "https://www.mamasandpapas.com/en-gb/c/travel/pushchairs/pushchairs-all/pushchairs-prams"
 
 def clean_database
   puts "Cleaning database..."
@@ -37,7 +37,7 @@ def scrape_product(product)
         products = Product.create(
           user_id: User.first.id,
           name: title,
-          description: "In great condition, your kids will love this!",
+          description: "In good condition",
           location: "London",
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
@@ -45,11 +45,12 @@ def scrape_product(product)
           payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
           # stripe_plan_name: "Test",
-          # price_cent: price,
+          price_cents: rand(5..20),
           deliver_option: Product::DELIVERY_OPTIONS.sample
         )
           file = URI.open(img)
           if file.class == StringIO
+            sleep(3)
             next
           end
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
@@ -62,11 +63,11 @@ end
 
 clean_database
 create_user
-scrape_product(prams)
-scrape_product(crib)
-scrape_product(toys)
 scrape_product(boys_clothing)
 scrape_product(girls_clothing)
+scrape_product(toys)
+scrape_product(crib)
+scrape_product(prams)
 
 puts "Finished!"
 
