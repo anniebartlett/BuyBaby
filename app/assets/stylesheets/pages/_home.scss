@@ -14,7 +14,7 @@
   height: 123px;
 }
 
-.custom-shape-divider-bottom-1598385432 .shape-fill {
+.shape-fill {
   fill: white;
 }
 
@@ -81,26 +81,23 @@
   }
 }
 
-.carousel .carousel-item {
-  height: 300px;
-}
-
-.carousel-item img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  min-height: 300px;
-}
 
 .img-container {
   background-image: url("11332 (2).jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-position: center;
-  height: 100vh;
+  background-position: bottom;
+  height: 90vh;
   padding: 80px 0px;
   text-align: center;
+}
+
+.carousel {
+  background-color: lightgray;
+  height: 400px;
+  margin: 0 auto;
+  width: 50%;
 }
 
 .s2 {
@@ -132,7 +129,12 @@
 
 .categories {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 0 -30px;
+}
+
+.category {
+  margin: 0 30px;
 }
 
 .fillwidth {
