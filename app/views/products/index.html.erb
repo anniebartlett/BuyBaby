@@ -1,31 +1,37 @@
 <div class="container">
   <div class="m-3">
-    <h1><strong>All Products</strong></h1>
+    <h1><strong>View Products</strong></h1>
     <p><%= @products.count %> results</p>
   </div>
-  <div class="cards d-flex flex-wrap justify-content-around position-relative">
+  <div class="cards d-flex flex-wrap justify-content-around position-relative text-center">
     <% @products.each do |product| %>
-      <div class="card m-2" style="width: 16rem;">
-        <div class="card-body m-0">
-          <div class="text-center m-1">
-            <%= link_to product_path(product) do %>
-              <% product.photos.each_with_index do |photo, index| %>
-                <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
-              <% end %>
+      <div class="card rounded-lg m-1 mb-3" style="width: 16rem;">
+        <div class="card-body">
+          <%= link_to product_path(product) do %>
+            <% product.photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
             <% end %>
-          </div>
-          <h6 class="card-title"><strong><%= product.name.capitalize %></strong></h6>
-          <p class="card-title m-0">Category: <%= product.category %></p>
-          <p class="card-title m-0">Condition: <%= product.condition %></p>
-          <p class="card-title m-0">Colour: <%= product.colour %></p>
-          <p class="card-title m-0"><%= product.location %></p>
+          <% end %>
+            <%= link_to product_path(product) do%>
+              <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+              <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
+              <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+            <% end %>
           <div class="rating text-center position-absolute">
-            <%= button_tag type: "button", name: "", class: "btn btn-heart btn-lg heart-icon" do %>
-              <i class="far fa-heart"></i>
-            <% end %>
+          <%= button_tag type: "button", name: "", class: "btn btn-heart btn-lg heart-icon" do %>
+            <i class="far fa-heart"></i>
+          <% end %>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<div
+  id="map"
+  style="width: 100%;
+  height: 600px;"
+  data-markers="<%= @markers.to_json %>"
+></div>
+

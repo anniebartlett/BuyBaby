@@ -1,13 +1,15 @@
 class OrdersController < ApplicationController
-
- skip_after_action :verify_authorized
- skip_before_action :authenticate_user!
-
- before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_after_action :verify_authorized
+  skip_before_action :authenticate_user!
+  before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
     @orders = policy_scope(Order)
+    @order.user = current_user
+  end
 
+  def my_account
+    @orders = Order.where(user: current_user)
   end
 
   def show
@@ -23,27 +25,23 @@ class OrdersController < ApplicationController
     @order.user = current_user
     authorize @order
     if @order.save
-    redirect_to order_path(@order)
+      redirect_to order_path(@order)
     else
-    render :new
+      render :new
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @order.update(order_params)
-
     redirect_to order_path(@order)
   end
 
   def destroy
     @order.destroy
-
     redirect_to orders_path
   end
-
 
   private
 
@@ -51,11 +49,8 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:state, :user, :product)
   end
 
-   def set_order
+  def set_order
     @order = Order.find(params[:id])
     authorize @order
   end
-
 end
-
-

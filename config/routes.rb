@@ -6,15 +6,11 @@ Rails.application.routes.draw do
     resources :orders, only: [ :new, :create, :show ]
     resources :product_orders, only: :create
 
-
   end
 
   resources :orders, except: [ :new, :create ]
-
-  resources :reviews, only: [:new, :create]
-
-  resources :reviews, only: [:destroy]
-
   resources :product_orders, only: :destroy
+  resources :reviews, only: [:new, :create, :destroy]
 
+  get 'my_account', to: 'orders#my_account'
 end
