@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = policy_scope(Order)
+    @order.user = current_user
   end
 
   def my_account

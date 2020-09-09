@@ -1,52 +1,45 @@
-<div class="container">
-  <div class="container main mb-3">
-    <div class="row">
-
-      <div class="col mt-3">
-        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <% @product.photos.each_with_index do |photo, index| %>
-              <div class="carousel-item <%= 'active' if index == 0 %>">
-                <%= cl_image_tag photo.key, height: 500, width: 500, crop: :fill, gravity: :center %>
-              </div>
-            <% end %>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="col mt-3 mr-4">
-        <h1> <%= @product.name.capitalize %></h1>
-        <p><strong>Category: </strong><%=@product.category.capitalize %></p>
-        <p><strong>Description: </strong><%=@product.description.capitalize %></p>
-        <p><strong>Location: </strong>£<%= @product.location.capitalize %></p>
-        <div class="links list-inline">
-          <p class="list-inline-item"><%= link_to products_path do %>
-          <p><%= link_to 'Buy Item', new_product_order_path(@product), class: "btn btn-primary" %></p>
+<div class="container main mb-3 min-vh-100">
+  <div class="row">
+    <div class="col mt-3">
+      <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <% @product.photos.each_with_index do |photo, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <%= cl_image_tag photo.key, height: 500, width: 500, crop: :fill, gravity: :center %>
+            </div>
           <% end %>
         </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
     </div>
-
-  <div container="seller-info">
-    <h3>Seller review</h3>
+    <div class="col mt-3 mr-4">
+      <h1> <%= @product.name.capitalize %></h1>
+      <p><strong>Category: </strong><%=@product.category.capitalize %></p>
+      <p><strong>Description: </strong><%=@product.description.capitalize %></p>
+      <p><strong>Location: </strong>£<%= @product.location.capitalize %></p>
+      <div class="links list-inline">
+        <%= link_to products_path do %>
+          <p><%= link_to 'Buy Item', new_product_order_path(@product), class: "btn btn-primary" %></p>
+        <% end %>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
-
 </div>
+
 
 
