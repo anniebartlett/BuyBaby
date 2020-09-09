@@ -16,14 +16,16 @@ end
 
 def create_user
   puts "Creating user..."
-  user = User.create(name: 'lisa', email: 'lisa@me.com', password: '123456', nickname: 'lisa_sells_stuff', description: 'Good seller')
-  puts "Created #{user.name}"
+  user_1 = User.create(name: 'lisa', email: 'lisa@me.com', password: '123456', nickname: 'lisa_buys_stuff', description: 'Good buyer')
+  user_2 = User.create(name: 'sandy', email: 'sandy@me.com', password: '123456', nickname: 'sandy_sells_stuff', description: 'Good seller')
+  puts "Created #{user_1.name}"
+  puts "Created #{user_2.name}"
 end
 
 def scrape_product(product)
   puts "Creating products..."
 
-  category = product.split("/")[5].capitalize
+  category = product.split("/")[6].capitalize
 
   doc = Nokogiri::HTML(open("#{product}"))
 
@@ -35,7 +37,7 @@ def scrape_product(product)
       unless img.nil? || title.nil?
 
         products = Product.create(
-          user_id: User.first.id,
+          user_id: User.last.id,
           name: title,
           description: "In good condition",
           location: "London",

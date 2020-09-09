@@ -14,8 +14,8 @@ class Product < ApplicationRecord
   has_many :product_orders
   has_many :orders, through: :product_orders
   has_many_attached :photos
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
+  # geocoded_by :address
+  # after_validation :geocode, if: :will_save_change_to_address?
 
   # validates :name, presence: true
   validates :description, presence: true
