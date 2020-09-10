@@ -27,7 +27,7 @@ import "bootstrap";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
-import { expandableSearchBar } from "../components/expandable_searchbar";
+// import { expandableSearchBar } from "../components/expandable_searchbar";
 // import "mapbox-gl/dist/mapbox-gl.css";
 // import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 // import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
@@ -48,7 +48,7 @@ document.addEventListener("turbolinks:load", () => {
     text: "This is a great alert, isn't it?",
     icon: "success",
   });
-  expandableSearchBar();
+  // expandableSearchBar();
   // Call your functions here, e.g:
   // initSelect2();
 
