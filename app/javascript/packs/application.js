@@ -7,7 +7,6 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
-//= require jquery.lettering-0.6.1.min
 //= require jquery
 //= require jquery_ujs
 
@@ -27,17 +26,20 @@ require("channels");
 import "bootstrap";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
-import { initMapbox} from "../plugins/init_mapbox";
-
-import { explandableSearchBar } from "../components/expandable_searchbar";
+import { initMapbox } from "../plugins/init_mapbox";
+import { expandableSearchBar } from "../components/expandable_searchbar";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+// import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+// import { initMapbox } from "../init/mapbox.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
-
-  initMapbox();
+  // initMapbox();
 
   flatpickr(".datepicker", {});
 
@@ -46,9 +48,9 @@ document.addEventListener("turbolinks:load", () => {
     text: "This is a great alert, isn't it?",
     icon: "success",
   });
-  explandableSearchBar();
+  expandableSearchBar();
   // Call your functions here, e.g:
   // initSelect2();
-  $('.carousel').carousel();
-});
 
+  // $(".carousel").carousel();
+});

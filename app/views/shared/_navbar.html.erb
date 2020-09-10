@@ -1,8 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light bg-light navbar-lewagon sticky-top">
-  <%= link_to "/", class: "navbar-brand" do %>
+  <div class="d-flex flex-row">
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
-
   <% end %>
+  <h3 class="mt-1">Buy</h3>
+  <h3 class="mt-1" style="color: #9CF6F6">Ba</h3>
+  <h3 class="mt-1" style="color: #FFE357">by</h3>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -16,27 +20,12 @@
       <li class="nav-item active">
         <%= link_to "Explore", products_path, class: "nav-link" %>
       </li>
-      <li class="nav-item active">
-        <%= link_to "Contact", "#", class: "nav-link" %>
-      </li>
 
-      <%= form_tag products_path, method: :get do %>
-        <div class="input-group mb-3 mr-3">
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Explore products...",
-            aria: { label: "find", describedby: "basic-addon1" }
-          %>
-          <div class="input-group-prepend">
-            <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
-              <%= button_tag type: "submit", class: "search-icon" do %>
-                <i class="fas fa-search"></i>
-              <% end %>
-            </span>
-          </div>
-        </div>
+      <li class="nav-item active ml-3">
+      <%= link_to products_path do %>
+        <i class="fas fa-search nav-search"></i>
       <% end %>
+
       <li class="nav-item dropdown ml-3">
         <% if user_signed_in? %>
           <% if current_user.orders.find_by(state:"pending").present? %>

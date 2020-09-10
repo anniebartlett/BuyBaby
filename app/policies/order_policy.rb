@@ -13,6 +13,10 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def my_account?
+    true
+  end
+
   def update?
     record.user == user
   end
