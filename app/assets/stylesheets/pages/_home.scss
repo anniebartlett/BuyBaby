@@ -1,1 +1,154 @@
 // Specific CSS for your home-page
+.custom-shape-divider-bottom-1598385432 {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1598385432 svg {
+  position: relative;
+  display: block;
+  width: calc(158% + 1.3px);
+  height: 123px;
+}
+
+.shape-fill {
+  fill: white;
+}
+
+.inner-container h1 {
+  font-size: 8.5rem;
+  font-weight: 600;
+  letter-spacing: 5px;
+}
+
+.buybaby-text {
+  margin-left: 280px;
+  margin-top: 70px;
+  margin-bottom: -20px;
+}
+
+.tagline {
+  margin-left: 280px;
+}
+
+.btn-lg {
+  margin-left: 270px;
+}
+
+.title-1 {
+  display: inline-block;
+  color: #98dbeb;
+}
+
+.title-2 {
+  display: inline-block;
+  color: #ffafaf;
+}
+
+.title-3 {
+  display: inline-block;
+  color: #ffc200;
+}
+.logo {
+  display: inline-block;
+  margin-bottom: 55px;
+  cursor: pointer;
+  animation: bounce 1s linear;
+}
+
+.logo:hover {
+  animation: bounce 5s infinite;
+}
+
+@keyframes bounce {
+  20%,
+  50%,
+  80%,
+  to {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  70% {
+    transform: translateY(-30px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+
+.img-container {
+  background-image: url("11332 (2).jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
+  height: 90vh;
+  padding: 80px 0px;
+  text-align: center;
+}
+
+.carousel {
+  background-color: lightgray;
+  height: 400px;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.s2 {
+  background-color: white;
+}
+
+.descriptive-boxes {
+  display: flex;
+  justify-content: space-around;
+}
+
+.descriptive-box {
+  padding: 8px;
+  border-radius: 20px;
+  border-width: 10px;
+  width: 320px;
+  text-align: center;
+  margin: auto;
+  font-size: 28px;
+}
+
+.h4 {
+  margin-top: 6px;
+}
+
+.s3 {
+  text-align: center;
+}
+
+.categories {
+  display: flex;
+  justify-content: center;
+  margin: 0 -30px;
+}
+
+.category {
+  margin: 0 30px;
+}
+
+.fillwidth {
+  border-radius: 50%;
+}
+
+.s4 {
+  background: white;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+  .custom-shape-divider-bottom-1598385432 svg {
+    width: calc(183% + 1.3px);
+    height: 187px;
+  }
+}

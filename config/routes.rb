@@ -8,12 +8,9 @@ Rails.application.routes.draw do
 
   resources :orders, only: [ :index, :show, :edit, :update ]
 
-
-
-  resources :reviews, only: [:new, :create]
-
-  resources :reviews, only: [:destroy]
+  resources :reviews, only: [:new, :create, :destroy]
 
   resources :product_orders, only: [:destroy]
 
+  get 'my_account', to: 'orders#my_account'
 end

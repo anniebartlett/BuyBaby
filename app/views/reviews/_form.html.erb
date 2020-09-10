@@ -1,5 +1,5 @@
 <%= simple_form_for [ @booking, @review ] do |f| %>
   <%= f.input :comment, as: :text, placeholder: "Add your review" %>
   <%= f.input :rating, collection: [ 1, 2, 3, 4, 5] %>
-  <%= f.submit "Submit", class: "btn btn-green mb-3"  %>
+  <%= f.submit "Submit", class: "btn btn-blue mb-3"  %>
 <% end %>

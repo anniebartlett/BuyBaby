@@ -30,7 +30,7 @@
           %>
           <div class="input-group-prepend">
             <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
-              <%= button_tag type: "submit", name: "", class: "search-icon" do %>
+              <%= button_tag type: "submit", class: "search-icon" do %>
                 <i class="fas fa-search"></i>
               <% end %>
             </span>
@@ -55,7 +55,7 @@
         <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
             <%= current_user.email %>
-            <%= link_to "View your basket", orders_path, class: "dropdown-item" %>
+            <%= link_to "My Account", my_account_path, class: "dropdown-item" %>
             <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: "dropdown-item" %>
           <% else %>
             <%= link_to 'Sign in', new_user_session_path, class: "dropdown-item" %>
