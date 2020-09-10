@@ -1,7 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light bg-light navbar-lewagon sticky-top">
-  <%= link_to "/", class: "navbar-brand" do %>
+  <div class="d-flex flex-row">
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
   <% end %>
+  <h3 class="mt-1">Buy</h3>
+  <h3 class="mt-1" style="color: #9CF6F6">Ba</h3>
+  <h3 class="mt-1" style="color: #FFE357">by</h3>
+  </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -14,9 +19,6 @@
       </li>
       <li class="nav-item active">
         <%= link_to "Explore", products_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item active">
-        <%= link_to "Contact", "#", class: "nav-link" %>
       </li>
 
       <li class="nav-item active ml-3">
