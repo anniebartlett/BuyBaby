@@ -37,17 +37,16 @@
           </div>
         </div>
       <% end %>
-
       <li class="nav-item dropdown ml-3">
-      <%= link_to orders_path do %>
-      <i class="fas fa-shopping-cart"></i>
-      <% end %>
-
-        <div class='badge badge-warning' id='lblCartCount'>
-          <span><%= @product_order_count %></span>
-        </div>
-
-       <% if user_signed_in? %>
+        <% if user_signed_in? %>
+          <% if current_user.orders.find_by(state:"pending").present? %>
+            <%= link_to edit_order_path(current_user.orders.find_by(state:"pending")) do %>
+              <i class="fas fa-shopping-cart"></i>
+            <% end %>
+            <div class='badge badge-warning' id='lblCartCount'>
+              <span><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
+            </div>
+          <% end %>
           <%= image_tag "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
