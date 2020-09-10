@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+   before_action :set_counter
   include Pundit
 
   after_action :verify_authorized, except: [ :index, :home ], unless: :skip_pundit?
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^products$)/
+  end
+
+  def set_counter
+    @product_order_count = ProductOrder.count
   end
 end

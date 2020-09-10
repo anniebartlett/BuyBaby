@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light bg-light navbar-lewagon sticky-top">
   <%= link_to "/", class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
+
   <% end %>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,12 +39,19 @@
       <% end %>
 
       <li class="nav-item dropdown ml-3">
-        <% if user_signed_in? %>
+      <%= link_to orders_path do %>
+      <i class="fas fa-shopping-cart"></i>
+      <% end %>
+
+        <div class='badge badge-warning' id='lblCartCount'>
+          <span><%= @product_order_count %></span>
+        </div>
+
+       <% if user_signed_in? %>
           <%= image_tag "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% else %>
           <%= image_tag "user.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         <% end %>
-
         <div class="dropdown-menu dropdown-menu-right p-3" aria-labelledby="navbarDropdown">
           <% if user_signed_in? %>
             <%= current_user.email %>

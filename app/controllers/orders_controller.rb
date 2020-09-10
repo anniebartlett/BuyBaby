@@ -3,10 +3,10 @@ class OrdersController < ApplicationController
   skip_before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @orders = policy_scope(Order)
-    @order.user = current_user
-  end
+ def index
+  @orders = policy_scope(Order)
+  @orders.where(user: current_user)
+ end
 
   def my_account
     @orders = Order.where(user: current_user)
@@ -16,14 +16,28 @@ class OrdersController < ApplicationController
     @order.user = current_user
   end
 
-  def new
-    @order = Order.new
-  end
 
   def create
-    @order = Order.new(order_params)
-    @order.user = current_user
+  product = Product.find(params[:product_id])
+  order = Order.create!(product: product, product_sku: product.sku, amount: product.price, state: 'pending', user: current_user)
+
+  session = Stripe::Checkout::Session.create(
+    payment_method_types: ['card'],
+    line_items: [{
+      name: product.sku,
+      images: [product.photo_url],
+      amount: product.price_cents,
+      currency: 'gbp',
+      quantity: 1
+    }],
+    success_url: order_url(order),
+    cancel_url: order_url(order)
+    )
+
+    order.update(checkout_session_id: session.id)
+    redirect_to new_order_payment_path(order)
     authorize @order
+
     if @order.save
       redirect_to order_path(@order)
     else
@@ -41,6 +55,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy
     redirect_to orders_path
+
   end
 
   private

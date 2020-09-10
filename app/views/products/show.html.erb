@@ -2,6 +2,7 @@
   <div class="row">
     <div class="col mt-3">
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
         <div class="carousel-inner">
           <% @product.photos.each_with_index do |photo, index| %>
             <div class="carousel-item <%= 'active' if index == 0 %>">
@@ -40,6 +41,5 @@
     </a>
   </div>
 </div>
-
 
 
