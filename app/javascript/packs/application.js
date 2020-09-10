@@ -36,8 +36,9 @@ import { explandableSearchBar } from "../components/expandable_searchbar";
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
-
   initMapbox();
+
+import { initMapbox } from "../init/mapbox.js";
 
   flatpickr(".datepicker", {});
 
