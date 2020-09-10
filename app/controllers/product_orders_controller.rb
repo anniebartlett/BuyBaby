@@ -1,5 +1,4 @@
 class ProductOrdersController < ApplicationController
-
   def create
     @order = current_user.orders.find_by(state:"pending") || Order.create(user: current_user, state: "pending")
     @product = Product.find(params[:product_id])
