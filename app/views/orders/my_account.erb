@@ -16,27 +16,40 @@
     <div class="col-8 mt-5">
       <h1 class="mb-3">You might like...</h1>
       <div class="d-flex flex-column">
+
         <div class="card-product rounded-lg">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <%= link_to products_path[34] do %>
+            <% @products[34].photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+            <% end %>
+          <% end %>
           <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2><%= @products[34].name %></h2>
+            <p><%= @products[34].description %></p>
           </div>
         </div>
 
         <div class="card-product rounded-lg">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <%= link_to products_path[12] do %>
+            <% @products[12].photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+            <% end %>
+          <% end %>
           <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2><%= @products[12].name %></h2>
+            <p><%= @products[12].description %></p>
           </div>
         </div>
 
         <div class="card-product rounded-lg">
-          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+          <%= link_to products_path[21] do %>
+            <% @products[21].photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+            <% end %>
+          <% end %>
           <div class="card-product-infos">
-            <h2>Product name</h2>
-            <p>Product description with <strong>relevant info</strong> only.</p>
+            <h2><%= @products[21].name %></h2>
+            <p><%= @products[21].description %></p>
           </div>
         </div>
 
