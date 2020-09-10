@@ -30,10 +30,14 @@
               <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
             <% end %>
           <% end %>
-          <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
-          <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
-          <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-          <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+
+            <%= link_to product_path(product) do%>
+              <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+              <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
+              <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+              <% end %>
+            <%=  link_to "Add to basket", product_product_orders_path(product), method: :post %>
           <div class="rating text-center position-absolute">
           <%= button_tag type: "button", name: "", class: "btn btn-heart" do %>
             <i class="far fa-heart"></i>
