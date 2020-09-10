@@ -2,10 +2,28 @@
   <div class="m-3">
     <h1><strong>View Products</strong></h1>
     <p><%= @products.count %> results</p>
+    <%= form_tag products_path, method: :get do %>
+      <div class="input-group mb-3 mr-3">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control col-6",
+          placeholder: "Search for items...",
+          aria: { label: "find", describedby: "basic-addon1" }
+        %>
+        <div class="input-group-prepend">
+          <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
+            <%= button_tag type: "submit", class: "search-icon" do %>
+              <i class="fas fa-search"></i>
+            <% end %>
+          </span>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <div class="cards d-flex flex-wrap justify-content-around position-relative text-center">
+
+  <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
     <% @products.each do |product| %>
-      <div class="card rounded-lg m-1 mb-3" style="width: 16rem;">
+      <div class="card rounded-lg mb-4" style="width: 16rem;">
         <div class="card-body">
           <%= link_to product_path(product) do %>
             <% product.photos.each_with_index do |photo, index| %>
