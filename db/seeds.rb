@@ -45,7 +45,7 @@ def scrape_product(product)
           size: %w[Small Medium Large].sample,
           colour: "As per product",
           # payment_options: Product::PAYMENT_OPTIONS.sample,
-          category: Product::CATEGORY_OPTIONS.sample,
+          category: category,
           # stripe_plan_name: "Test",
           price_cents: rand(5..20),
           # deliver_option: Product::DELIVERY_OPTIONS.sample
