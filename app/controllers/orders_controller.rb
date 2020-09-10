@@ -6,6 +6,10 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
   end
 
+  def basket
+    @orders = policy_scope(Order)
+  end
+
   def my_account
     @products = policy_scope(Product)
     @orders = Order.where(user: current_user)

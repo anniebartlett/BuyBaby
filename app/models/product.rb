@@ -9,6 +9,7 @@ class Product < ApplicationRecord
                   }
 
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
+  CATEGORY_OPTIONS = ["Boys-clothing", "Girls-clothing", "Playtime", "Nursery-furniture", "Pushchairs"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
   has_many :product_orders
@@ -19,15 +20,17 @@ class Product < ApplicationRecord
 
   # validates :name, presence: true
   validates :description, presence: true
+  validates :category, inclusion: { in: CATEGORY_OPTIONS }
   validates :location, presence: true
+  validates :colour, presence: true
   # validates :longitude, presence: true
   # validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
 
-  validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
+  # validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
   # validates :stripe_plan_name, presence: true
   monetize :price_cents
 
-  validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
+  # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
 end

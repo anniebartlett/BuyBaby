@@ -10,7 +10,6 @@ require("channels");
 //= require jquery
 //= require jquery_ujs
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -29,6 +28,10 @@ import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
 import { expandableSearchBar } from "../components/expandable_searchbar";
+// import "mapbox-gl/dist/mapbox-gl.css";
+// import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+// import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 // import { initMapbox } from "../init/mapbox.js";
 
 // Internal imports, e.g:
@@ -36,7 +39,7 @@ import { expandableSearchBar } from "../components/expandable_searchbar";
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
-  initMapbox();
+  // initMapbox();
 
   flatpickr(".datepicker", {});
 

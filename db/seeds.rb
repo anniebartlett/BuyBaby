@@ -44,11 +44,11 @@ def scrape_product(product)
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
           colour: "As per product",
-          payment_options: Product::PAYMENT_OPTIONS.sample,
+          # payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
           # stripe_plan_name: "Test",
           price_cents: rand(5..20),
-          deliver_option: Product::DELIVERY_OPTIONS.sample
+          # deliver_option: Product::DELIVERY_OPTIONS.sample
         )
           file = URI.open(img)
           if file.class == StringIO

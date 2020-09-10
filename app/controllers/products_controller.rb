@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     authorize @product
-    if @product.save
+    if @product.save!
       redirect_to product_path(@product)
     else
       render :new
@@ -61,9 +61,18 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit( :name, :description, :location, :category, :longitude,
-      :latitude, :condition, :size, :payment_options, :price_cents,
-      :deliver_option, photos: [])
+    params.require(:product).permit(
+      :name,
+      :description,
+      :location,
+      :category,
+      :colour,
+      :condition,
+      :size,
+      :price_cents,
+      # :payment_options,
+      # :deliver_option,
+      photos: [])
   end
 
   def set_product
