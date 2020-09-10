@@ -9,7 +9,7 @@
         <h4><%= link_to "My reviews", reviews_path %></h4>
         <h4><%= link_to "My messages", root_path %></h4>
         <h4><%= link_to "Saved items", root_path %></h4>
-        <h4><%= link_to "Sell an item", root_path %></h4>
+        <h4><%= link_to "Sell an item", new_product_path %></h4>
         <h4><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h4>
       </div>
     </div>
@@ -58,7 +58,6 @@
             <p>Seller: <%= @products[21].user.nickname %></p>
           </div>
         </div>
-
       </div>
     </div>
   </div>
