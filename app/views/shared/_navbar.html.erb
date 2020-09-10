@@ -36,12 +36,14 @@
             <span>0</span>
           </div>
           <% else %>
-            <%= link_to edit_order_path(current_user.orders.find_by(state:"pending")) do %>
-              <i class="fas fa-shopping-cart"></i>
+            <% if current_user.orders.find_by(state:"pending").present? %>
+              <%= link_to edit_order_path(current_user.orders.find_by(state:"pending")) do %>
+                <i class="fas fa-shopping-cart"></i>
+              <% end %>
+              <div class='badge badge-warning' id='lblCartCount'>
+                <span><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
+              </div>
             <% end %>
-            <div class='badge badge-warning' id='lblCartCount'>
-              <span><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
-            </div>
         <% end %>
       </li>
 
