@@ -118,6 +118,24 @@
   object-fit: cover;
 }
 
+.Card-image {
+  width: 100%;
+  object-fit: cover;
+  height: 100%
+}
+
+.card-columns {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 40px;
+}
+
+.card {
+  width: 28vw;
+  height: 60vh
+}
+
+
 .s2 {
   background-color: white;
 }

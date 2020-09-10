@@ -59,6 +59,25 @@
   <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
 </div>
 
+<div class="categories-section">
+  <div class="card-columns">
+    <div class="card">
+      <%= image_tag("toys.jpg", class: "Card-image" )%>
+        <h5><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
+    </div>
+
+     <div class="card">
+      <%= image_tag("nursery2.jpg", class: "Card-image" )%>
+        <h5><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h5>
+    </div>
+
+    <div class="card">
+      <%= image_tag("pushchair.jpeg", class: "Card-image" )%>
+        <h5><%= link_to "Travel", products_path(query: "Travel"), class: "category-links" %></h5>
+    </div>
+  </div>
+</div>
+
 <div class="section s4 p-3">
   <h4 class="title mb-3">Popular items near you</h4>
 </div>
