@@ -45,7 +45,7 @@ def scrape_product(product)
           payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
           # stripe_plan_name: "Test",
-          # price_cent: price,
+          price_cents: price,
           deliver_option: Product::DELIVERY_OPTIONS.sample
         )
           file = URI.open(img)

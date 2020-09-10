@@ -20,7 +20,7 @@ class Product < ApplicationRecord
 
   validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
   # validates :stripe_plan_name, presence: true
-  # monetize :price_cents
+  monetize :price_cents
 
   validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
 

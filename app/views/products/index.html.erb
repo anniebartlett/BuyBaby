@@ -1,16 +1,19 @@
 <h1>All Products</h1>
-<div class="cards d-flex flex-wrap justify-content-around">
+<div class="cards d-flex flex-wrap">
     <% @products.each do |product| %>
       <div class="card mb-5 text-center" style="width: 18rem;">
           <div class="card-body">
             <h3 class="card-title"><%= product.name.capitalize %></h3>
             <h5 class="card-title"><%= product.description %></h5>
             <h5 class="card-title"><%= product.location %></h5>
+            <h5 class="card-title"><%= humanized_money_with_symbol(product.price_cents) %></h5>
 
             <%= link_to 'More details', product_path(product), class: "btn btn-danger" %>
+            <%=  link_to "Add to basket", product_product_orders_path(product), method: :post %>
+
         </div>
       </div>
-    <% end %>
+<% end %>
   </div>
 </div>
 
