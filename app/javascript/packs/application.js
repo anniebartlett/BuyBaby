@@ -27,9 +27,9 @@ require("channels");
 import "bootstrap";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
-import { initMapbox} from "../plugins/init_mapbox";
-
-import { explandableSearchBar } from "../components/expandable_searchbar";
+import { initMapbox } from "../plugins/init_mapbox";
+import { expandableSearchBar } from "../components/expandable_searchbar";
+// import { initMapbox } from "../init/mapbox.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -38,8 +38,6 @@ document.addEventListener("turbolinks:load", () => {
   initStarRating();
   initMapbox();
 
-import { initMapbox } from "../init/mapbox.js";
-
   flatpickr(".datepicker", {});
 
   initSweetalert("#sweet-alert-demo", {
@@ -47,9 +45,8 @@ import { initMapbox } from "../init/mapbox.js";
     text: "This is a great alert, isn't it?",
     icon: "success",
   });
-  explandableSearchBar();
+  expandableSearchBar();
   // Call your functions here, e.g:
   // initSelect2();
-  $('.carousel').carousel();
+  $(".carousel").carousel();
 });
-
