@@ -1,8 +1,3 @@
-import 'mapbox-gl/dist/mapbox-gl.css'
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'
-import mapboxgl from 'mapbox-gl/dist/mapbox-gl.js';
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
 
@@ -37,7 +32,6 @@ if (mapElement) {
   })
 }
 
-import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 // [...]
 if (mapElement) {
   // [...]
