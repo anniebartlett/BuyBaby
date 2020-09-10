@@ -9,7 +9,7 @@ class Product < ApplicationRecord
                   }
 
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
-  CATEGORY_OPTIONS = ["boys-clothing", "girls-clothing", "playtime", "cots-cribs-cotbeds", "pushchairs"]
+  CATEGORY_OPTIONS = ["Boys-clothing", "Girls-clothing", "Playtime", "Nursery-furniture", "Pushchairs"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
   has_many :product_orders
