@@ -23,7 +23,7 @@
 
   <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
     <% @products.each do |product| %>
-      <div class="card rounded-lg mb-4" style="width: 16rem;">
+      <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
         <div class="card-body">
           <%= link_to product_path(product) do %>
             <% product.photos.each_with_index do |photo, index| %>
