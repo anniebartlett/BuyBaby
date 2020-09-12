@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       post 'save_item', to: 'products#save_item'
     end
+    resources :reviews, only: [ :new, :create ]
   end
 
   resources :orders, only: [ :index, :show, :edit, :update, :destroy ] do
@@ -15,7 +16,6 @@ Rails.application.routes.draw do
     get 'confirmation_page', to: 'orders#confirmation_page'
   end
 
-  resources :reviews, only: [:new, :create, :destroy]
 
   resources :product_orders, only: [:destroy]
 

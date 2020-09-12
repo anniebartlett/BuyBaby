@@ -13,13 +13,13 @@ class OrdersController < ApplicationController
   end
 
   def checkout
-    @orders = policy_scope(Order)
-    authorize @orders
+    @order = Order.find(params[:order_id])
+    authorize @order
   end
 
   def confirmation_page
-    @order = Order.find(params[:id])
-    authorize @orders
+    @order = Order.find(params[:order_id])
+    authorize @order
   end
 
   def show; end
