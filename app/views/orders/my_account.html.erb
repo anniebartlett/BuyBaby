@@ -9,9 +9,10 @@
         <h4><%= link_to "View your basket", edit_order_path(current_user.orders.find_by(state:"pending")) %></h4>
         <h4><%= link_to "My reviews", reviews_path %></h4> <%# update path %>
         <h4><%= link_to "My messages", root_path %></h4> <%# update path %>
-        <h4><%= link_to "Saved items", root_path %></h4> <%# update path %>
+        <h4><%= link_to "Saved items", saved_items_path %></h4>
         <h4><%= link_to "Sell an item", new_product_path %></h4>
-        <h4><%= link_to "View your sale items", products_path %></h4> <%# update path %>
+        <h4><%#= link_to "View your sale items", products_path %></h4> <%# update path %>
+        <br/>
         <h4><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h4>
       </div>
     </div>

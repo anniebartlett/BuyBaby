@@ -4,6 +4,9 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_orders, only: [ :create, :destroy ]
+    member do
+      post 'save_item', to: 'products#save_item'
+    end
     resources :reviews, only: [ :new, :create ]
   end
 
@@ -17,4 +20,5 @@ Rails.application.routes.draw do
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'
+  get 'saved_items', to: 'products#saved_items'
 end
