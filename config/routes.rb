@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'confirmation_page', to: 'orders#confirmation_page'
   end
 
-
+  resources :reviews, only: [ :show ]
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'

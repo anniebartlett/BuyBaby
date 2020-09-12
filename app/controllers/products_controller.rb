@@ -2,7 +2,11 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show, :filter]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  def home; end
+  def home
+    @products = policy_scope(Product)
+    @featured_products = @products.all.sample(3)
+
+  end
 
   def index
     # @products = policy_scope(Product)

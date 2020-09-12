@@ -26,7 +26,11 @@ class OrdersController < ApplicationController
 
   def show; end
 
-  def edit; end
+  def edit
+    @products = @order.products
+    @users = @products.map { |product| product.user }.uniq
+    @similar_products = @users.map { |user| user.products }.flatten - @products
+  end
 
   def create
     product = Product.find(params[:product_id])

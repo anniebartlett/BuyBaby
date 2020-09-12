@@ -13,6 +13,7 @@ class Product < ApplicationRecord
 
   has_many :product_orders
   has_many :orders, through: :product_orders
+  has_many :users, through: :orders
   has_many_attached :photos
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
@@ -29,5 +30,4 @@ class Product < ApplicationRecord
   # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
   # validates :stripe_plan_name, presence: true
   monetize :price_cents
-
 end

@@ -282,6 +282,9 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    simple_recommender (0.0.3)
+      pg
+      rails (>= 4.0.0)
     spoon (0.0.6)
       ffi
     spring (2.1.0)
@@ -380,6 +383,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simple_form
+  simple_recommender
   spring
   spring-watcher-listen (~> 2.0.0)
   stripe
