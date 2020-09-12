@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_orders, only: [ :create, :destroy ]
+    resources :reviews, only: [ :new, :create ]
   end
 
   resources :orders, only: [ :index, :show, :edit, :update, :destroy ] do
