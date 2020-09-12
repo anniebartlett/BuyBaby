@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'
+  get 'confirmation_page', to: 'orders#confirmation_page'
 end

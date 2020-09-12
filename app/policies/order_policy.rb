@@ -17,6 +17,10 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def confirmation_page?
+    true
+  end
+
   def update?
     record.user == user
   end
