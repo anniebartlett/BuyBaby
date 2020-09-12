@@ -6,14 +6,15 @@ Rails.application.routes.draw do
     resources :product_orders, only: [ :create, :destroy ]
   end
 
-  resources :orders, only: [ :index, :show, :edit, :update, :destroy ]
+  resources :orders, only: [ :index, :show, :edit, :update, :destroy ] do
+    get 'basket', to: 'orders#basket'
+    get 'checkout', to: 'orders#checkout'
+    get 'confirmation_page', to: 'orders#confirmation_page'
+  end
 
   resources :reviews, only: [:new, :create, :destroy]
 
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'
-  get 'basket', to: 'orders#basket'
-  get 'checkout', to: 'orders#checkout'
-  get 'confirmation_page', to: 'orders#confirmation_page'
 end

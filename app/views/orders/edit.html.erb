@@ -53,7 +53,7 @@
         <% end %>
         </h5></span>
       <div>
-        <%= link_to 'Checkout', checkout_path(@order), class: "btn btn-success" %>
+        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
       </div>
     </div>
