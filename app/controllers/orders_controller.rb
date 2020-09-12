@@ -20,8 +20,7 @@ class OrdersController < ApplicationController
   end
 
   def confirmation_page
-    @products = policy_scope(Product)
-    @orders = Order.where(user: current_user)
+    @order = Order.find(params[:id])
     authorize @orders
   end
 
