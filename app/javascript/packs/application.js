@@ -37,7 +37,7 @@ import { initMapbox } from "../plugins/init_mapbox";
 
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
-  // initMapbox();
+  initMapbox();
 
   // flatpickr(".datepicker", {});
 

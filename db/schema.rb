@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_141716) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "location"
+    t.string "address"
     t.string "condition"
     t.string "size"
     t.string "colour"
