@@ -71,3 +71,20 @@
       </div>
     </div>
 </div>
+
+<h3>Reviews:</h3>
+      <ul class="list-group m-3">
+        <% if @product.user.reviews.blank? %>
+        Be the first to leave a review for <%= @product.user.nickname %>
+        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
+
+        <% else %>
+        <% @product.user.reviews.each do |review| %>
+          <li class="list-group-item">"<%= review.comment %>" from <%= review.user.name %></li>
+        <% end %>
+      <% end %>
+      </ul>
+
+      Leave a review for <%= @product.user.nickname %>
+        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
+

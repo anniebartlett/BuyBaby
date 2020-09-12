@@ -12,7 +12,6 @@ Rails.application.routes.draw do
     get 'confirmation_page', to: 'orders#confirmation_page'
   end
 
-  resources :reviews, only: [:new, :create, :destroy]
 
   resources :product_orders, only: [:destroy]
 
