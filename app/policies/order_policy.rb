@@ -17,6 +17,11 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+
+  def checkout?
+    true
+  end
+  
   def confirmation_page?
     true
   end

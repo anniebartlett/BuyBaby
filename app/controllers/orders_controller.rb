@@ -12,6 +12,11 @@ class OrdersController < ApplicationController
     authorize @orders
   end
 
+  def checkout
+    @orders = policy_scope(Order)
+    authorize @orders
+  end
+
   def confirmation_page
     @products = policy_scope(Product)
     @orders = Order.where(user: current_user)
