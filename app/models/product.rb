@@ -9,7 +9,6 @@ class Product < ApplicationRecord
                   }
 
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
-  CATEGORY_OPTIONS = ["Boys-clothing", "Girls-clothing", "Playtime", "Nursery-furniture", "Pushchairs"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
   has_many :product_orders
@@ -17,20 +16,18 @@ class Product < ApplicationRecord
   has_many_attached :photos
   # geocoded_by :address
   # after_validation :geocode, if: :will_save_change_to_address?
-
   # validates :name, presence: true
   validates :description, presence: true
-  validates :category, inclusion: { in: CATEGORY_OPTIONS }
+  validates :category, presence: true
   validates :location, presence: true
   validates :colour, presence: true
   # validates :longitude, presence: true
   # validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
-
   # validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
+  # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
   # validates :stripe_plan_name, presence: true
   monetize :price_cents
 
-  # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
 end

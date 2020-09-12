@@ -6,8 +6,10 @@ class OrdersController < ApplicationController
     @orders = policy_scope(Order)
   end
 
-  def basket
-    @orders = policy_scope(Order)
+  def my_account
+    @products = policy_scope(Product)
+    @orders = Order.where(user: current_user)
+    authorize @orders
   end
 
   def checkout
@@ -15,7 +17,7 @@ class OrdersController < ApplicationController
     authorize @orders
   end
 
-  def my_account
+  def confirmation_page
     @products = policy_scope(Product)
     @orders = Order.where(user: current_user)
     authorize @orders

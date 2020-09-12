@@ -65,4 +65,9 @@
         <p><i class="fas fa-shield-alt"></i> Be covered by BuyBaby's Buyer Protection, which includes our refund policy</p>
       </div>
     </div>
+    <div class="row">
+      <div class="col">
+        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-primary text-white" %>
+      </div>
+    </div>
 </div>

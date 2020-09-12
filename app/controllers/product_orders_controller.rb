@@ -1,5 +1,4 @@
 class ProductOrdersController < ApplicationController
-
   def create
     @order = current_user.orders.find_by(state:"pending") || Order.create(user: current_user, state: "pending")
     @product = Product.find(params[:product_id])
@@ -16,10 +15,8 @@ class ProductOrdersController < ApplicationController
 
   def destroy
     @product_order = ProductOrder.find(params[:id])
-     authorize @product_order
+    authorize @product_order
     @product_order.destroy
     redirect_to edit_order_path(current_user.orders.find_by(state:"pending"))
   end
-
-
 end
