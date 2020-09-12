@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   get 'my_account', to: 'orders#my_account'
   get 'basket', to: 'orders#basket'
+  get 'checkout', to: 'orders#checkout'
 end

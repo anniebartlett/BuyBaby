@@ -31,7 +31,7 @@
         </div>
         <div class="col-2 col-sm-2 col-md-2 text-right">
           <button type="button" class="btn btn-outline-danger btn-xs">
-            <%= link_to orders_path, method: :delete, data: { confirm: "Are you sure?" } do %>
+            <%= link_to product_order_path(item.id), method: :delete, data: { confirm: "Are you sure?" } do %>
             <i class="fa fa-trash" aria-hidden="true"></i>
             <% end %>
           </button>
@@ -44,8 +44,8 @@
     </div>
   </div>
   <div class="card-footer d-flex justify-content-between">
-    <span><h5>Total price: <b>£50</b></h5></span>
-    <%= link_to 'Checkout', orders_path, class: "btn btn-success" %>
+    <span><h5>Total price: <b><span class="text-muted">£</span><%= @order.products.sum(&:price) %></b></h5></span>
+    <%= link_to 'Checkout', checkout_path(@order), class: "btn btn-success" %>
   </div>
 </div>
 <% end %>

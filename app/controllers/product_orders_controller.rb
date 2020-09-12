@@ -18,7 +18,7 @@ class ProductOrdersController < ApplicationController
     @product_order = ProductOrder.find(params[:id])
      authorize @product_order
     @product_order.destroy
-    redirect_to order_path(@product_order.order)
+    redirect_to edit_order_path(current_user.orders.find_by(state:"pending"))
   end
 
 
