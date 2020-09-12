@@ -27,12 +27,10 @@ import "bootstrap";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
-// import { expandableSearchBar } from "../components/expandable_searchbar";
 // import "mapbox-gl/dist/mapbox-gl.css";
 // import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 // import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 // import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-// import { initMapbox } from "../init/mapbox.js";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -41,14 +39,13 @@ document.addEventListener("turbolinks:load", () => {
   initStarRating();
   initMapbox();
 
-  flatpickr(".datepicker", {});
+  // flatpickr(".datepicker", {});
 
-  initSweetalert("#sweet-alert-demo", {
-    title: "A nice alert",
-    text: "This is a great alert, isn't it?",
-    icon: "success",
-  });
-  // expandableSearchBar();
+  // initSweetalert("#sweet-alert-demo", {
+  //   title: "A nice alert",
+  //   text: "This is a great alert, isn't it?",
+  //   icon: "success",
+  // });
   // Call your functions here, e.g:
   // initSelect2();
 

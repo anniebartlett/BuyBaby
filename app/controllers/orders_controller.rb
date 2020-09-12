@@ -12,6 +12,16 @@ class OrdersController < ApplicationController
     authorize @orders
   end
 
+  def checkout
+    @order = Order.find(params[:order_id])
+    authorize @order
+  end
+
+  def confirmation_page
+    @order = Order.find(params[:order_id])
+    authorize @order
+  end
+
   def show; end
 
   def edit; end
