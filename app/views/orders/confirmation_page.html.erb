@@ -4,15 +4,15 @@
       <h1>Thank you for your order!</h1>
     </div>
   </div>
-    <h3>Your order number is # <%= order.id %></h3>
-    <h3>It will be delivered via <%= order.product_orders.deliver_option %></h3>
-    <h3>Paid via <%= order.product_orders.payment_options %></h3>
+    <h3>Your order number is # <%= @order.id %></h3>
+    <h3>It will be delivered via <%= @order.delivery_option %></h3>
+    <h3>Paid via <%= @order.payment_option %></h3>
     <br/>
     <h5>Confirmation will be sent to <%= @order.user.email %></h5>
     <br/>
     <h3>Order Summary:</h3>
     <h5>Product summary</h5>
     <hr>
-    <h5>Total: £<%= order.amount_cents %></h5>
+    <h5>Total: £<%= @order.amount_cents %></h5>
     <%= link_to 'Back to Accounts', my_account_path, class: "btn btn-success text-white" %>
 </div>
