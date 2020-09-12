@@ -1,52 +1,61 @@
-<div class="container mb-3">
+<div class="container mb-3 min-vh-100">
+
   <div class="row">
     <div class="col-md-12 mt-4 text-center">
       <h1>Your basket</h1>
     </div>
   </div>
-</div>
-<div class="container">
-  <h5>Hi <%= @order.user.name.capitalize %> !</h5>
+
+  <h5>Hi <%= @order.user.name.capitalize %>!</h5>
   <h5>You have <%= @order.product_orders.count %> items in your basket: </h5>
+
   <div class="card-body mt-5">
     <div class="row">
-      <div class="col-12 col-sm-12 col-md-2 text-center">
-        <img class="img-responsive" src="http://placehold.it/120x80" alt="preview" width="120" height="80">
-      </div>
-      <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-        <% @order.product_orders.each do |item| %>
-        <h5><strong><%= item.product.name %></strong></h5>
-        <p><%= item.product.description %></p>
-      </div>
-      <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-        <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-          <h6><strong><%= item.product.price %><span class="text-muted"> x</span></strong></h6>
+
+      <% @order.product_orders.each do |item| %>
+
+        <div class="col-12 col-sm-12 col-md-3 text-center mb-3">
+          <% item.product.photos.each_with_index do |photo, index| %>
+            <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+          <% end %>
         </div>
-        <div class="col-4 col-sm-4 col-md-4">
-          <div class="quantity">
-            <input type="button" value="+" class="plus">
-            <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
-            <input type="button" value="-" class="minus">
+
+        <div class="col-12 col-sm-12 col-md-5 text-sm-center text-md-left ">
+          <h5><%= item.product.name %></h5>
+          <p><%= item.product.description %></p>
+        </div>
+        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+          <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+            <h6 class="mt-1">£<%= item.product.price_cents %><span class="text-muted"></span></h6>
+          </div>
+          <div class="col-4 col-sm-4 col-md-4">
+            <div class="quantity">
+              <input type="button" value="+" class="plus">
+              <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
+              <input type="button" value="-" class="minus">
+            </div>
+          </div>
+          <div class="col-2 col-sm-2 col-md-2 text-right">
+            <button type="button" class="btn btn-outline-primary btn-xs">
+             <%= link_to product_order_path(item.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+                <i class="fa fa-trash" aria-hidden="true"></i>
+              <% end %>
+            </button>
           </div>
         </div>
-        <div class="col-2 col-sm-2 col-md-2 text-right">
-          <button type="button" class="btn btn-outline-danger btn-xs">
-            <%= link_to orders_path, method: :delete, data: { confirm: "Are you sure?" } do %>
-            <i class="fa fa-trash" aria-hidden="true"></i>
-            <% end %>
-          </button>
-        </div>
+        <hr>
+      <% end %>
+    </div>
+    <div class="card-footer d-flex justify-content-between mt-3">
+      <span><h5>Total price:
+        <% @order.product_orders.each do |item| %>
+          <%= item.product.price_cents %>
+        <% end %>
+        </h5></span>
+      <div>
+        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
+        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
       </div>
     </div>
-    <hr>
-    <div class="d-flex justify-content-end">
-      <%= link_to 'Update basket', orders_path, class: "btn btn-outline-secondary" %>
-    </div>
-  </div>
-  <div class="card-footer d-flex justify-content-between">
-    <span><h5>Total price: <b>£50</b></h5></span>
-    <%= link_to 'Checkout', orders_path, class: "btn btn-success" %>
   </div>
 </div>
-<% end %>
-

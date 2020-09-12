@@ -5,7 +5,7 @@
       <%= simple_form_for @product do |f| %>
         <%= f.input :name %>
         <%= f.input :description %>
-        <%= f.input :category, collection: Product::CATEGORY_OPTIONS  %>
+        <%= f.input :category, collection: ["Boys-clothing", "Girls-clothing", "Playtime", "Nursery-furniture", "Pushchairs"] %>
         <%= f.input :colour %>
         <%= f.input :location %>
         <%= f.input :condition %>

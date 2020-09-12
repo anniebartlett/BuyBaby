@@ -10,6 +10,14 @@
           placeholder: "Search for items...",
           aria: { label: "find", describedby: "basic-addon1" }
         %>
+
+        <div
+          id="map"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+        ></div>
+
         <div class="input-group-prepend">
           <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
             <%= button_tag type: "submit", class: "search-icon" do %>
@@ -23,7 +31,7 @@
 
   <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
     <% @products.each do |product| %>
-      <div class="card rounded-lg mb-4" style="width: 16rem;">
+      <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
         <div class="card-body">
           <%= link_to product_path(product) do %>
             <% product.photos.each_with_index do |photo, index| %>
@@ -48,10 +56,5 @@
 <% end %>
   </div>
 </div>
-<!-- <div
-  id="map"
-  style="width: 100%;
-  height: 600px;"
-  data-markers="<%= @markers.to_json %>"
-></div> -->
+
 
