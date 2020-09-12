@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_orders, only: :create
+    resources :reviews, only: [:new, :create, :destroy]
   end
 
   resources :orders, only: [ :index, :show, :edit, :update ]
 
-  resources :reviews, only: [:new, :create, :destroy]
 
   resources :product_orders, only: [:destroy]
 
