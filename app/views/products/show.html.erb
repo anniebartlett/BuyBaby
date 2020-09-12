@@ -60,6 +60,11 @@
         <div class="links list-inline">
           <p><%= link_to 'Ask seller', product_product_orders_path(@product), class: "btn btn-outline-primary ask" %></p>
           <p><%= link_to 'Add to basket', product_product_orders_path(@product), method: :post, class: "btn btn-primary text-white" %></p>
+          <%= link_to save_item_product_path(@product), remote: true, method: :post do %>
+            <div class="row pl-2">
+              <%= render 'products/like_button', product: @product %>Add to favorites
+            </div>
+          <% end %>
         </div>
         <br/>
         <p><i class="fas fa-shield-alt"></i> Be covered by BuyBaby's Buyer Protection, which includes our refund policy</p>

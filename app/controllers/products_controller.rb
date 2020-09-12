@@ -48,6 +48,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def save_item
+    @product = Product.find(params[:id])
+    current_user.favorited?(@product) ? current_user.unfavorite(@product) : current_user.favorite(@product)
+  end
+
+  def saved_items
+    @favorite_products = current_user.favorited_by_type('Product')
+  end
+
   def update
     @product.update(product_params)
     if @product.save

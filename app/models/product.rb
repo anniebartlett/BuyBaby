@@ -11,6 +11,8 @@ class Product < ApplicationRecord
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
+  acts_as_favoritable
+
   has_many :product_orders
   has_many :orders, through: :product_orders
   has_many :users, through: :orders
