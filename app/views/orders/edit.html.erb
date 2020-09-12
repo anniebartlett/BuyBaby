@@ -46,11 +46,7 @@
       <% end %>
     </div>
     <div class="card-footer d-flex justify-content-between mt-3">
-      <span><h5>Total price:
-        <%= order_amount %>
-        <%= @order.amount %>
-
-        </h5></span>
+      <span><h5>Total price: £<%= order_amount %></h5></span>
       <div>
         <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
