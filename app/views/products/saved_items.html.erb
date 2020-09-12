@@ -1,0 +1,15 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-5 text-center">Saved Items</h1>
+        <div class="favorites">
+          <div class="cards d-flex flex-wrap position-relative text-center ml-1">
+          <% @favorite_products.each do |product| %>
+            <%= render 'product', product: product %>
+          <% end %>
+        </div>
+      </div>
+      <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
+    </div>
+  </div>
+</div>
