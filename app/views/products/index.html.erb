@@ -11,13 +11,6 @@
           aria: { label: "find", describedby: "basic-addon1" }
         %>
 
-        <div
-          id="map"
-          style="width: 100%;
-          height: 600px;"
-          data-markers="<%= @markers.to_json %>"
-        ></div>
-
         <div class="input-group-prepend">
           <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
             <%= button_tag type: "submit", class: "search-icon" do %>
@@ -56,5 +49,8 @@
 <% end %>
   </div>
 </div>
-
+<div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
