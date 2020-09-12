@@ -7,6 +7,7 @@
         <h3>Hi <%= current_user.nickname %>!</h3>
         <h4><%= link_to "View your orders", orders_path %></h4>
         <h4><%= link_to "View your basket", edit_order_path(current_user.orders.find_by(state:"pending")) %></h4>
+
         <h4><%#= link_to "My reviews", reviews_path %></h4> <%# update path %>
         <h4><%= link_to "My messages", root_path %></h4> <%# update path %>
         <h4><%= link_to "Saved items", saved_items_path %></h4>
