@@ -1,3 +1,5 @@
-<div class="like-icon mx-2 <%= 'red' if current_user.favorited?(product) %>" data-id="<%= product.id %>">
-  <i class="fas fa-heart"></i>
-</div>
+<% if user_signed_in? %>
+  <div class="like-icon mx-2 <%= 'red' if current_user.favorited?(product) %>" data-id="<%= product.id %>">
+    <i class="fas fa-heart"></i>
+  </div>
+<% end %>
