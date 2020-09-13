@@ -22,7 +22,7 @@ def create_user
   puts "Created #{user_2.name}"
 end
 
-#puts 'creating products...'
+puts 'creating products...'
 #toy = product.create(
 #{
  #def create_products
@@ -81,8 +81,7 @@ def scrape_product(product)
         )
           file = URI.open(img)
           if file.class == StringIO
-            sleep(3)
-            next
+            file = URI.open("https://images.unsplash.com/photo-1527866512907-a35a62a0f6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")
           end
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
           products.save

@@ -4,12 +4,17 @@ class ProductsController < ApplicationController
 
   def home
     @products = policy_scope(Product)
-    @featured_products = @products.all.sample(3)
-
+    @featured_products = @products.all.sample(4)
   end
 
   def index
-    # @products = policy_scope(Product)
+    @products = policy_scope(Product)
+    if params[:query].present?
+      @products = Product.search_by_product(params[:query])
+    else
+      @products = policy_scope(Product)
+    end
+
     # @product = Product.where.not(latitude: nil, longitude: nil)
     # @markers = @products.geocoded.map do |product|
     #   {
@@ -18,11 +23,6 @@ class ProductsController < ApplicationController
     #     infoWindow: render_to_string(partial: "info_window", locals: { product: product })
     #   }
     # end
-    if params[:query].present?
-      @products = Product.search_by_product(params[:query])
-    else
-      @products = policy_scope(Product)
-    end
   end
 
   def show
@@ -77,7 +77,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :name,
       :description,
-      :location,
+      :address,
       :category,
       :colour,
       :condition,
@@ -85,7 +85,8 @@ class ProductsController < ApplicationController
       :price_cents,
       # :payment_options,
       # :deliver_option,
-      photos: [])
+      photos: []
+    )
   end
 
   def set_product
