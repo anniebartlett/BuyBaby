@@ -156,7 +156,31 @@
           </div>
         </div>
         <hr class="mb-4">
-         <%= link_to "Confirm payment", order_confirmation_page_path(@order), class: "btn btn-primary btn-lg mb-5"  %>
+<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModalCenter">
+  Confirm payment
+</button>
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <%= image_tag "logo.png" %>
+        <h5 class="modal-title" id="exampleModalLongTitle">Your payment was successful !</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Thank you !
+        <span>You successfully paid £<%= order_amount %></span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= link_to "Check your order", order_confirmation_page_path(@order), class: "btn btn-primary"  %>
+      </div>
+    </div>
+  </div>
+</div>
+
       </form>
       </div>
     </div>
