@@ -81,7 +81,6 @@
       <ul class="list-group m-3">
         <% if @product.user.reviews.blank? %>
         Be the first to leave a review for <%= @product.user.nickname %>
-        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
 
         <% else %>
         <% @product.user.reviews.each do |review| %>
@@ -89,7 +88,4 @@
         <% end %>
       <% end %>
       </ul>
-
-      Leave a review for <%= @product.user.nickname %>
-        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
 
