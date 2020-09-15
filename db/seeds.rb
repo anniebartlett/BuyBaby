@@ -23,8 +23,13 @@ def create_user
 end
 
 puts 'creating products...'
+<<<<<<< HEAD
+toy = Product.create(
+{
+=======
 #toy = product.create(
 #{
+>>>>>>> master
  #def create_products
  #category: 'Toy'
  #description: 'In good condition'
@@ -38,6 +43,66 @@ puts 'creating products...'
  #)
 #puts "created #{toy}"
 
+<<<<<<< HEAD
+boys clothing = Product.create(
+{
+ category: 'Boys Clothing'
+ description: 'In good condition'
+ condition: 'Used'
+ size: 'Medium '
+ colour: 'As per product'
+ address: '56 Shoreditch High St, Hackney, London E1 6JJ',
+ price: '£13'
+ seller: 'sandy_sells_stuff'
+)
+}
+puts "created #{boys_clothing}"
+
+girls_clothing = Product.create (
+{
+ category: 'Girls-clothing'
+ description: 'Good'
+ condition: 'Used'
+ size: 'Small'
+ colour: 'As per product'
+ address: '1 Wootton St,London SE1 8RT',
+ price: '£7'
+ seller: 'sandy_sells_stuff'
+ )
+}
+puts "created #{girl_clothing}"
+
+nursery = Product.create (
+{
+ category: 'Nursery'
+ description: 'Good condition'
+ condition: 'Used'
+ size: 'Large'
+ colour: 'As per product'
+ address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL',
+ price: '£40'
+ seller: 'sandy_sells_stuff'
+ )
+ }
+
+puts "created #{nursery}"
+
+pushchairs = Product.create (
+ {
+ category: 'Pushchairs'
+ description: ' In Good condition'
+ condition: 'Used'
+ size: '0-1 Year'
+ colour: 'As per product'
+ address: '6 Southwark St, London SE1 1TQ',
+ price: '£35'
+ seller: 'sandy_sells_stuff'
+)
+}
+puts "created #{pushchairs}"
+
+end
+=======
 #boys clothing = product.create
 
  #address: '56 Shoreditch High St, Hackney, London E1 6JJ'
@@ -50,6 +115,7 @@ puts 'creating products...'
 
  #address: '2 London Bridge, London SE1 9RA'
 #end
+>>>>>>> master
 
 def scrape_product(product)
   puts "Creating products..."
