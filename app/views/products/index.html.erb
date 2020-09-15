@@ -11,6 +11,13 @@
           aria: { label: "find", describedby: "basic-addon1" }
         %>
 
+<!--    <div
+          id="map"
+          style="width: 100%;
+          height: 600px;"
+          data-markers="<%= @markers.to_json %>"
+        ></div> -->
+
         <div class="input-group-prepend">
           <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
             <%= button_tag type: "submit", class: "search-icon" do %>
@@ -24,33 +31,24 @@
 
   <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
     <% @products.each do |product| %>
-      <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
+      <div class="card rounded-lg mb-4" style="width: 16rem; height: 26rem;">
         <div class="card-body">
           <%= link_to product_path(product) do %>
             <% product.photos.each_with_index do |photo, index| %>
               <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
             <% end %>
           <% end %>
-
-            <%= link_to product_path(product) do%>
-              <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
-              <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
-              <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
-              <% end %>
-            <%=  link_to "Add to basket", product_product_orders_path(product), method: :post %>
+            <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+            <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
+            <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+            <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
           <div class="rating text-center position-absolute">
-          <%= button_tag type: "button", name: "", class: "btn btn-heart" do %>
-            <i class="far fa-heart"></i>
-          <% end %>
+            <%= link_to save_item_product_path(product), remote: true, method: :post do %>
+              <%= render 'products/like_button', product: product %>
+            <% end %>
           </div>
         </div>
       </div>
-<% end %>
+    <% end %>
   </div>
 </div>
-<div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-

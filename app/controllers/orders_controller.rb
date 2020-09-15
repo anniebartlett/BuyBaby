@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,12 +8,27 @@ class OrdersController < ApplicationController
   def my_account
     @products = policy_scope(Product)
     @orders = Order.where(user: current_user)
+    @featured_products = @products.all.sample(3)
     authorize @orders
+  end
+
+  def checkout
+    @order = Order.find(params[:order_id])
+    authorize @order
+  end
+
+  def confirmation_page
+    @order = Order.find(params[:order_id])
+    authorize @order
   end
 
   def show; end
 
-  def edit; end
+  def edit
+    @products = @order.products
+    @users = @products.map { |product| product.user }.uniq
+    @similar_products = @users.map { |user| user.products }.flatten - @products
+  end
 
   def create
     product = Product.find(params[:product_id])

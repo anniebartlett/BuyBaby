@@ -11,8 +11,11 @@ class Product < ApplicationRecord
   DELIVERY_OPTIONS = ["Collect from chosen location", "Deliver Home", "Arrange pick-up"]
   PAYMENT_OPTIONS = ["Card Payment", "Cash Payment"]
 
-  has_many :product_orders
-  has_many :orders, through: :product_orders
+  acts_as_favoritable
+
+  has_many :product_orders, dependent: :destroy
+  has_many :orders, through: :product_orders, dependent: :destroy
+  has_many :users, through: :orders
   has_many_attached :photos
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -29,5 +32,4 @@ class Product < ApplicationRecord
   # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
   # validates :stripe_plan_name, presence: true
   monetize :price_cents
-
 end

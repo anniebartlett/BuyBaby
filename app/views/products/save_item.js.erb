@@ -1,0 +1,8 @@
+var productId = '<%= @product.id%>'
+
+function toggleLikeButton(productId, innerHTML) {
+  let likeButton = document.querySelector(`.like-icon[data-id='${productId}']`)
+  likeButton.classList.toggle('red');
+}
+
+toggleLikeButton(productId, '<%= j render "products/product", product: @product %>');

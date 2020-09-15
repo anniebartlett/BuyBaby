@@ -1,7 +1,7 @@
-class OrderPolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(user: user)
+      scope.all
     end
   end
 
@@ -10,18 +10,6 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def create?
-    true
-  end
-
-  def my_account?
-    true
-  end
-
-  def checkout?
-    true
-  end
-
-  def confirmation_page?
     true
   end
 

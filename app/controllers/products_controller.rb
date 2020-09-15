@@ -2,10 +2,19 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :index, :show, :filter]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
-  def home; end
+  def home
+    @products = policy_scope(Product)
+    @featured_products = @products.all.sample(4)
+  end
 
   def index
-    # @products = policy_scope(Product)
+    @products = policy_scope(Product)
+    if params[:query].present?
+      @products = Product.search_by_product(params[:query])
+    else
+      @products = policy_scope(Product)
+    end
+
     # @product = Product.where.not(latitude: nil, longitude: nil)
     # @markers = @products.geocoded.map do |product|
     #   {
@@ -14,11 +23,6 @@ class ProductsController < ApplicationController
     #     infoWindow: render_to_string(partial: "info_window", locals: { product: product })
     #   }
     # end
-    if params[:query].present?
-      @products = Product.search_by_product(params[:query])
-    else
-      @products = policy_scope(Product)
-    end
   end
 
   def show
@@ -44,6 +48,15 @@ class ProductsController < ApplicationController
     end
   end
 
+  def save_item
+    @product = Product.find(params[:id])
+    current_user.favorited?(@product) ? current_user.unfavorite(@product) : current_user.favorite(@product)
+  end
+
+  def saved_items
+    @favorite_products = current_user.favorited_by_type('Product')
+  end
+
   def update
     @product.update(product_params)
     if @product.save
@@ -64,7 +77,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :name,
       :description,
-      :location,
+      :address,
       :category,
       :colour,
       :condition,
@@ -72,7 +85,8 @@ class ProductsController < ApplicationController
       :price_cents,
       # :payment_options,
       # :deliver_option,
-      photos: [])
+      photos: []
+    )
   end
 
   def set_product
