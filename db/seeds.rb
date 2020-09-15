@@ -40,7 +40,7 @@ def manual_create
     price_cents: '£10',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
-  puts "created #{manual_toy}"
+  puts "created #{manual_toy.name}"
 
   manual_boys_top = Product.create(
     user_id: User.last.id,
@@ -55,7 +55,7 @@ def manual_create
     price_cents: '£13',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
-  puts "created #{manual_boys_top}"
+  puts "created #{manual_boys_top.name}"
 
   manual_girls_top = Product.create(
     user_id: User.last.id,
@@ -70,7 +70,7 @@ def manual_create
     price_cents: '£7',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
-  puts "created #{manual_girls_top}"
+  puts "created #{manual_girls_top.name}"
 
   manual_nursery = Product.create(
     user_id: User.last.id,
@@ -85,7 +85,7 @@ def manual_create
     price_cents: '£30',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
-  puts "created #{manual_nursery}"
+  puts "created #{manual_nursery.name}"
 
   manual_pram = Product.create(
     user_id: User.last.id,
@@ -100,7 +100,7 @@ def manual_create
     price_cents: '£80',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
-  puts "created #{manual_pram}"
+  puts "created #{manual_pram.name}"
 end
 
 def scrape_product(product)
