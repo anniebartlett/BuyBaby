@@ -1,7 +1,8 @@
 class ReviewsController < ApplicationController
   def new
-    @product = Product.find(params[:product_id])
-    @reviewed = @product.user
+    @product = Product.find(params[:product])
+    @user = User.find(params[:user_id])
+    @orders = policy_scope(Order)
     @review = Review.new
     authorize @review
   end
@@ -9,12 +10,12 @@ class ReviewsController < ApplicationController
   def edit; end
 
   def create
-    @product = Product.find(params[:product_id])
-    @reviewed = @product.user
+    @product = Product.find(params[:review][:product])
+    @user = User.find(params[:user_id])
     @reviewer = current_user
     @review = Review.new(review_params)
     authorize @review
-    @review.user = @reviewed
+    @review.user = @user
     if @review.save!
       redirect_to product_path(@product)
     else
