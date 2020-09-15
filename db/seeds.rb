@@ -22,6 +22,35 @@ def create_user
   puts "Created #{user_2.name}"
 end
 
+puts 'creating products...'
+#toy = product.create(
+#{
+ #def create_products
+ #category: 'Toy'
+ #description: 'In good condition'
+ #condition: 'Good'
+ #size: 'Medium '
+ #colour: 'As per product'
+ #address: '10 Dowining Street London SW1A 2AA',
+ #price: '£10'
+ #seller: 'sandy_sells_stuff'
+ #}
+ #)
+#puts "created #{toy}"
+
+#boys clothing = product.create
+
+ #address: '56 Shoreditch High St, Hackney, London E1 6JJ'
+
+ #address: '1 Wootton St,London SE1 8RT'
+
+ #address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL'
+
+ #address: '6 Southwark St, London SE1 1TQ'
+
+ #address: '2 London Bridge, London SE1 9RA'
+#end
+
 def scrape_product(product)
   puts "Creating products..."
 
@@ -40,7 +69,7 @@ def scrape_product(product)
           user_id: User.last.id,
           name: title,
           description: "In good condition",
-          location: "London",
+          address: "London ",
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
           colour: "As per product",
@@ -52,8 +81,7 @@ def scrape_product(product)
         )
           file = URI.open(img)
           if file.class == StringIO
-            sleep(3)
-            next
+            file = URI.open("https://images.unsplash.com/photo-1527866512907-a35a62a0f6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")
           end
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
           products.save

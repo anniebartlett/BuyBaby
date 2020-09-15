@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate_user!
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -9,6 +8,7 @@ class OrdersController < ApplicationController
   def my_account
     @products = policy_scope(Product)
     @orders = Order.where(user: current_user)
+    @featured_products = @products.all.sample(3)
     authorize @orders
   end
 

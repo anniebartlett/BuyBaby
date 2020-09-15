@@ -9,7 +9,6 @@
         <h4><%= link_to "View your basket", edit_order_path(current_user.orders.find_by(state:"pending")) %></h4>
 
         <h4><%#= link_to "My reviews", reviews_path %></h4> <%# update path %>
-        <h4><%= link_to "My messages", root_path %></h4> <%# update path %>
         <h4><%= link_to "Saved items", saved_items_path %></h4>
         <h4><%= link_to "Sell an item", new_product_path %></h4>
         <h4><%#= link_to "View your sale items", products_path %></h4> <%# update path %>
@@ -21,47 +20,21 @@
       <h1 class="mb-3">You might like...</h1>
       <div class="d-flex flex-column">
 
-        <div class="card-product rounded-lg">
-          <%= link_to products_path(@product) do %>
-            <% @products[34].photos.each_with_index do |photo, index| %>
-              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+        <% @featured_products.each do |product| %>
+          <div class="card-product rounded-lg">
+            <%= link_to product_path(product) do %>
+              <% product.photos.each_with_index do |photo, index| %>
+                <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+              <% end %>
             <% end %>
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= @products[34].name %></h2>
-            <p><%= @products[34].description %></p>
-            <p>£<%= @products[34].price_cents %></p>
-            <p>Seller: <%= @products[34].user.nickname %></p>
+            <div class="card-product-infos">
+              <h2><%= product.name %></h2>
+              <p><%= product.description %></p>
+              <p>£<%= product.price_cents %></p>
+              <p>Seller: <%= product.user.nickname %></p>
+            </div>
           </div>
-        </div>
-
-        <div class="card-product rounded-lg">
-          <%= link_to products_path(@product) do %>
-            <% @products[12].photos.each_with_index do |photo, index| %>
-              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
-            <% end %>
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= @products[12].name %></h2>
-            <p><%= @products[12].description %></p>
-            <p>£<%= @products[12].price_cents %></p>
-            <p>Seller: <%= @products[12].user.nickname %></p>
-          </div>
-        </div>
-
-        <div class="card-product rounded-lg">
-          <%= link_to products_path(@product) do %>
-            <% @products[21].photos.each_with_index do |photo, index| %>
-              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
-            <% end %>
-          <% end %>
-          <div class="card-product-infos">
-            <h2><%= @products[21].name %></h2>
-            <p><%= @products[21].description %></p>
-            <p>£<%= @products[21].price_cents %></p>
-            <p>Seller: <%= @products[21].user.nickname %></p>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>

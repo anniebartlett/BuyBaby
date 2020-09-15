@@ -46,11 +46,7 @@
       <% end %>
     </div>
     <div class="card-footer d-flex justify-content-between mt-3">
-      <span><h5>Total price:
-        <%= order_amount %>
-        <%= @order.amount %>
-
-        </h5></span>
+      <span><h5>Total price: £<%= order_amount %></h5></span>
       <div>
         <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
@@ -58,17 +54,17 @@
     </div>
   </div>
 
-<div class="recommendations">
-  <h3 class="align-text ml-2 mb-4 mt-4">You may also like...</h3>
-  <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
-    <% @similar_products.sample(4).each do |product| %>
-      <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
-        <div class="card-body">
-          <%= link_to product_path(product) do %>
-            <% product.photos.each_with_index do |photo, index| %>
-              <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+  <div class="recommendations">
+    <h3 class="align-text ml-2 mb-4 mt-4">You may also like...</h3>
+    <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
+      <% @similar_products.sample(4).each do |product| %>
+        <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
+          <div class="card-body">
+            <%= link_to product_path(product) do %>
+              <% product.photos.each_with_index do |photo, index| %>
+                <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+              <% end %>
             <% end %>
-          <% end %>
 
             <%= link_to product_path(product) do%>
               <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
@@ -77,16 +73,16 @@
               <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
               <% end %>
             <%=  link_to "Add to basket", product_product_orders_path(product), method: :post %>
-          <div class="rating text-center position-absolute">
-          <%= button_tag type: "button", name: "", class: "btn btn-heart" do %>
-            <i class="far fa-heart"></i>
-          <% end %>
+            <div class="rating text-center position-absolute">
+              <%= link_to save_item_product_path(product), remote: true, method: :post do %>
+                <%= render 'products/like_button', product: product %>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
-        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
 
 </div>
 
