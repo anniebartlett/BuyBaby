@@ -7,7 +7,7 @@
   </div>
 
   <h5>Hi <%= @order.user.name.capitalize %>!</h5>
-  <h5>You have <%= @order.product_orders.count %> items in your basket: </h5>
+  <h5>You have <%= @order.product_orders.count %> items in your basket. </h5>
 
   <div class="card-body mt-5">
     <div class="row">
@@ -46,12 +46,14 @@
       <% end %>
     </div>
     <div class="card-footer d-flex justify-content-between mt-3">
+      <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
       <span><h5>Total price: £<%= order_amount %></h5></span>
       <div>
         <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
       </div>
     </div>
+
   </div>
 
   <div class="recommendations">
@@ -80,10 +82,11 @@
             </div>
           </div>
         </div>
-      <% end %>
+        <% end %>
+
     </div>
   </div>
-
+<% end %>
 </div>
 
 

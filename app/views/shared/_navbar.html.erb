@@ -37,9 +37,11 @@
             <%= link_to edit_order_path(current_user.orders.find_by(state:"pending")) do %>
               <i class="fas fa-shopping-cart"></i>
             <% end %>
+            <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
             <div class='badge badge-warning' id='lblCartCount'>
               <span><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
             </div>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to my_account_path do %>
