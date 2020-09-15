@@ -23,99 +23,85 @@ def create_user
 end
 
 puts 'creating products...'
-<<<<<<< HEAD
-toy = Product.create(
-{
-=======
-#toy = product.create(
-#{
->>>>>>> master
- #def create_products
- #category: 'Toy'
- #description: 'In good condition'
- #condition: 'Good'
- #size: 'Medium '
- #colour: 'As per product'
- #address: '10 Dowining Street London SW1A 2AA',
- #price: '£10'
- #seller: 'sandy_sells_stuff'
- #}
- #)
-#puts "created #{toy}"
 
-<<<<<<< HEAD
-boys clothing = Product.create(
-{
- category: 'Boys Clothing'
- description: 'In good condition'
- condition: 'Used'
- size: 'Medium '
- colour: 'As per product'
- address: '56 Shoreditch High St, Hackney, London E1 6JJ',
- price: '£13'
- seller: 'sandy_sells_stuff'
-)
-}
-puts "created #{boys_clothing}"
+def manual_create
+  puts "creating manual products"
 
-girls_clothing = Product.create (
-{
- category: 'Girls-clothing'
- description: 'Good'
- condition: 'Used'
- size: 'Small'
- colour: 'As per product'
- address: '1 Wootton St,London SE1 8RT',
- price: '£7'
- seller: 'sandy_sells_stuff'
- )
-}
-puts "created #{girl_clothing}"
+  manual_toy = Product.create(
+    user_id: User.last.id,
+    name: 'Teddy Bear',
+    description: 'In good condition',
+    address: '10 Downing Street, London, SW1A 2AA',
+    condition: 'Good',
+    size: 'Medium',
+    colour: 'As per product',
+    payment_options: Product::PAYMENT_OPTIONS.sample,
+    category: 'playtime',
+    price_cents: '£10',
+    deliver_option: Product::DELIVERY_OPTIONS.sample
+   )
+  puts "created #{manual_toy}"
 
-nursery = Product.create (
-{
- category: 'Nursery'
- description: 'Good condition'
- condition: 'Used'
- size: 'Large'
- colour: 'As per product'
- address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL',
- price: '£40'
- seller: 'sandy_sells_stuff'
- )
- }
+  manual_boys_top = Product.create(
+    user_id: User.last.id,
+    name: 'Dinosaur Top',
+    description: 'In good condition',
+    address: '56 Shoreditch High St, Hackney, London E1 6JJ',
+    condition: 'Good',
+    size: 'Medium',
+    colour: 'As per product',
+    payment_options: Product::PAYMENT_OPTIONS.sample,
+    category: 'boys_clothing',
+    price_cents: '£13',
+    deliver_option: Product::DELIVERY_OPTIONS.sample
+   )
+  puts "created #{manual_boys_top}"
 
-puts "created #{nursery}"
+  manual_girls_top = Product.create(
+    user_id: User.last.id,
+    name: 'Dungaree Dress',
+    description: 'In good condition',
+    address: '1 Wootton St,London SE1 8RT',
+    condition: 'Good',
+    size: 'Medium',
+    colour: 'As per product',
+    payment_options: Product::PAYMENT_OPTIONS.sample,
+    category: 'girls_clothing',
+    price_cents: '£7',
+    deliver_option: Product::DELIVERY_OPTIONS.sample
+   )
+  puts "created #{manual_girls_top}"
 
-pushchairs = Product.create (
- {
- category: 'Pushchairs'
- description: ' In Good condition'
- condition: 'Used'
- size: '0-1 Year'
- colour: 'As per product'
- address: '6 Southwark St, London SE1 1TQ',
- price: '£35'
- seller: 'sandy_sells_stuff'
-)
-}
-puts "created #{pushchairs}"
+  manual_nursery = Product.create(
+    user_id: User.last.id,
+    name: 'Wooden Crib',
+    description: 'In good condition',
+    address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL',
+    condition: 'Good',
+    size: 'Large',
+    colour: 'As per product',
+    payment_options: Product::PAYMENT_OPTIONS.sample,
+    category: 'nursery_furniture',
+    price_cents: '£30',
+    deliver_option: Product::DELIVERY_OPTIONS.sample
+   )
+  puts "created #{manual_nursery}"
 
+  manual_pram = Product.create(
+    user_id: User.last.id,
+    name: 'Mamas & Papas Pram',
+    description: 'In good condition',
+    address: '6 Southwark St, London SE1 1TQ',
+    condition: 'Good',
+    size: 'Large',
+    colour: 'As per product',
+    payment_options: Product::PAYMENT_OPTIONS.sample,
+    category: 'pushchairs',
+    price_cents: '£80',
+    deliver_option: Product::DELIVERY_OPTIONS.sample
+   )
+  puts "created #{manual_pram}"
 end
-=======
-#boys clothing = product.create
-
- #address: '56 Shoreditch High St, Hackney, London E1 6JJ'
-
- #address: '1 Wootton St,London SE1 8RT'
-
- #address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL'
-
- #address: '6 Southwark St, London SE1 1TQ'
-
- #address: '2 London Bridge, London SE1 9RA'
-#end
->>>>>>> master
 
 def scrape_product(product)
   puts "Creating products..."
@@ -159,6 +145,7 @@ end
 
 clean_database
 create_user
+manual_create
 scrape_product(boys_clothing)
 scrape_product(girls_clothing)
 scrape_product(toys)
