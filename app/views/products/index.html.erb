@@ -1,5 +1,8 @@
+
 <div class="container">
   <div class="m-3">
+
+
     <h1><strong>View Products</strong></h1>
     <p><%= @products.count %> results</p>
     <%= form_tag products_path, method: :get do %>
@@ -10,6 +13,14 @@
           placeholder: "Search for items...",
           aria: { label: "find", describedby: "basic-addon1" }
         %>
+   <div class = "flex-wrap justify-content-around position-relative text-center"
+   <div id="map"
+     style="width: 100%; height: 400px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+       </div>
+     </div>
+
 
         <div class="input-group-prepend">
           <span class="input-group-text p-0 pr-1 pl-1" id="basic-addon1">
@@ -20,12 +31,6 @@
         </div>
       </div>
     <% end %>
-  </div>
-
-  <div id="map"
-     style="width: 100%; height: 600px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
 
   <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
@@ -52,4 +57,7 @@
   </div>
 </div>
 
-
+ <div id="map"
+     style="width: 100%; height: 600px;"
+     data-markers="<%= @markers.to_json %>"
+     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
