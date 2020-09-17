@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'
+  get 'reviews', to: 'orders#reviews'
   get 'saved_items', to: 'products#saved_items'
 
   resources :users, only: [ :show ] do

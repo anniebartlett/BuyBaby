@@ -1,0 +1,23 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <h1 class="mb-5 text-center">My reviews</h1>
+        <div class="reviews">
+          <div class="cards d-flex flex-wrap position-relative text-center ml-1">
+            <div class="card-item">
+              <div class="card rounded-lg mx-3 mb-4" style="width: 18rem; height: auto;">
+                <div class="card-body">
+                  <% @user.reviews.each do |review| %>
+                    <p>Seller: <%= review.reviewed_id %></p>
+                    <p>Comment:<%= review.comment %></p>
+                    <p>Rating: <%= review.rating %></p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
+    </div>
+  </div>
+</div>
