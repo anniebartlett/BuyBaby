@@ -25,6 +25,10 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def reviews?
+    true
+  end
+
   def update?
     record.user == user
   end
