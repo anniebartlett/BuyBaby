@@ -121,7 +121,7 @@ def scrape_product(product)
           user_id: User.last.id,
           name: title,
           description: "In good condition",
-          address: "London ",
+          address: "London",
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
           colour: "As per product",
@@ -145,12 +145,12 @@ end
 
 clean_database
 create_user
-manual_create
 scrape_product(boys_clothing)
 scrape_product(girls_clothing)
 scrape_product(toys)
 scrape_product(crib)
 scrape_product(prams)
+manual_create
 
 puts "Finished!"
 

@@ -7,7 +7,7 @@
   </div>
 
   <h5>Hi <%= @order.user.name.capitalize %>!</h5>
-  <h5>You have <%= @order.product_orders.count %> items in your basket: </h5>
+  <h5>You have <%= @order.product_orders.count %> items in your basket. </h5>
 
   <div class="card-body mt-5">
     <div class="row">
@@ -25,13 +25,17 @@
         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
           <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
             <% order_amount += item.product.price_cents %>
-            <h6 class="mt-1">£<%= item.product.price_cents %><span class="text-muted"></span></h6>
+            <h5 class="mt-1" id="price-item">£<%= item.product.price_cents %><span class="text-muted"></span></h5>
           </div>
           <div class="col-4 col-sm-4 col-md-4">
             <div class="quantity">
-              <input type="button" value="+" class="plus">
-              <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty" size="4">
-              <input type="button" value="-" class="minus">
+              <button class="minus-btn" type="button" name="button">
+                <i class="fas fa-minus"></i>
+              </button>
+              <input type="text" name="name" value="1" id="btn-value">
+              <button class="plus-btn" type="button" name="button">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
           </div>
           <div class="col-2 col-sm-2 col-md-2 text-right">
@@ -46,12 +50,15 @@
       <% end %>
     </div>
     <div class="card-footer d-flex justify-content-between mt-3">
-      <span><h5>Total price: £<%= order_amount %></h5></span>
+      <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
+
       <div>
         <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
       </div>
+      <span><h5 id="price-total">Total: £<%= order_amount %></h5></span>
     </div>
+
   </div>
 
   <div class="recommendations">
@@ -80,10 +87,11 @@
             </div>
           </div>
         </div>
-      <% end %>
+        <% end %>
+
     </div>
   </div>
-
+<% end %>
 </div>
 
 

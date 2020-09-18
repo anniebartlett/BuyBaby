@@ -2,14 +2,14 @@
   <div class="row">
     <div class="col-8 mt-5 text-center">
       <h1>Thank you for your order!</h1>
-      <h3>Your order number is # <%= @order.id %></h3>
-      <h3>It will be delivered via <%= @order.delivery_option %></h3>
-      <h3>Paid via <%= @order.payment_option %></h3>
-      <h5>Confirmation will be sent to <%= @order.user.email %></h5>
+      <h4>This is order number # <%= @order.id %></h4>
+      <h4>Collection via: <%= @order.delivery_option %></h4>
+      <h4>Paid by: <%= @order.payment_option %></h4>
+      <h4>A confirmation will be sent to <%= @order.user.email %></h4>
     </div>
   </div>
     <div class="col-8 mt-5">
-      <h3 class="mb-3">Order summary: </h3>
+      <h3 class="mb-3"> Order summary: </h3>
       <% order_amount = 0 %>
         <% @order.product_orders.each do |item| %>
       <div class="d-flex flex-column">

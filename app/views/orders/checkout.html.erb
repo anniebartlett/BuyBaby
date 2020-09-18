@@ -90,38 +90,24 @@
           <input type="checkbox" class="custom-control-input" id="save-info">
           <label class="custom-control-label" for="save-info">Save this information for next time</label>
         </div>
+        </form>
         <hr class="mb-4">
-        <h4 class="mb-3">Delivery options</h4>
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="collect" name="DeliveryOptions" type="radio" class="custom-control-input" checked="" required="">
-            <label class="custom-control-label" for="collect">Collect from seller</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="delivery" name="DeliveryOptions" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="delivery">Arrange delivery</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="pickup" name="DeliveryOptions" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="pickup">Pick up from preferred location</label>
-          </div>
-        </div>
-        <hr class="mb-4">
-        <h4 class="mb-3">Payment</h4>
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-            <label class="custom-control-label" for="debit">Pay by card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="cash" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="cash">Pay by cash <small>(only select if collecting item)</small></label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="paypal">Pay by Paypal</label>
-          </div>
-        </div>
+
+        <%= simple_form_for(@order, url: order_path(@order)) do |f| %>
+  <div class="form-group">
+     <%= f.input :delivery_option, as: :radio_buttons,
+    collection: ['Collect from seller', 'Arrange delivery', 'Pick up from preferred location'] %>
+  </div>
+
+  <div class="form-group">
+     <%= f.input :payment_option, as: :radio_buttons,
+    collection: ['Debit card', 'Cash (only select if collecting item)', 'Paypal'] %>
+  </div>
+  <div class="form-group">
+    <%= f.input :state, as: :hidden, input_html: { value: "completed" } %>
+  </div>
+<hr class="mb-4">
+
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
@@ -156,9 +142,8 @@
           </div>
         </div>
         <hr class="mb-4">
-<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModalCenter">
-  Confirm payment
-</button>
+  <%= f.submit class: 'btn btn-primary mb-5' %>
+<% end %>
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -181,7 +166,7 @@
   </div>
 </div>
 
-      </form>
+
       </div>
     </div>
 </div>

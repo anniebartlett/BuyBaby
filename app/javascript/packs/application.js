@@ -7,6 +7,7 @@ require("@rails/ujs").start();
 require("turbolinks").start();
 require("@rails/activestorage").start();
 require("channels");
+
 //= require jquery
 //= require jquery_ujs
 
@@ -24,6 +25,7 @@ require("channels");
 
 // External imports
 import "bootstrap";
+import "../components/cart.js";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
