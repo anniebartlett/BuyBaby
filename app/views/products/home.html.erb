@@ -19,29 +19,27 @@
       <div class="category">
         <h5><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links" %></h5>
       </div>
-    </div>
+  </div>
 
-    <div class="container-carousel">
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="container-carousel mb-3">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
       </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <%= image_tag("babyplaying.jpg", class: "d-block homepage-image" )%>
-        </div>
-
-        <div class="carousel-item">
-          <%= image_tag("cot.jpg", class: "d-block homepage-image" )%>
-        </div>
-
-        <div class="carousel-item">
-          <%= image_tag("nursery2.jpg", class: "d-block homepage-image" )%>
-        </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <%= image_tag("babyplaying.jpg", class: "d-block homepage-image" )%>
       </div>
 
+      <div class="carousel-item">
+        <%= image_tag("cot.jpg", class: "d-block homepage-image" )%>
+      </div>
+
+      <div class="carousel-item">
+        <%= image_tag("nursery2.jpg", class: "d-block homepage-image" )%>
+      </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -50,69 +48,67 @@
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-      </div>
+    </div>
+    </div>
+  </div>
+
+  <div class="animated-logo">
+    <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
+  </div>
+
+  <div class="text-center mb-3">
+    <h3>Categories:</h3>
+  </div>
+  <div class="categories-section d-flex flex-row justify-content-around mb-5">
+    <div class="card" style="height: 20rem; width: 20rem;">
+      <%= image_tag("toys.jpg", class: "card-image rounded-lg" )%>
+      <h5><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
     </div>
 
-    <div class="animated-logo">
-      <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
+    <div class="card" style="height: 20rem; width: 20rem;">
+      <%= image_tag("nursery2.jpg", class: "card-image rounded-lg" )%>
+      <h5><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h5>
     </div>
 
-    <div class="categories-section">
-      <div class="card-columns">
-        <div class="card">
-          <%= image_tag("toys.jpg", class: "card-image" )%>
-            <h5><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
-        </div>
-
-        <div class="card">
-          <%= image_tag("nursery2.jpg", class: "card-image" )%>
-            <h5><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h5>
-        </div>
-
-        <div class="card">
-          <%= image_tag("pushchair.jpg", class: "card-image" )%>
-            <h5><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links" %></h5>
-        </div>
-
-      </div>
+    <div class="card" style="height: 20rem; width: 20rem;">
+      <%= image_tag("pushchair.jpg", class: "card-image rounded-lg" )%>
+      <h5><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links" %></h5>
     </div>
+  </div>
 
-    <div class="section s4 p-3">
-      <h4 class="title mb-3">Popular items near you</h4>
-       <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
-        <% @featured_products.each do |product| %>
-          <div class="card rounded-lg mb-4" style="width: 16rem; height: 24rem;">
-            <div class="card-body">
-              <%= link_to product_path(product) do %>
-                <% product.photos.each_with_index do |photo, index| %>
-                  <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
-                <% end %>
+  <div class="section s4 p-3">
+    <h4 class="title mb-3">Popular items near you</h4>
+     <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
+      <% @featured_products.each do |product| %>
+        <div class="card rounded-lg mb-4" style="width: 16rem; height: 24rem;">
+          <div class="card-body">
+            <%= link_to product_path(product) do %>
+              <% product.photos.each_with_index do |photo, index| %>
+                <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
               <% end %>
-              <%= link_to product_path(product) do%>
-                <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
-                <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
-                <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-                <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
-                <% end %>
-              <div class="rating text-center position-absolute">
-                <%= link_to save_item_product_path(product), remote: true, method: :post do %>
-                  <%= render 'products/like_button', product: product %>
-                <% end %>
-              </div>
+            <% end %>
+            <%= link_to product_path(product) do%>
+              <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+              <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
+              <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+              <% end %>
+            <div class="rating text-center position-absolute">
+              <%= link_to save_item_product_path(product), remote: true, method: :post do %>
+                <%= render 'products/like_button', product: product %>
+              <% end %>
             </div>
           </div>
-        <% end %>
-      </div>
+        </div>
+      <% end %>
     </div>
+  </div>
+
+  <div class="flex-wrap justify-content-around position-relative text-center">
+    <div id="map"
+      style="width: 100%; height: 400px;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%#= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
 </div>
-
-<!--    <div class = "flex-wrap justify-content-around position-relative text-center"
-   <div id="map"
-     style="width: 100%; height: 400px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%#= ENV['MAPBOX_API_KEY'] %>">
-       </div>
-     </div>
- -->
-
-
