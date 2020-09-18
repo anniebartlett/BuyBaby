@@ -1,9 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
 
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
-
   include PgSearch::Model
   pg_search_scope :search_by_product,
                   against: [ :name, :description, :address, :category],
@@ -27,8 +24,8 @@ class Product < ApplicationRecord
   validates :category, presence: true
   validates :address, presence: true
   validates :colour, presence: true
-  validates :longitude, presence: true
-  validates :latitude, presence: true
+  #validates :longitude, presence: true
+  #validates :latitude, presence: true
   validates :condition, presence: true
   validates :size, presence: true
   # validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }

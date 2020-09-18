@@ -16,14 +16,15 @@ class ProductsController < ApplicationController
     end
 
     @product = Product.where.not(latitude: nil, longitude: nil)
-    @markers = @products.geocoded.map do |product|
+    @markers = @product.geocoded.map do |product|
     {
     lat: product.latitude,
     lng: product.longitude,
-    #infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+    infoWindow: render_to_string(partial: "/products/map_box", locals: { product: product })
     }
    end
   end
+
 
   def show
     @product_orders = ProductOrder.new

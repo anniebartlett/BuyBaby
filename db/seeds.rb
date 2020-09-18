@@ -115,13 +115,16 @@ def scrape_product(product)
       price = element.search('.productCard_price').text.strip
       img = element.search('img').attribute('data-src')&.value
 
+      address = ["138 Kingsland Road E2 8DY", "7 Boundary Street, London, E2 7JE", "54 Holywell Lane, London, E2A 3PQ", "Bankside, London, SE1 9TG", "Millbank, London, SW1P 4RG", "Berkeley Square House, London, W1J 6BR", "33 Nine Elms Lane, London, SW11 7US", "188 Regent Street, London, W1B 5BT", "7 Burlington Gardens London W1S 3ES"
+      ]
+
       unless img.nil? || title.nil?
 
         products = Product.create(
           user_id: User.last.id,
           name: title,
           description: "In good condition",
-          address: "London",
+          address: address.sample,
           condition: %w[Used Good New].sample,
           size: %w[Small Medium Large].sample,
           colour: "As per product",
@@ -136,9 +139,10 @@ def scrape_product(product)
             file = URI.open("https://images.unsplash.com/photo-1527866512907-a35a62a0f6c5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2775&q=80")
           end
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
-          products.save
+          products.save!
 
-        puts "Created #{products.id} - #{products.name}"
+        puts "Created #{products.id} - #{products.name} #{products.address}"
+
       end
     end
 end
