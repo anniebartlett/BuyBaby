@@ -25,7 +25,6 @@
       </div>
 
       <div class="mt-5">
-        <h6>Filter:</h6>
          <div class="categories d-flex">
             <div class="category mb-3">
               <h6><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h6>
@@ -48,6 +47,18 @@
             </div>
         </div>
       </div>
+
+      <div>
+         <div class="categories d-flex">
+            <div class="category">
+              <h6><%= link_to "Items for swap", products_path(query: "swap"), class: "category-links" %></h6>
+            </div>
+
+            <div class="category">
+              <h6><%= link_to "Items for sale", products_path(query: "sell"), class: "category-links" %></h6>
+            </div>
+        </div>
+      </div>
       <hr>
     </div>
 
@@ -67,7 +78,10 @@
               <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
               <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
               <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+              <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% if product.price_cents > 0 %>
+                <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+              <% end %>
             <div class="rating text-center position-absolute">
               <%= link_to save_item_product_path(product), remote: true, method: :post do %>
                 <%= render 'products/like_button', product: product %>

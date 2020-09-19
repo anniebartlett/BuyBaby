@@ -10,6 +10,7 @@
         <%= f.input :address %>
         <%= f.input :condition %>
         <%= f.input :size %>
+        <%= f.input :sale_type, as: :radio_buttons, collection: ["Sell", "Swap"] %>
         <%= f.input :price_cents, label: 'Price' %>
         <%= f.input :photos, as: :file, input_html: { multiple: true } %>
         <%= f.submit class: "btn btn-primary mt-2 text-white" %>

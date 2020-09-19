@@ -20,6 +20,7 @@
           <div class="card-product-infos">
             <h5><%= item.product.name %></h5>
             <p><%= item.product.description %></p>
+            <p><%= item.product.sale_type %></p>
             <% order_amount += item.product.price_cents %>
             <p>£<%= item.product.price_cents %></p>
           </div>

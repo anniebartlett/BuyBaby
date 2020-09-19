@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_12_141716) do
+ActiveRecord::Schema.define(version: 2020_09_19_131805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "intarray"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 2020_09_12_141716) do
     t.integer "price_cents", default: 0, null: false
     t.float "latitude"
     t.float "longitude"
+    t.string "sale_type"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
