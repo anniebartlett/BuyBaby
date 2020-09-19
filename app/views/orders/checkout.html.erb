@@ -8,7 +8,6 @@
         <span class="text-muted">Your Basket</span>
         <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
       </h4>
-      <% order_amount = 0 %>
       <% @order.product_orders.each do |item| %>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -16,13 +15,12 @@
             <h6 class="my-0"><%= item.product.name %></h6>
             <small class="text-muted"><%= item.product.description %></small>
           </div>
-          <% order_amount += item.product.price_cents %>
           <span class="text-muted">£<%= item.product.price_cents %></span>
         </li>
         <% end %>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (GBP)</span>
-          <strong><h6>£<%= order_amount %></h6></strong>
+          <strong><h6>£<%= @order.total_price %></h6></strong>
         </li>
       </ul>
     </div>
@@ -156,7 +154,7 @@
       </div>
       <div class="modal-body">
         Thank you !
-        <span>You successfully paid £<%= order_amount %></span>
+        <span>You successfully paid £<%= @order.total_price %></span>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
