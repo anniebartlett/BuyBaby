@@ -86,16 +86,17 @@
       <% @product.user.reviews.each do |review| %>
         <% total_ratings << review.rating %>
       <% end %>
-      <% average_rating = total_ratings.sum / total_ratings.size %>
-      <div class="ratings">
-        <% average_rating.times do  %>
-          <span><i class="fas fa-star"></i></span>
-        <% end %>
-
-        <% (5 - average_rating).times do %>
-          <span><i class="far fa-star"></i></span>
-        <% end %>
-      </div>
+        <% average_rating = total_ratings.sum / total_ratings.size %>
+      <% if average_rating > 0 %>
+        <div class="ratings">
+          <% average_rating.times do  %>
+            <span><i class="fas fa-star"></i></span>
+          <% end %>
+          <% (5 - average_rating).times do %>
+            <span><i class="far fa-star"></i></span>
+          <% end %>
+      <% end %>
+        </div>
 
     <%= link_to "Seller reviews", user_review_path(@product.user, product:@product), class: "btn btn-primary text-white mb-1" %>
 
