@@ -86,8 +86,8 @@
       <% @product.user.reviews.each do |review| %>
         <% total_ratings << review.rating %>
       <% end %>
+      <%  if total_ratings != [] %>
         <% average_rating = total_ratings.sum / total_ratings.size %>
-      <% if average_rating > 0 %>
         <div class="ratings">
           <% average_rating.times do  %>
             <span><i class="fas fa-star"></i></span>
