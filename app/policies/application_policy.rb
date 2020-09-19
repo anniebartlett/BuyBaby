@@ -50,6 +50,10 @@ class ApplicationPolicy
     false
   end
 
+  def sale_items?
+    false
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end

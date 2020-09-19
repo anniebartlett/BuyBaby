@@ -29,6 +29,10 @@ class OrderPolicy < ApplicationPolicy
     true
   end
 
+  def sale_items?
+    true
+  end
+
   def update?
     record.user == user
   end

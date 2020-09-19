@@ -26,6 +26,7 @@ require("channels");
 // External imports
 import "bootstrap";
 import "../components/cart.js";
+import "../components/static_star_rating.js";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
@@ -53,3 +54,4 @@ document.addEventListener("turbolinks:load", () => {
 
   // $(".carousel").carousel();
 });
+

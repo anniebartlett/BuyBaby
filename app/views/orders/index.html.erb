@@ -32,10 +32,10 @@
             </div>
             <div class="col-4 d-flex flex-column">
               <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank" class="btn btn-primary text-white mb-1">Contact seller via WhatsApp</a>
-                    <% order.products.each do |product_order| %>
-                <%= link_to "Write a seller review", new_user_review_path(product_order.user, product:order.products.first), class: "btn btn-green mb-3" %>
-                <% end %>
-              </div>
+              <% order.products.each do |product_order| %>
+                <%= link_to "Write a seller review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-primary text-white mb-1" %>
+              <% end %>
+            </div>
           </div>
         </div>
         <% end %>

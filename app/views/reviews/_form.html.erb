@@ -1,6 +1,6 @@
 <%= simple_form_for [ @user, @review ] do |f| %>
   <%= f.hidden_field :product, :value => "#{@product.id}" %>
-  <%= f.input :comment, as: :text, placeholder: "Review seller" %>
-  <%= f.input :rating, collection: [ 1, 2, 3, 4, 5] %>
-  <%= f.submit "Submit", class: "btn btn-blue mb-3"  %>
+  <%= f.input :comment, as: :text, placeholder: "Leave a review for this seller" %>
+  <%= f.input :rating, collection: [ 1, 2, 3, 4, 5], id: "review-rating" %>
+  <%= f.submit "Submit", class: "btn btn-success mt-3 mb-3"  %>
 <% end %>

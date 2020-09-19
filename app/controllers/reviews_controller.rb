@@ -23,14 +23,18 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def show;end
+  def show
+    @user = User.find(params[:user_id])
+    @reviews = policy_scope(Review)
+    authorize @reviews
+  end
 
 
   def destroy
     @review = Review.find(params[:id])
     @user = @review.user
     @review.destroy
-    redirect_to user_path(@review.user)
+    redirect_to product_path(@review.user)
   end
 
   private

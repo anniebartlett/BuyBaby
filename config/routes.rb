@@ -15,14 +15,14 @@ Rails.application.routes.draw do
     get 'confirmation_page', to: 'orders#confirmation_page'
   end
 
-  resources :reviews, only: [ :show ]
   resources :product_orders, only: [:destroy]
 
   get 'my_account', to: 'orders#my_account'
   get 'reviews', to: 'orders#reviews'
+  get 'sale_items', to: 'orders#sale_items'
   get 'saved_items', to: 'products#saved_items'
 
   resources :users, only: [ :show ] do
-    resources :reviews, only: [ :new, :create ]
+    resources :reviews, only: [ :new, :create, :show ]
   end
 end
