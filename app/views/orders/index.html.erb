@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-8 d-flex flex-column">
                   <p class="card-text">Order description</p>
-                  <p class="card-text">Order total: £<%= order.amount %></p>
+                  <p class="card-text">Order total: £<%= order.total_price %></p>
                   <p class="card-text">Seller name: <%= order.products[0].user.nickname %></p>
                   <p class="card-text">Payment info: <%= order.payment_option %></p>
                   <p class="card-text">Delivery info: <%= order.delivery_option %></p>
