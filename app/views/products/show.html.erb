@@ -19,7 +19,7 @@
         </a> -->
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-6">
       <div class="ml-3">
         <h1><%= @product.name.capitalize %></h1>
         <table class="mt-3" style="width:100%">
@@ -44,10 +44,6 @@
             <td><h5><%= @product.colour.capitalize %></h5></td>
           </tr>
           <tr>
-            <th><h5>Address:</h5></th>
-            <td><h5><%= @product.address.capitalize %></h5></td>
-          </tr>
-          <tr>
             <th><h5>Price:</h5></th>
             <td><h5>£<%= @product.price_cents %></h5></td>
           </tr>
@@ -58,12 +54,16 @@
         </table>
         <br/>
         <div class="links list-inline">
-          <p><%= link_to 'Ask seller', product_product_orders_path(@product), class: "btn btn-outline-primary ask" %></p>
-          <p><%= link_to 'Add to basket', product_product_orders_path(@product), method: :post, class: "btn btn-primary text-white" %></p>
-          <%= link_to save_item_product_path(@product), remote: true, method: :post do %>
-            <div class="row pl-2">
-              <%= render 'products/like_button', product: @product %>Add to favorites
-            </div>
+          <% if @product.user == current_user %>
+            <p><%= link_to 'Edit item', edit_product_path(@product), class: "btn btn-outline-primary ask" %></p>
+          <% else %>
+            <p><%= link_to 'Ask seller', product_product_orders_path(@product), class: "btn btn-outline-primary ask" %></p>
+            <p><%= link_to 'Add to basket', product_product_orders_path(@product), method: :post, class: "btn btn-primary text-white" %></p>
+            <%= link_to save_item_product_path(@product), remote: true, method: :post do %>
+              <div class="row pl-2">
+                <%= render 'products/like_button', product: @product %>Add to favorites
+              </div>
+            <% end %>
           <% end %>
         </div>
         <br/>
