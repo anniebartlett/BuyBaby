@@ -5,12 +5,12 @@
         <h1>My Account</h1>
         <%= image_tag "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80", class: "avatar-large m-2", alt: "profile" %>
         <h3>Hi <%= current_user.nickname %>!</h3>
-        <h4><%= link_to "View your orders", orders_path %></h4>
-        <h4><%= link_to "View your basket", edit_order_path(current_user.orders.find_by(state:"pending")) %></h4>
-        <h4><%= link_to "My reviews", reviews_path %></h4>
+        <h4><%= link_to "Your orders", orders_path %></h4>
+        <h4><%= link_to "Your basket", edit_order_path(current_user.orders.find_by(state:"pending")) %></h4>
         <h4><%= link_to "Saved items", saved_items_path %></h4>
         <h4><%= link_to "Sell an item", new_product_path %></h4>
-        <h4><%#= link_to "View your sale items", products_path %></h4> <%# update path %>
+        <h4><%= link_to "All sale items", sale_items_path %></h4> <%# update path %>
+        <h4><%= link_to "My reviews", reviews_path %></h4>
         <br/>
         <h4><%= link_to('Logout', destroy_user_session_path, method: :delete) %></h4>
       </div>

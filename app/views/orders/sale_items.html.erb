@@ -1,0 +1,36 @@
+<div class="container my-3">
+  <div class="row">
+    <div class="col">
+      <h1 class="text-center">Your sale items</h1>
+      <h3 class="mb-5 text-center">View or edit your items for sale</h3>
+        <div class="sale_items">
+          <div class="cards d-flex text-center ml-1">
+            <% @user.products.each do |product| %>
+              <div class="card rounded-lg mb-4 ml-4" style="width: 16rem; height: 28rem;">
+                <div class="card-body">
+                  <%= link_to product_path(product) do %>
+                    <% product.photos.each_with_index do |photo, index| %>
+                      <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+                    <% end %>
+                  <% end %>
+                    <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+                    <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
+                    <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+                    <p class="card-text m-0" style="font-size: 14px">Seller: <%= product.user.nickname %></p>
+                    <p class="card-text m-0 mb-3" style="font-size: 20px">£<%= product.price_cents %></p>
+                    <p>
+                      <%= link_to edit_product_path(product) do %>
+                      <i class="fas fa-edit" style="font-size: 24px;"></i>
+                      <% end %>
+                    </p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
+    </div>
+  </div>
+</div>
+
+
