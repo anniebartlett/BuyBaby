@@ -1,33 +1,32 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-8 mt-5 text-center">
-      <h1>Thank you for your order!</h1>
-      <h4>This is order number # <%= @order.id %></h4>
-      <h4>Collection via: <%= @order.delivery_option %></h4>
-      <h4>Paid by: <%= @order.payment_option %></h4>
-      <h4>A confirmation will be sent to <%= @order.user.email %></h4>
+      <h1 class="main mb-3">Thank you for your order!</h1>
+      <h4>Order ref # <%= @order.id %></h4>
+      <h4>Delivered via: <span class="order-option"><%= @order.delivery_option %></span></h4>
+      <h4>Paid by: <span class="order-option"><%= @order.payment_option %></span></h4>
+      <h4>A confirmation was sent to <%= @order.user.email %></h4>
     </div>
   </div>
     <div class="col-8 mt-5">
       <h3 class="mb-3"> Order summary: </h3>
-      <% order_amount = 0 %>
-        <% @order.product_orders.each do |item| %>
+      <% @order.product_orders.each do |item| %>
       <div class="d-flex flex-column">
         <div class="card-product rounded-lg">
-            <% item.product.photos.each_with_index do |photo, index| %>
-            <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+          <% item.product.photos.each_with_index do |photo, index| %>
+          <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
           <% end %>
-          <div class="card-product-infos">
+          <div class="card-product-infos text-left">
             <h5><%= item.product.name %></h5>
             <p><%= item.product.description %></p>
-            <% order_amount += item.product.price_cents %>
+            <p><%= item.product.sale_type %></p>
             <p>£<%= item.product.price_cents %></p>
           </div>
         </div>
       </div>
-       <% end %>
-       <hr>
-       <h5>Total price: £<%= order_amount %></h5>
-       <%= link_to 'Back to Accounts', my_account_path, class: "btn btn-success text-white mb-5" %>
+      <% end %>
+      <hr>
+      <h4>Total: £<%= @order.total_price %></h4>
+      <%= link_to 'Back to Accounts', my_account_path, class: "btn btn-success text-white mb-5" %>
     </div>
 </div>
