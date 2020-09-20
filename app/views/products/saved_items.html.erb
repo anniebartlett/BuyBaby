@@ -3,7 +3,7 @@
     <div class="col">
       <h1 class="mb-5 text-center">Saved Items</h1>
         <div class="favorites">
-          <div class="cards d-flex flex-wrap position-relative text-center ml-1">
+          <div class="cards d-flex flex-wrap position-relative text-center">
           <% @favorite_products.each do |product| %>
             <%= render 'product', product: product %>
           <% end %>

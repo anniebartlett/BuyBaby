@@ -16,8 +16,11 @@
                     <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
                     <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
                     <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+                    <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
                     <p class="card-text m-0" style="font-size: 14px">Seller: <%= product.user.nickname %></p>
-                    <p class="card-text m-0 mb-3" style="font-size: 20px">£<%= product.price_cents %></p>
+                    <% if product.price_cents > 0 %>
+                      <p class="card-text m-0 mb-3" style="font-size: 20px">£<%= product.price_cents %></p>
+                    <% end %>
                     <p>
                       <%= link_to edit_product_path(product) do %>
                       <i class="fas fa-edit" style="font-size: 24px;"></i>
