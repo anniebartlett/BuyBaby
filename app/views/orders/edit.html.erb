@@ -5,10 +5,13 @@
     </div>
   </div>
   <h5>Hi <%= @order.user.name.capitalize %>!</h5>
+  <% if @order.product_orders.count == 0 || @order.product_orders.count == 1 %>
+  <h5>You have <%= @order.product_orders.count %> item in your basket. </h5>
+  <% else %>
   <h5>You have <%= @order.product_orders.count %> items in your basket. </h5>
-
+<% end %>
   <div class="card-body mt-5">
-    <div class="row">
+    <div class="row align-items-center">
 
       <% @order.product_orders.each do |item| %>
         <div class="col-12 col-sm-12 col-md-3 text-center mb-3">
@@ -20,22 +23,12 @@
           <h5><%= item.product.name %></h5>
           <p><%= item.product.description %></p>
         </div>
-        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-          <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
+        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row justify-content-between">
+          <div class="col-3 col-sm-3 col-md-6 text-md-right">
 
-            <h5 class="mt-1" id="price-item">£<%= item.product.price_cents %><span class="text-muted"></span></h5>
+            <h5 class="mt-1" id="price-item">£<%= item.product.price_cents %> x 1<span class="text-muted"></span></h5>
           </div>
-          <div class="col-4 col-sm-4 col-md-4">
-            <div class="quantity">
-              <button class="minus-btn" type="button" name="button" data-productprice="<%= item.product.price_cents %>">
-                <i class="fas fa-minus"></i>
-              </button>
-              <input type="text" name="name" value="1" id="btn-value">
-              <button class="plus-btn" type="button" name="button" data-productprice="<%= item.product.price_cents %>">
-                <i class="fas fa-plus"></i>
-              </button>
-            </div>
-          </div>
+
           <div class="col-2 col-sm-2 col-md-2 text-right">
             <button type="button" class="btn btn-outline-primary btn-xs">
              <%= link_to product_order_path(item.id), method: :delete, data: { confirm: "Are you sure?" } do %>
