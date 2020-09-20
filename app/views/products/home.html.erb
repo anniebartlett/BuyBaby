@@ -52,27 +52,41 @@
     </div>
   </div>
 
-  <div class="animated-logo">
-    <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
+
+  <div class="divider" style="display: flex;">
+    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top:55px;">
+      <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
+    <hr style="width: 40%;text-align:left;margin-right:0;margin-left:0;margin-top: 55px;">
   </div>
 
-  <div class="text-center mb-3">
-    <h3>Categories:</h3>
-  </div>
-  <div class="categories-section d-flex flex-row justify-content-around mb-5">
-    <div class="card" style="height: 20rem; width: 20rem;">
-      <%= image_tag("toys.jpg", class: "card-image rounded-lg" )%>
-      <h5><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
-    </div>
+  <div class="categories">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card" style="height: 20rem; width: 20rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('toys.jpg', class: 'card-image rounded-lg'), products_path(query: "Playtime"), class: "category-links" %>
+            <div class="text">Toys</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card" style="height: 20rem; width: 20rem;">
-      <%= image_tag("nursery2.jpg", class: "card-image rounded-lg" )%>
-      <h5><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h5>
-    </div>
+      <div class="col-md-4">
+        <div class="card" style="height: 20rem; width: 20rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('nursery2.jpg', class: 'card-image rounded-lg'), products_path(query: "Nursery"), class: "category-links" %>
+            <div class="text">Nursery</div>
+          </div>
+        </div>
+      </div>
 
-    <div class="card" style="height: 20rem; width: 20rem;">
-      <%= image_tag("pushchair.jpg", class: "card-image rounded-lg" )%>
-      <h5><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links" %></h5>
+      <div class="col-md-4">
+        <div class="card" style="height: 20rem; width: 20rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('pushchair.jpg', class: 'card-image rounded-lg'), products_path(query: "Pushchairs"), class: "category-links" %>
+            <div class="text">Pushchairs</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
