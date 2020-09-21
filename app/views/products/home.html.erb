@@ -94,7 +94,7 @@
     <h4 class="title mb-3">Popular items near you</h4>
      <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
       <% @featured_products.each do |product| %>
-        <div class="card rounded-lg mb-4" style="width: 16rem; height: 24rem;">
+        <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
           <div class="card-body">
             <%= link_to product_path(product) do %>
               <% product.photos.each_with_index do |photo, index| %>
@@ -105,8 +105,11 @@
               <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
               <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
               <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-              <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
+              <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% if product.price_cents > 0 %>
+                <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
               <% end %>
+            <% end %>
             <div class="rating text-center position-absolute">
               <%= link_to save_item_product_path(product), remote: true, method: :post do %>
                 <%= render 'products/like_button', product: product %>

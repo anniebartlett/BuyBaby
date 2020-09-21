@@ -38,6 +38,7 @@ def manual_create
     payment_options: Product::PAYMENT_OPTIONS.sample,
     category: 'playtime',
     price_cents: '£10',
+    sale_type: 'Sell',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
   puts "created #{manual_toy.name}"
@@ -53,6 +54,7 @@ def manual_create
     payment_options: Product::PAYMENT_OPTIONS.sample,
     category: 'boys_clothing',
     price_cents: '£13',
+    sale_type: 'Sell',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
   puts "created #{manual_boys_top.name}"
@@ -68,6 +70,7 @@ def manual_create
     payment_options: Product::PAYMENT_OPTIONS.sample,
     category: 'girls_clothing',
     price_cents: '£7',
+    sale_type: 'Sell',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
   puts "created #{manual_girls_top.name}"
@@ -83,6 +86,7 @@ def manual_create
     payment_options: Product::PAYMENT_OPTIONS.sample,
     category: 'nursery_furniture',
     price_cents: '£30',
+    sale_type: 'Sell',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
   puts "created #{manual_nursery.name}"
@@ -98,12 +102,13 @@ def manual_create
     payment_options: Product::PAYMENT_OPTIONS.sample,
     category: 'pushchairs',
     price_cents: '£80',
+    sale_type: 'Sell',
     deliver_option: Product::DELIVERY_OPTIONS.sample
    )
   puts "created #{manual_pram.name}"
 end
 
-def scrape_product(product)
+def scrape_sell_product(product)
   puts "Creating products..."
 
   category = product.split("/")[6].capitalize
@@ -128,7 +133,8 @@ def scrape_product(product)
           payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
           # stripe_plan_name: "Test",
-          price_cents: rand(5..20),
+          price_cents: rand(0..20),
+          sale_type: %w[Sell Swap].sample,
           deliver_option: Product::DELIVERY_OPTIONS.sample
         )
           file = URI.open(img)
@@ -143,14 +149,21 @@ def scrape_product(product)
     end
 end
 
+def amend_swap_price
+  @products = Product.all
+  @products = Product.where(sale_type: "Swap").update_all(price_cents: 0)
+  @products = Product.where(price_cents: 0).update_all(sale_type: "Swap")
+  puts "Amended swap prices"
+end
+
 clean_database
 create_user
-scrape_product(boys_clothing)
-scrape_product(girls_clothing)
-scrape_product(toys)
-scrape_product(crib)
-scrape_product(prams)
+scrape_sell_product(boys_clothing)
+scrape_sell_product(girls_clothing)
+scrape_sell_product(toys)
+scrape_sell_product(crib)
+scrape_sell_product(prams)
+amend_swap_price
 manual_create
 
 puts "Finished!"
-

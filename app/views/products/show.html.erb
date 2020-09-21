@@ -25,6 +25,10 @@
           <td><h5><%= @product.condition.capitalize %></h5></td>
         </tr>
         <tr>
+          <th><h5>Sale type:</h5></th>
+          <td><h5><%= @product.sale_type %></h5></td>
+        </tr>
+        <tr>
           <th><h5>Size:</h5></th>
           <td><h5><%= @product.size.capitalize %></h5></td>
         </tr>
@@ -32,10 +36,12 @@
           <th><h5>Colour:</h5></th>
           <td><h5><%= @product.colour.capitalize %></h5></td>
         </tr>
-        <tr>
-          <th><h5>Price:</h5></th>
-          <td><h5>£<%= @product.price_cents %></h5></td>
-        </tr>
+        <% if @product.price_cents > 0 %>
+          <tr>
+            <th><h5>Price:</h5></th>
+            <td><h5>£<%= @product.price_cents %></h5></td>
+          </tr>
+        <% end %>
         <tr>
           <th><h5>Seller:</h5></th>
           <td><h5><%= @product.user.nickname %></h5></td>

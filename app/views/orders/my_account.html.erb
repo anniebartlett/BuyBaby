@@ -28,7 +28,10 @@
             <div class="card-product-infos">
               <h2><%= product.name %></h2>
               <p><%= product.description %></p>
-              <p>£<%= product.price_cents %></p>
+              <p>Sale type: <%= product.sale_type %></p>
+              <% if product.price_cents > 0 %>
+                <p>£<%= product.price_cents %></p>
+              <% end %>
               <p>Seller: <%= product.user.nickname %></p>
             </div>
           </div>

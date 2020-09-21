@@ -84,6 +84,7 @@ class ProductsController < ApplicationController
       :condition,
       :size,
       :price_cents,
+      :sale_type,
       # :payment_options,
       # :deliver_option,
       photos: []
