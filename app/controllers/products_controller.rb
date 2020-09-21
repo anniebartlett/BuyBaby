@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def home
     @products = policy_scope(Product)
-    @featured_products = @products.all.sample(4)
+    @featured_products = @products.all.sample(12)
   end
 
   def index

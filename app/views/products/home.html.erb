@@ -54,12 +54,34 @@
 
 
   <div class="divider" style="display: flex;">
-    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top:55px;">
-      <%= image_tag("logo.png", width: "120px", height: "120px", class: "logo" )%>
-    <hr style="width: 40%;text-align:left;margin-right:0;margin-left:0;margin-top: 55px;">
+    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 40px;">
+      <%= image_tag("logo.png", width: "90px", height: "90px", class: "logo" )%>
+    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 40px;">
   </div>
 
-  <div class="categories">
+  <div class="category-headings">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="divider text-center">
+          <p class="mx-2">Toys</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="divider text-center">
+          <p class="mx-2">Nursery</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="divider text-center">
+          <p class="mx-2">Pushchairs</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="categories mb-4">
     <div class="row justify-content-center">
       <div class="col-md-4">
         <div class="card" style="height: 23rem; width: 23rem;">
@@ -73,7 +95,7 @@
       <div class="col-md-4">
         <div class="card" style="height: 23rem; width: 23rem;">
           <div class="overlay overlayFade">
-            <%= link_to image_tag('nursery2.jpg', class: 'card-image rounded-lg'), products_path(query: "Nursery"), class: "category-links" %>
+            <%= link_to image_tag('nursery1.jpeg', class: 'card-image rounded-lg'), products_path(query: "Nursery"), class: "category-links" %>
             <div class="text">Nursery</div>
           </div>
         </div>
@@ -90,8 +112,83 @@
     </div>
   </div>
 
+
+  <div class="category-headings">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="divider" style="display: flex;">
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+            <p class="mx-2">Sale</p>
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="divider" style="display: flex;">
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+            <p class="mx-2">New in</p>
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="divider" style="display: flex;">
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+            <p class="mx-2">Swap</p>
+          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 12px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="categories mt-3 mb-4">
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <div class="card" style="height: 23rem; width: 23rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('toys.jpg', class: 'card-image rounded-lg'), products_path(query: "Playtime"), class: "category-links" %>
+            <div class="text">
+              SALE
+              <p>Up to 50% off</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" style="height: 23rem; width: 23rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('nursery2.jpg', class: 'card-image rounded-lg'), products_path(query: "Nursery"), class: "category-links" %>
+            <div class="text">
+              NEW ARRIVALS
+              <p>Discover more</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card" style="height: 23rem; width: 23rem;">
+          <div class="overlay overlayFade">
+            <%= link_to image_tag('pushchair.jpg', class: 'card-image rounded-lg'), products_path(query: "Pushchairs"), class: "category-links" %>
+            <div class="text">
+              SWAP
+             <p>Preloved items</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="section s4 p-3">
-    <h4 class="title mb-3">Popular items near you</h4>
+    <div class="divider" style="display: flex;">
+      <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+        <h4 class="title mb-3 mx-2">Featured Items</h4>
+      <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+    </div>
+
+
      <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
       <% @featured_products.each do |product| %>
         <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
