@@ -145,9 +145,21 @@ def scrape_sell_product(product)
           products.save
 
         puts "Created #{products.id} - #{products.name}"
+
       end
     end
 end
+
+# def create_reviews
+#   reviews = Review.create(
+#     user_id: User.first.id,
+#     comment: ["Good experience with seller", "Product was in good condition and seller was great", "Would highly recommend this seller!"].sample,
+#     rating: rand(3..5),
+#     reviewer_id: user.first.id,
+#     reviewer_id: user.last.id,
+#     )
+#   reviews.save
+# end
 
 def amend_swap_price
   @products = Product.all
@@ -163,6 +175,7 @@ scrape_sell_product(girls_clothing)
 scrape_sell_product(toys)
 scrape_sell_product(crib)
 scrape_sell_product(prams)
+# create_reviews
 amend_swap_price
 manual_create
 
