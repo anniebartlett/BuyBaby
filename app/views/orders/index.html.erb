@@ -22,6 +22,7 @@
               <h5 class="my-3">Item(s) ordered:</h5>
               <% order.products.each do |product_order| %>
               <div class="row">
+                
                 <div class="col-8 mb-3 d-flex">
                   <% product_order.photos.each_with_index do |photo, index| %>
                   <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
@@ -37,8 +38,17 @@
                   <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank" class="btn btn-primary text-white mb-3">Contact seller via WhatsApp</a>
                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-success text-white mb-1" %>
                 </div>
+                  <div class="col-8 d-flex flex-column">
+                    <p class="card-text">Order description</p>
+                    <p class="card-text">Order total: £<%= order.total_price %></p>
+                    <p class="card-text">Seller name: <%= order.products[0].user.nickname %></p>
+                    <p class="card-text">Payment info: <%= order.payment_option %></p>
+                    <p class="card-text">Delivery info: <%= order.delivery_option %></p>
+                  </div>
               </div>
+
               <% end %>
+              
             </div>
           </div>
         </div>

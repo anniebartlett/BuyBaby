@@ -1,19 +1,7 @@
 // Specific CSS for your home-page
-.custom-shape-divider-bottom-1598385432 {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
+.container-main {
+  padding: px;
 }
-
-.custom-shape-divider-bottom-1598385432 svg {
-  position: relative;
-  display: block;
-  width: calc(158% + 1.3px);
-  height: 123px;
-}
-
 .inner-container h1 {
   font-size: 8.5rem;
   font-weight: 600;
@@ -53,9 +41,9 @@
   cursor: pointer;
   animation: bounce 3s linear;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
   margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .logo:hover {
@@ -63,9 +51,22 @@
 }
 
 .animated-logo {
-  margin-top: 30px;
-  margin-bottom: 30px;
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid #000;
+   line-height: 0.1em;
+   margin: 10px 0 20px;
 }
+
+.divider {
+  background-image: white;
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 3px;
+  justify-content: center;
+}
+
+
 
 @keyframes bounce {
   20%,
@@ -124,6 +125,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 1.5s ease;
+  display: block;
+}
+
+.card-image:hover {
+  transform: scale(1.5);
 }
 
 .card-columns {
@@ -135,6 +142,43 @@
 .card {
   width: 28vw;
   height: 60vh;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.overlay {
+  position: absolute;
+  transition: all .3s ease;
+  opacity: 1;
+}
+
+.card:hover .overlayFade .text{
+  opacity: 1;
+}
+
+.overlayFade {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.card:hover .overlayFade{
+  width: 100%;
+  background-color: transparent;
+  transform: scale(1.5);
+}
+
+
+.text {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  opacity: 0;
 }
 
 .s2 {
@@ -160,6 +204,20 @@
   margin-top: 6px;
 }
 
+.h2 {
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 40%;
+  visibility: hidden;
+}
+
+.h2:hover {
+  visibility:visible;
+}
+
 .s3 {
   text-align: center;
 }
@@ -181,9 +239,51 @@
 .s4 {
   background: white;
 }
- .order-option {
-  color: #e67e22;
- }
+
+.item-1,
+.item-2,
+.item-3 {
+  position: absolute;
+  display: block;
+  width: 60%;
+  font-size: 12px;
+  animation-duration: 20s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  margin-left: 250px;
+}
+
+.item-1{
+  animation-name: anim-1;
+}
+
+.item-2{
+  animation-name: anim-2;
+}
+
+.item-3{
+  animation-name: anim-3;
+}
+
+@keyframes anim-1 {
+  0%, 8.3% { opacity: 0; }
+  8.3%,25% { opacity: 1; }
+  33.33%, 100% { opacity: 0; }
+
+}
+
+@keyframes anim-2 {
+  0%, 33.33% { opacity: 0; }
+  41.63%, 58.29% {  opacity: 1; }
+  66.66%, 100% { opacity: 0; }
+}
+
+@keyframes anim-3 {
+  0%, 66.66% { opacity: 0; }
+  74.96%, 91.62% { opacity: 1; }
+  100% {  opacity: 0; }
+}
+
 /** For mobile devices **/
 // @media (max-width: 767px) {
 //   .custom-shape-divider-bottom-1598385432 svg {

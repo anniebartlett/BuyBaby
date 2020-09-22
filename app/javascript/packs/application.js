@@ -26,19 +26,20 @@ require("channels");
 // External imports
 import "bootstrap";
 import "../components/cart.js";
-import "../components/static_star_rating.js";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
-// import "mapbox-gl/dist/mapbox-gl.css";
-// import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
-// import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
-// import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+
+import "mapbox-gl/dist/mapbox-gl.css";
+import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
+import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import { expandableSearchBar } from "../plugins/expandable_searchbar";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
   initSweetalert('#sweet-alert-demo', {
@@ -53,6 +54,11 @@ document.addEventListener("turbolinks:load", () => {
 });
 
  // flatpickr(".datepicker", {});
+
+  expandableSearchBar();
+  // flatpickr(".datepicker", {});
+
+
   // initSweetalert("#sweet-alert-demo", {
   //   title: "A nice alert",
   //   text: "This is a great alert, isn't it?",
