@@ -41,9 +41,18 @@ import { initMapbox } from "../plugins/init_mapbox";
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
   initMapbox();
+  initSweetalert('#sweet-alert-demo', {
+  title: "Are you sure?",
+  text: "This item will be deleted from your basket.",
+  icon: "warning"
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
 
-  // flatpickr(".datepicker", {});
-
+ // flatpickr(".datepicker", {});
   // initSweetalert("#sweet-alert-demo", {
   //   title: "A nice alert",
   //   text: "This is a great alert, isn't it?",
