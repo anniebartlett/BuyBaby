@@ -1,5 +1,11 @@
-<div>
+<div class="card-trip">
+  <%= link_to product_path(product) do %>
+            <% product.photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 110, width: 110, crop: :fill, gravity: :center %>
+            <% end %>
+          <% end %>
+
   <a href="<%= product_path(product) %>"><%= product.name %></a>
-  <h2><%= product.name %></h2>
+  <h3><%= product.name %></h3>
   <p><%= product.address %></p>
 </div>
