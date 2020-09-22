@@ -26,7 +26,6 @@ require("channels");
 // External imports
 import "bootstrap";
 import "../components/cart.js";
-import "../components/static_star_rating.js";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
@@ -39,10 +38,10 @@ import { expandableSearchBar } from "../plugins/expandable_searchbar";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
-document.addEventListener("turbolinks:load", () => {
+document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
-  explandableSearchBar();
+  expandableSearchBar();
   // flatpickr(".datepicker", {});
 
   // initSweetalert("#sweet-alert-demo", {
