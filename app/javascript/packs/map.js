@@ -33,13 +33,6 @@ const fitMapToMarkers = (map, markers) => {
 if (mapElement) {
   // [ ... ]
   fitMapToMarkers(map, markers);
-
 }
-
-
-
-
-
-  }
-};
+ }
 export { initMapbox };
