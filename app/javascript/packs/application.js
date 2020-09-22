@@ -43,14 +43,17 @@ document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
   initSweetalert('#sweet-alert-demo', {
-  title: "Are you sure?",
-  text: "This item will be deleted from your basket.",
-  icon: "warning"
-}, (value) => {
-  if (value) {
-    const link = document.querySelector('#delete-link');
-    link.click();
-  }
+    title: "Are you sure?",
+    text: "This item will be deleted from your basket.",
+    icon: "warning"
+
+  }, (value) => {
+
+    if (value) {
+      const link = document.querySelector('#delete-link');
+      link.click();
+    }
+  })
 });
 
  // flatpickr(".datepicker", {});
@@ -68,5 +71,4 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   // $(".carousel").carousel();
-});
 

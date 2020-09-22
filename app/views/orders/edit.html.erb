@@ -32,10 +32,10 @@
 
           <div class="col-2 col-sm-2 col-md-2 text-right">
             <button type="button" id="sweet-alert-demo" class="btn btn-outline-primary btn-xs">
-             <%= link_to product_order_path(item.id), method: :delete, id: "delete-link" do %>
-                <i class="fa fa-trash" aria-hidden="true"></i>
-              <% end %>
+              <i class="fa fa-trash" aria-hidden="true"></i>
             </button>
+            <%= link_to product_order_path(item.id), method: :delete, id: "delete-link" do %>
+           <% end %>
           </div>
         </div>
         <hr>
