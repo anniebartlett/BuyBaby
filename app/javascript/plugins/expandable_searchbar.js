@@ -1,13 +1,13 @@
-const explandableSearchBar = () => {
+const expandableSearchBar = () => {
 
-  const searchBtn = document.querySelector('.search-btn');
-  const searchBox = document.querySelector('#query');
+  const searchBtn = document.querySelector(".search-btn");
+  const searchBox = document.querySelector(".input");
 
   searchBtn.addEventListener('click', () => {
     searchBox.style.width = '80%';
     searchBox.style.paddingLeft = '40px';
     searchBox.focus();
-    searchBox.setAttribute('placeholder', 'Browse items')
+    searchBox.setAttribute('placeholder', 'Search for items')
   });
 }
 
