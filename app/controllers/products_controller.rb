@@ -8,22 +8,22 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = policy_scope(Product)
+
     if params[:query].present?
       @products = Product.search_by_product(params[:query])
     else
-      @products = policy_scope(Product)
+      @products = Product.where.not(latitude: nil, longitude: nil)
     end
 
-    @product = Product.where.not(latitude: nil, longitude: nil)
     @markers = @products.geocoded.map do |product|
-    {
-    lat: product.latitude,
-    lng: product.longitude,
-    #infoWindow: render_to_string(partial: "info_window", locals: { product: product })
-    }
+     {
+        lat: product.latitude,
+        lng: product.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { product: product })
+     }
    end
   end
+
 
   def show
     @product_orders = ProductOrder.new
