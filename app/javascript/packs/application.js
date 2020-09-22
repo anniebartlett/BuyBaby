@@ -30,7 +30,7 @@ import "../components/static_star_rating.js";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
-import { expandableSearchBar } from "../components/expandable_searchbar";
+import { expandableSearchBar } from "../plugins/expandable_searchbar";
 // import "mapbox-gl/dist/mapbox-gl.css";
 // import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 // import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
@@ -42,7 +42,7 @@ import { expandableSearchBar } from "../components/expandable_searchbar";
 document.addEventListener("turbolinks:load", () => {
   initStarRating();
   initMapbox();
-  expandable_searchbar();
+  explandableSearchBar();
   // flatpickr(".datepicker", {});
 
   // initSweetalert("#sweet-alert-demo", {
