@@ -7,7 +7,7 @@ const expandableSearchBar = () => {
     searchBox.style.width = '80%';
     searchBox.style.paddingLeft = '40px';
     searchBox.focus();
-    searchBox.setAttribute('placeholder', 'Search for items')
+    searchBox.setAttribute('placeholder', 'Search for items');
   });
 }
 
