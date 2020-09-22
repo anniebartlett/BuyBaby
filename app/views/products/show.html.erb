@@ -73,22 +73,25 @@
 </div>
 
 <div class="container my-5">
-  <h3>Reviews for <%= @product.user.nickname %>:</h3>
-  <% total_ratings = [] %>
-  <% @product.user.reviews.each do |review| %>
-    <% total_ratings << review.rating %>
-  <% end %>
-  <% if total_ratings != [] %>
-    <% average_rating = total_ratings.sum / total_ratings.size %>
-    <div class="ratings">
-      <% average_rating.times do  %>
-        <span><i class="fas fa-star"></i></span>
-      <% end %>
-      <% (5 - average_rating).times do %>
-        <span><i class="far fa-star"></i></span>
-      <% end %>
-    </div>
-  <% end %>
+  <div class="seller-info">
+    <img class="avatar" alt="avatar" src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80" />
+    <h5 style="display: inline; margin-left: 5px"> <%= @product.user.nickname %>:</h5>
+    <% total_ratings = [] %>
+    <% @product.user.reviews.each do |review| %>
+      <% total_ratings << review.rating %>
+    <% end %>
+    <% if total_ratings != [] %>
+      <% average_rating = total_ratings.sum / total_ratings.size %>
+      <div class="ratings">
+        <% average_rating.times do  %>
+          <span><i class="fas fa-star"></i></span>
+        <% end %>
+        <% (5 - average_rating).times do %>
+          <span><i class="far fa-star"></i></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
   <div class="links my-3">
     <%= link_to "View all seller reviews", user_review_path(@product.user, product:@product), class: "btn btn-primary text-white mb-1" %>
