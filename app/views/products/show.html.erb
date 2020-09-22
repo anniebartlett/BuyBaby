@@ -1,63 +1,57 @@
-<div class="container min-vh-100 mt-5 d-flex">
+<div class="container mt-5 d-flex">
   <div class="row">
     <div class="col-8">
-<!--       <div id="carouselExampleControls" class="carousel slide w-100" data-ride="carousel">
-        <div class="carousel-inner"> -->
-          <% @product.photos.each_with_index do |photo, index| %>
-            <div class="carousel-item <%= 'active' if index == 0 %>">
-              <%= cl_image_tag photo.key, height: 600, width: 600, crop: :fill, gravity: :center %>
-            </div>
-          <% end %>
-<!--         </div>
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a> -->
-      </div>
+      <% @product.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
+          <%= cl_image_tag photo.key, height: 600, width: 600, crop: :fill, gravity: :center %>
+        </div>
+      <% end %>
     </div>
-    <div class="col-4">
-      <div class="ml-3">
-        <h1><%= @product.name.capitalize %></h1>
-        <table class="mt-3" style="width:100%">
-          <tr>
-            <th><h5>Category:</h5></th>
-            <td><h5><%= @product.category.capitalize %></h5></td>
-          </tr>
-          <tr>
-            <th><h5>Description:</h5></th>
-            <td><h5><%= @product.description.capitalize %></h5></td>
-          </tr>
-          <tr>
-            <th><h5>Condition:</h5></th>
-            <td><h5><%= @product.condition.capitalize %></h5></td>
-          </tr>
-          <tr>
-            <th><h5>Size:</h5></th>
-            <td><h5><%= @product.size.capitalize %></h5></td>
-          </tr>
-          <tr>
-            <th><h5>Colour:</h5></th>
-            <td><h5><%= @product.colour.capitalize %></h5></td>
-          </tr>
-          <tr>
-            <th><h5>Address:</h5></th>
-            <td><h5><%= @product.address.capitalize %></h5></td>
-          </tr>
+  </div>
+  <div class="col-6">
+    <div class="ml-3">
+      <h1><%= @product.name.capitalize %></h1>
+      <table class="mt-3" style="width:100%">
+        <tr>
+          <th><h5>Category:</h5></th>
+          <td><h5><%= @product.category.capitalize %></h5></td>
+        </tr>
+        <tr>
+          <th><h5>Description:</h5></th>
+          <td><h5><%= @product.description.capitalize %></h5></td>
+        </tr>
+        <tr>
+          <th><h5>Condition:</h5></th>
+          <td><h5><%= @product.condition.capitalize %></h5></td>
+        </tr>
+        <tr>
+          <th><h5>Sale type:</h5></th>
+          <td><h5><%= @product.sale_type %></h5></td>
+        </tr>
+        <tr>
+          <th><h5>Size:</h5></th>
+          <td><h5><%= @product.size.capitalize %></h5></td>
+        </tr>
+        <tr>
+          <th><h5>Colour:</h5></th>
+          <td><h5><%= @product.colour.capitalize %></h5></td>
+        </tr>
+        <% if @product.price_cents > 0 %>
           <tr>
             <th><h5>Price:</h5></th>
             <td><h5>£<%= @product.price_cents %></h5></td>
           </tr>
-          <tr>
-            <th><h5>Seller:</h5></th>
-            <td><h5><%= @product.user.nickname %></h5></td>
-          </tr>
-        </table>
-        <br/>
-        <div class="links list-inline">
+        <% end %>
+        <tr>
+          <th><h5>Seller:</h5></th>
+          <td><h5><%= @product.user.nickname %></h5></td>
+        </tr>
+      </table>
+      <br/>
+      <div class="links list-inline">
+        <% if @product.user == current_user %>
+          <p><%= link_to 'Edit item', edit_product_path(@product), class: "btn btn-outline-primary ask" %></p>
+        <% else %>
           <p><%= link_to 'Ask seller', product_product_orders_path(@product), class: "btn btn-outline-primary ask" %></p>
           <p><%= link_to 'Add to basket', product_product_orders_path(@product), method: :post, class: "btn btn-primary text-white" %></p>
           <%= link_to save_item_product_path(@product), remote: true, method: :post do %>
@@ -65,11 +59,12 @@
               <%= render 'products/like_button', product: @product %>Add to favorites
             </div>
           <% end %>
-        </div>
-        <br/>
-        <p><i class="fas fa-shield-alt"></i> Be covered by BuyBaby's Buyer Protection, which includes our refund policy</p>
+        <% end %>
       </div>
+      <br/>
+      <p><i class="fas fa-shield-alt"></i> Be covered by BuyBaby's Buyer Protection, which includes our refund policy</p>
     </div>
+  </div>
     <div class="row">
       <div class="col">
         <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-primary text-white" %>
@@ -77,19 +72,30 @@
     </div>
 </div>
 
-<h3>Reviews:</h3>
-      <ul class="list-group m-3">
-        <% if @product.user.reviews.blank? %>
-        Be the first to leave a review for <%= @product.user.nickname %>
-        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
-
-        <% else %>
-        <% @product.user.reviews.each do |review| %>
-          <li class="list-group-item">"<%= review.comment %>" from <%= review.user.name %></li>
+<div class="container my-5">
+  <div class="seller-info">
+    <img class="avatar" alt="avatar" src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80" />
+    <h5 style="display: inline; margin-left: 5px"> <%= @product.user.nickname %>:</h5>
+    <% total_ratings = [] %>
+    <% @product.user.reviews.each do |review| %>
+      <% total_ratings << review.rating %>
+    <% end %>
+    <% if total_ratings != [] %>
+      <% average_rating = total_ratings.sum / total_ratings.size %>
+      <div class="ratings">
+        <% average_rating.times do  %>
+          <span><i class="fas fa-star"></i></span>
         <% end %>
-      <% end %>
-      </ul>
+        <% (5 - average_rating).times do %>
+          <span><i class="far fa-star"></i></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 
-      Leave a review for <%= @product.user.nickname %>
-        <p><%= link_to 'Add a review', new_product_review_path(@product), class: "btn btn-green mb-3" %></p>
+  <div class="links my-3">
+    <%= link_to "View all seller reviews", user_review_path(@product.user, product:@product), class: "btn btn-primary text-white mb-1" %>
+    <%= link_to "Write a seller review", new_user_review_path(@product.user, product:@product), class: "btn btn-outline-primary mb-1 ask" %>
+  </div>
+</div>
 

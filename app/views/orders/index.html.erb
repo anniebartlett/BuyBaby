@@ -1,81 +1,63 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1 class="mt-3">Your Orders</h1>
-      <p>You have
-        <% if @orders.count == 1 %>
-          <%= @orders.count %> order pending:
-        <% else %>
-          <%= @orders.count %> orders pending:
-        <% end %></p>
+      <h1 class="mt-3 text-center">Your Orders</h1>
     </div>
   </div>
-
   <div class="row">
+    <% @orders.each do |order| %>
     <div class="col mb-3">
-<% @orders.each do |order| %>
-      <div class="card shadow-none rounded-lg mb-3" style="width: 60rem; height: 20rem;">
+      <% if order.state == "completed" %>
+      <div class="card shadow-none rounded-lg mb-3" style="width: 60rem; height: auto;">
         <div class="card-header">
           Order # <%= order.id %>
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-8">
-              <h5 class="card-title">Order placed at: </h5>
+            <div class="col-12">
+              <h5>Order placed on <%= order.updated_at.strftime("%d/%m/%Y") %></h5>
+              <h5>Paid by: <span class="order-option"><%= order.payment_option %></span></h5>
+              <h5>Shipped by: <span class="order-option"><%= order.delivery_option %></span></h5>
+              <h5>Total: <span class="order-option">£<%= order.total_price %></span></h5>
+              <h5 class="my-3">Item(s) ordered:</h5>
+              <% order.products.each do |product_order| %>
               <div class="row">
-                <div class="col-4">
-                  <%= image_tag "https://via.placeholder.com/200", alt: "placeholder" %>
+                
+                <div class="col-8 mb-3 d-flex">
+                  <% product_order.photos.each_with_index do |photo, index| %>
+                  <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+                  <% end %>
+                  <div class="pl-3">
+                  <p><%= product_order.name %></p>
+                  <p ><%= product_order.description %></p>
+                  <p>£<%= product_order.price_cents %></p>
+                  </div>
                 </div>
-                <div class="col-8 d-flex flex-column">
-                  <p class="card-text">Order description</p>
-                  <p class="card-text">Order price</p>
-                  <p class="card-text">Seller name:</p>
-                  <p class="card-text">Payment info:</p>
-                  <p class="card-text">Delivery info:</p>
+                <div class="col-4 d-flex flex-column">
+                  <p class="card-text">Sold by: <%= product_order.user.nickname %></p>
+                  <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank" class="btn btn-primary text-white mb-3">Contact seller via WhatsApp</a>
+                  <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-success text-white mb-1" %>
                 </div>
+                  <div class="col-8 d-flex flex-column">
+                    <p class="card-text">Order description</p>
+                    <p class="card-text">Order total: £<%= order.total_price %></p>
+                    <p class="card-text">Seller name: <%= order.products[0].user.nickname %></p>
+                    <p class="card-text">Payment info: <%= order.payment_option %></p>
+                    <p class="card-text">Delivery info: <%= order.delivery_option %></p>
+                  </div>
               </div>
-            </div>
-            <div class="col-4 d-flex flex-column">
-              <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank" class="btn btn-primary text-white mb-1">Contact seller via WhatsApp</a>
-              <a href="#" class="btn btn-outline-success mb-1">Write a seller review</a>
+
+              <% end %>
+              
             </div>
           </div>
         </div>
         <% end %>
       </div>
-
-      <div class="card shadow-none rounded-lg mb-3" style="width: 60rem; height: 20rem;">
-        <div class="card-header">
-          Order #
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-8">
-              <h5 class="card-title">Order placed at: </h5>
-              <div class="row">
-                <div class="col-4">
-                  <%= image_tag "https://via.placeholder.com/200", alt: "placeholder" %>
-                </div>
-                <div class="col-8 d-flex flex-column">
-                  <p class="card-text">Order description</p>
-                  <p class="card-text">Order price</p>
-                  <p class="card-text">Seller name:</p>
-                  <p class="card-text">Payment info:</p>
-                  <p class="card-text">Delivery info:</p>
-                </div>
-              </div>
-            </div>
-            <div class="col-4 d-flex flex-column">
-              <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank" class="btn btn-primary text-white mb-1">Contact seller via WhatsApp</a>
-              <a href="#" class="btn btn-outline-success mb-1">Write a seller review</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
+   <% end %>
   </div>
-
-  <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-primary text-white mb-3" %>
-
+  <div class="container">
+    <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-primary text-white mb-3" %>
+  </div>
 </div>

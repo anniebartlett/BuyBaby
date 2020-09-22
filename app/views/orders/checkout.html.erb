@@ -8,7 +8,6 @@
         <span class="text-muted">Your Basket</span>
         <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
       </h4>
-      <% order_amount = 0 %>
       <% @order.product_orders.each do |item| %>
       <ul class="list-group mb-3">
         <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -16,13 +15,12 @@
             <h6 class="my-0"><%= item.product.name %></h6>
             <small class="text-muted"><%= item.product.description %></small>
           </div>
-          <% order_amount += item.product.price_cents %>
           <span class="text-muted">£<%= item.product.price_cents %></span>
         </li>
         <% end %>
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (GBP)</span>
-          <strong><h6>£<%= order_amount %></h6></strong>
+          <strong><h6>£<%= @order.total_price %></h6></strong>
         </li>
       </ul>
     </div>
@@ -47,7 +45,7 @@
         </div>
         <div class="mb-3">
           <label for="address">Address</label>
-          <input type="text" class="form-control" id="address" placeholder="Shoreditch Stables, North, 138 Kingsland Rd" required="">
+          <input type="text" class="form-control" id="address" placeholder="" required="">
           <div class="invalid-feedback">
             Please enter your shipping address.
           </div>
@@ -90,38 +88,21 @@
           <input type="checkbox" class="custom-control-input" id="save-info">
           <label class="custom-control-label" for="save-info">Save this information for next time</label>
         </div>
+        </form>
         <hr class="mb-4">
-        <h4 class="mb-3">Delivery options</h4>
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="collect" name="DeliveryOptions" type="radio" class="custom-control-input" checked="" required="">
-            <label class="custom-control-label" for="collect">Collect from seller</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="delivery" name="DeliveryOptions" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="delivery">Arrange delivery</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="pickup" name="DeliveryOptions" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="pickup">Pick up from preferred location</label>
-          </div>
+        <%= simple_form_for(@order, url: order_path(@order)) do |f| %>
+        <div class="form-group">
+          <%= f.input :delivery_option, as: :radio_buttons,
+          collection: ['Collect from Seller', 'Standard Free Delivery (3-5 days)', 'Collect from preferred location'] %>
+        </div>
+        <div class="form-group">
+          <%= f.input :payment_option, as: :radio_buttons,
+          collection: ['Debit card', 'Cash (if collect from seller)', 'Paypal'] %>
+        </div>
+        <div class="form-group">
+          <%= f.input :state, as: :hidden, input_html: { value: "completed" } %>
         </div>
         <hr class="mb-4">
-        <h4 class="mb-3">Payment</h4>
-        <div class="d-block my-3">
-          <div class="custom-control custom-radio">
-            <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-            <label class="custom-control-label" for="debit">Pay by card</label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="cash" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="cash">Pay by cash <small>(only select if collecting item)</small></label>
-          </div>
-          <div class="custom-control custom-radio">
-            <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-            <label class="custom-control-label" for="paypal">Pay by Paypal</label>
-          </div>
-        </div>
         <div class="row">
           <div class="col-md-6 mb-3">
             <label for="cc-name">Name on card</label>
@@ -156,32 +137,8 @@
           </div>
         </div>
         <hr class="mb-4">
-<button type="button" class="btn btn-primary mb-5" data-toggle="modal" data-target="#exampleModalCenter">
-  Confirm payment
-</button>
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <%= image_tag "logo.png" %>
-        <h5 class="modal-title" id="exampleModalLongTitle">Your payment was successful !</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Thank you !
-        <span>You successfully paid £<%= order_amount %></span>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <%= link_to "Check your order", order_confirmation_page_path(@order), class: "btn btn-primary"  %>
-      </div>
-    </div>
-  </div>
-</div>
-
-      </form>
+        <%= f.button :submit, 'Pay & Confirm Order', class: 'btn-lg btn-primary mb-5' %>
+        <% end %>
       </div>
     </div>
 </div>

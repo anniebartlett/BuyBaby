@@ -27,8 +27,31 @@
 
       <li class="nav-item active ml-3">
         <%= link_to products_path do %>
-          <i class="fas fa-search nav-search"></i>
-        <% end %>
+          <div class="search-contain">
+
+        <%= form_tag products_path, method: :get do %>
+          <div class="input-group">
+              <%= text_field_tag :query,
+                params[:query],
+                class: "input nav-search",
+                aria: { label: "find", describedby: "basic-addon1" }
+              %>
+              <i class="fas fa-search search-btn"></i>
+          <% end %>
+          <!-- <i class="fas fa-search search-btn"></i>
+
+            </div>
+        <input type="text" id="input" placeholder=""> -->
+      </div>
+
+
+
+
+
+
+
+<!--           <i class="fas fa-search nav-search"></i>
+ -->        <% end %>
       </li>
 
       <li>
@@ -37,9 +60,11 @@
             <%= link_to edit_order_path(current_user.orders.find_by(state:"pending")) do %>
               <i class="fas fa-shopping-cart"></i>
             <% end %>
+            <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
             <div class='badge badge-warning' id='lblCartCount'>
-              <span><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
+              <span id="cartCount"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
             </div>
+            <% end %>
           <% end %>
         <% else %>
           <%= link_to my_account_path do %>

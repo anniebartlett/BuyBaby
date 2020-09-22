@@ -7,5 +7,9 @@ class Order < ApplicationRecord
 
   monetize :amount_cents
 
+  def total_price
+   product_orders.map { |item| item.product.price_cents }.sum
+  end
+
 end
 

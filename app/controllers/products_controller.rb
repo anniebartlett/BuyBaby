@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   def home
     @products = policy_scope(Product)
-    @featured_products = @products.all.sample(4)
+    @featured_products = @products.all.sample(12)
   end
 
   def index
@@ -27,6 +27,7 @@ class ProductsController < ApplicationController
 
   def show
     @product_orders = ProductOrder.new
+    @user = current_user
     @order = Order.new
   end
 
@@ -83,6 +84,7 @@ class ProductsController < ApplicationController
       :condition,
       :size,
       :price_cents,
+      :sale_type,
       # :payment_options,
       # :deliver_option,
       photos: []

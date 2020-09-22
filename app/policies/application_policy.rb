@@ -41,8 +41,16 @@ class ApplicationPolicy
   def checkout?
     false
   end
-  
+
   def confirmation_page?
+    false
+  end
+
+  def reviews?
+    false
+  end
+
+  def sale_items?
     false
   end
 
