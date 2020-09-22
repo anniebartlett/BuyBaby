@@ -42,8 +42,22 @@ import { expandableSearchBar } from "../plugins/expandable_searchbar";
 document.addEventListener('turbolinks:load', () => {
   initStarRating();
   initMapbox();
+  initSweetalert('#sweet-alert-demo', {
+  title: "Are you sure?",
+  text: "This item will be deleted from your basket.",
+  icon: "warning"
+}, (value) => {
+  if (value) {
+    const link = document.querySelector('#delete-link');
+    link.click();
+  }
+});
+
+ // flatpickr(".datepicker", {});
+
   expandableSearchBar();
   // flatpickr(".datepicker", {});
+
 
   // initSweetalert("#sweet-alert-demo", {
   //   title: "A nice alert",
