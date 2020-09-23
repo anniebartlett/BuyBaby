@@ -25,9 +25,16 @@
         <%= link_to "Saved Items", saved_items_path, class: "nav-link" %>
       </li>
 
-      <li class="nav-item active ml-3">
-        <%= link_to products_path, class: "nav-link" do %>
-          <i class="fas fa-search"></i>
+      <li class="nav-item active">
+        <%= form_tag products_path, method: :get do %>
+          <div class="input-group">
+            <%= text_field_tag :query,
+              params[:query],
+              class: "input",
+              aria: { label: "find", describedby: "basic-addon1" }
+            %>
+            <i class="fas exp fa-search"></i>
+          </div>
         <% end %>
       </li>
 
