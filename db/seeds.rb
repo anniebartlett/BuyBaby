@@ -22,92 +22,6 @@ def create_user
   puts "Created #{user_2.name}"
 end
 
-puts 'creating products...'
-
-def manual_create
-  puts "creating manual products"
-
-  manual_toy = Product.create(
-    user_id: User.last.id,
-    name: 'Teddy Bear',
-    description: 'In good condition',
-    address: '10 Downing Street, London, SW1A 2AA',
-    condition: 'Good',
-    size: 'Medium',
-    colour: 'As per product',
-    payment_options: Product::PAYMENT_OPTIONS.sample,
-    category: 'playtime',
-    price_cents: '£10',
-    sale_type: 'Sell',
-    deliver_option: Product::DELIVERY_OPTIONS.sample
-   )
-  puts "created #{manual_toy.name}"
-
-  manual_boys_top = Product.create(
-    user_id: User.last.id,
-    name: 'Dinosaur Top',
-    description: 'In good condition',
-    address: '56 Shoreditch High St, Hackney, London E1 6JJ',
-    condition: 'Good',
-    size: 'Medium',
-    colour: 'As per product',
-    payment_options: Product::PAYMENT_OPTIONS.sample,
-    category: 'boys_clothing',
-    price_cents: '£13',
-    sale_type: 'Sell',
-    deliver_option: Product::DELIVERY_OPTIONS.sample
-   )
-  puts "created #{manual_boys_top.name}"
-
-  manual_girls_top = Product.create(
-    user_id: User.last.id,
-    name: 'Dungaree Dress',
-    description: 'In good condition',
-    address: '1 Wootton St,London SE1 8RT',
-    condition: 'Good',
-    size: 'Medium',
-    colour: 'As per product',
-    payment_options: Product::PAYMENT_OPTIONS.sample,
-    category: 'girls_clothing',
-    price_cents: '£7',
-    sale_type: 'Sell',
-    deliver_option: Product::DELIVERY_OPTIONS.sample
-   )
-  puts "created #{manual_girls_top.name}"
-
-  manual_nursery = Product.create(
-    user_id: User.last.id,
-    name: 'Wooden Crib',
-    description: 'In good condition',
-    address: '87-135 Brompton Rd, Knightsbridge, London SW1X 7XL',
-    condition: 'Good',
-    size: 'Large',
-    colour: 'As per product',
-    payment_options: Product::PAYMENT_OPTIONS.sample,
-    category: 'nursery_furniture',
-    price_cents: '£30',
-    sale_type: 'Sell',
-    deliver_option: Product::DELIVERY_OPTIONS.sample
-   )
-  puts "created #{manual_nursery.name}"
-
-  manual_pram = Product.create(
-    user_id: User.last.id,
-    name: 'Mamas & Papas Pram',
-    description: 'In good condition',
-    address: '6 Southwark St, London SE1 1TQ',
-    condition: 'Good',
-    size: 'Large',
-    colour: 'As per product',
-    payment_options: Product::PAYMENT_OPTIONS.sample,
-    category: 'pushchairs',
-    price_cents: '£80',
-    sale_type: 'Sell',
-    deliver_option: Product::DELIVERY_OPTIONS.sample
-   )
-  puts "created #{manual_pram.name}"
-end
-
 def scrape_sell_product(product)
   puts "Creating products..."
 
@@ -120,7 +34,18 @@ def scrape_sell_product(product)
       price = element.search('.productCard_price').text.strip
       img = element.search('img').attribute('data-src')&.value
 
-      address = ["138 Kingsland Road E2 8DY", "7 Boundary Street, London, E2 7JE", "54 Holywell Lane, London, E2A 3PQ", "Bankside, London, SE1 9TG", "Millbank, London, SW1P 4RG", "Berkeley Square House, London, W1J 6BR", "33 Nine Elms Lane, London, SW11 7US", "188 Regent Street, London, W1B 5BT", "7 Burlington Gardens London W1S 3ES", "22 Wapping High Street, London, E1W 1NJ", "Sloane Square, Chelsea, London SW1W 8EL",
+      address = [
+        "138 Kingsland Road E2 8DY",
+        "7 Boundary Street, London, E2 7JE",
+        "54 Holywell Lane, London, E2A 3PQ",
+        "Bankside, London, SE1 9TG",
+        "Millbank, London, SW1P 4RG",
+        "Berkeley Square House, London, W1J 6BR",
+        "33 Nine Elms Lane, London, SW11 7US",
+        "188 Regent Street, London, W1B 5BT",
+        "7 Burlington Gardens London W1S 3ES",
+        "22 Wapping High Street, London, E1W 1NJ",
+        "Sloane Square, Chelsea, London SW1W 8EL",
       ]
 
       unless img.nil? || title.nil?
@@ -135,7 +60,6 @@ def scrape_sell_product(product)
           colour: "As per product",
           payment_options: Product::PAYMENT_OPTIONS.sample,
           category: category,
-          # stripe_plan_name: "Test",
           price_cents: rand(0..20),
           sale_type: %w[Sell Swap].sample,
           deliver_option: Product::DELIVERY_OPTIONS.sample
@@ -147,21 +71,24 @@ def scrape_sell_product(product)
           products.photos.attach(io: file, filename: 'product.png', content_type: 'image/png')
           products.save!
 
-        puts "Created #{products.id} - #{products.name} #{products.address}"
+        puts "Created #{products.id} - #{products.name}, #{products.address}"
       end
     end
 end
 
-# def create_reviews
-#   reviews = Review.create(
-#     user_id: User.first.id,
-#     comment: ["Good experience with seller", "Product was in good condition and seller was great", "Would highly recommend this seller!"].sample,
-#     rating: rand(3..5),
-#     reviewer_id: user.first.id,
-#     reviewer_id: user.last.id,
-#     )
-#   reviews.save
-# end
+def create_reviews
+  20.times do
+    reviews = Review.create(
+      user_id: User.first.id,
+      comment: ["Good experience with seller", "Product was in good condition and seller was great", "Would highly recommend this seller!"].sample,
+      rating: rand(3..5),
+      reviewer_id: User.first.id,
+      reviewed_id: User.last.id,
+      )
+    reviews.save
+  puts "Created review #{reviews.id}"
+  end
+end
 
 def amend_swap_price
   @products = Product.all
@@ -177,8 +104,7 @@ scrape_sell_product(girls_clothing)
 scrape_sell_product(toys)
 scrape_sell_product(crib)
 scrape_sell_product(prams)
-# create_reviews
+create_reviews
 amend_swap_price
-manual_create
 
 puts "Finished!"

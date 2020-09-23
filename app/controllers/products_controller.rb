@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { product: product })
       }
     end
-    @featured_products = @products.all.sample(12)
+    @featured_products = @products.all.sample(8)
   end
 
   def index
