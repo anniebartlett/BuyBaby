@@ -46,6 +46,7 @@ gem 'friendly_id', '~> 5.4.0'
 gem 'nokogiri'
 gem 'acts_as_favoritor'
 gem 'fullpagejs-rails'
+gem 'kaminari'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
