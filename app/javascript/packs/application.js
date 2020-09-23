@@ -26,6 +26,7 @@ require("channels");
 // External imports
 import "bootstrap";
 import "../components/cart.js";
+import { expandableSearchBar } from "../plugins/expandable_searchbar";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
@@ -34,7 +35,6 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { expandableSearchBar } from "../plugins/expandable_searchbar";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
