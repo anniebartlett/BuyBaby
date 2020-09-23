@@ -30,6 +30,5 @@ class Product < ApplicationRecord
   validates :sale_type, presence: true, inclusion: { in: SALE_TYPE }
   # validates :payment_options, inclusion: { in: PAYMENT_OPTIONS }
   # validates :deliver_option, inclusion: { in: DELIVERY_OPTIONS }
-  # validates :stripe_plan_name, presence: true
   monetize :price_cents
 end

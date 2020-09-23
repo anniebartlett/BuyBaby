@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-
   belongs_to :user
 
   has_many :product_orders, dependent: :destroy
@@ -8,8 +7,6 @@ class Order < ApplicationRecord
   monetize :amount_cents
 
   def total_price
-   product_orders.map { |item| item.product.price_cents }.sum
+    product_orders.map { |item| item.product.price_cents }.sum
   end
-
 end
-
