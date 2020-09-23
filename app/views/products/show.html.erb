@@ -74,13 +74,18 @@
 
 <div class="container my-5">
   <div class="seller-info">
-    <img class="avatar" alt="avatar" src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80" />
-    <h5 style="display: inline; margin-left: 5px"> <%= @product.user.nickname %>:</h5>
+    <%= image_tag("sandy.jpeg", class: "avatar", alt: "avatar")%>
+<!--     <img class="avatar" alt="avatar" src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80" />
+ -->    <h5 style="display: inline; margin-left: 5px"> <%= @product.user.nickname %>:</h5>
     <% total_ratings = [] %>
     <% @product.user.reviews.each do |review| %>
       <% total_ratings << review.rating %>
     <% end %>
-    <% if total_ratings != [] %>
+    <% if total_ratings == [] %>
+        <% 5.times do %>
+          <span><i class="far fa-star"></i></span>
+        <% end %>
+    <% else %>
       <% average_rating = total_ratings.sum / total_ratings.size %>
       <div class="ratings">
         <% average_rating.times do  %>

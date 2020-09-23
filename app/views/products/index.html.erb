@@ -4,56 +4,52 @@
     <div class="text-center" style="margin-top: 50px;">
       <h1>All Products</h1>
       <h5>View the latest products on offer!</h5>
-    <div class="search-contain">
-
-        <%= form_tag products_path, method: :get do %>
-          <div class="input-group">
-              <%= text_field_tag :query,
-                params[:query],
-                class: "input",
-                aria: { label: "find", describedby: "basic-addon1" }
-              %>
-              <i class="fas fa-search search-btn"></i>
-          <% end %>
-          <!-- <i class="fas fa-search search-btn"></i>
-
-            </div>
-        <input type="text" id="input" placeholder=""> -->
-      </div>
-    </div>
 
       <div class="mt-5">
          <div class="categories d-flex">
             <div class="category mb-3">
-              <h6><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h6>
+              <h6><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links text-dark" %></h6>
             </div>
 
             <div class="category">
-              <h6><%= link_to "Boys Clothing", products_path(query: "Boys-clothing"), class: "category-links" %></h6>
+              <h6><%= link_to "Boys Clothing", products_path(query: "Boys-clothing"), class: "category-links text-dark" %></h6>
             </div>
 
             <div class="category">
-              <h6><%= link_to "Girls Clothing", products_path(query: "Girls-clothing"), class: "category-links" %></h6>
+              <h6><%= link_to "Girls Clothing", products_path(query: "Girls-clothing"), class: "category-links text-dark" %></h6>
             </div>
 
             <div class="category">
-              <h6><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links" %></h6>
+              <h6><%= link_to "Nursery", products_path(query: "Nursery"), class: "category-links text-dark" %></h6>
             </div>
 
             <div class="category">
-              <h6><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links" %></h6>
+              <h6><%= link_to "Pushchairs", products_path(query: "Pushchairs"), class: "category-links text-dark" %></h6>
             </div>
         </div>
       </div>
 
+   <!--    <div class="search-contain">
+        <%= form_tag products_path, method: :get do %>
+          <div class="input-group">
+            <%= text_field_tag :query,
+              params[:query],
+              class: "keyword",
+              aria: { label: "find", describedby: "basic-addon1" }
+            %>
+            <i class="fas nor fa-search"></i>
+          </div>
+        <% end %>
+      </div> -->
+
       <div>
          <div class="categories d-flex">
             <div class="category">
-              <h6><%= link_to "Items for swap", products_path(query: "swap"), class: "category-links" %></h6>
+              <h6><%= link_to "Items for swap", products_path(query: "swap"), class: "category-links text-success" %></h6>
             </div>
-
+           
             <div class="category">
-              <h6><%= link_to "Items for sale", products_path(query: "sell"), class: "category-links" %></h6>
+              <h6><%= link_to "Items for sale", products_path(query: "sell"), class: "category-links text-success" %></h6>
             </div>
         </div>
       </div>
@@ -66,7 +62,7 @@
 
     <div class="cards d-flex flex-wrap position-relative text-center ml-1">
       <% @products.each do |product| %>
-        <div class="card rounded-lg mb-4 mx-1" style="width: 16rem; height: 26rem;">
+        <div class="card rounded-lg mb-4 mx-1" style="width: 16rem; height: 28rem;">
           <div class="card-body">
             <%= link_to product_path(product) do %>
               <% product.photos.each_with_index do |photo, index| %>
@@ -74,9 +70,9 @@
               <% end %>
 
             <% end %>
-              <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
-              <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
-              <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+              <h5 class="card-title text-dark mt-1"><%= product.name.capitalize %></h5>
+              <p class="card-text m-0" style="font-size: 14px"><%= product.category %></p>
+              <p class="card-text m-0" style="font-size: 14px"><%= product.condition %></p>
               <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
               <% if product.price_cents > 0 %>
                 <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>

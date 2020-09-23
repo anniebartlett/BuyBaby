@@ -26,6 +26,7 @@ require("channels");
 // External imports
 import "bootstrap";
 import "../components/cart.js";
+import { expandableSearchBar } from "../plugins/expandable_searchbar";
 import { initStarRating } from "../plugins/init_star_rating";
 import { initSweetalert } from "../plugins/init_sweetalert";
 import { initMapbox } from "../plugins/init_mapbox";
@@ -34,28 +35,28 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
-import { expandableSearchBar } from "../plugins/expandable_searchbar";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
   initStarRating();
-  initMapbox();
-  initSweetalert('#sweet-alert-demo', {
-  title: "Are you sure?",
-  text: "This item will be deleted from your basket.",
-  icon: "warning"
-}, (value) => {
-  if (value) {
-    const link = document.querySelector('#delete-link');
-    link.click();
-  }
-});
-
- // flatpickr(".datepicker", {});
-
   expandableSearchBar();
+  initSweetalert('#sweet-alert-demo', {
+    title: "Are you sure?",
+    text: "This item will be deleted from your basket.",
+    icon: "warning"
+
+  }, (value) => {
+
+    if (value) {
+      const link = document.querySelector('#delete-link');
+      link.click();
+    }
+  })
+});
+  initMapbox();
+ // flatpickr(".datepicker", {});
   // flatpickr(".datepicker", {});
 
 
@@ -68,5 +69,4 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
 
   // $(".carousel").carousel();
-});
 
