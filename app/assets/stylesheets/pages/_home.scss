@@ -8,6 +8,9 @@
   letter-spacing: 5px;
 }
 
+.categories {
+  justify-content: center;
+}
 
 .btn-lg {
   margin-left: 270px;
@@ -59,15 +62,13 @@
 }
 
 
-
-
 .img-container {
   background-image: url("11332 (2).jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;
-  height: 90vh;
+  height: 70vh;
   padding: 80px 0px;
   text-align: center;
 }
@@ -98,14 +99,14 @@
 
 .card-deck {
   padding: 20px;
+  margin-bottom: 20px;
 }
 
 .card {
-  width: 28vw;
-  height: 60vh;
   overflow: hidden;
   position: relative;
   display: inline-block;
+  border-radius: 20px;
 }
 
 .card:hover {
@@ -122,8 +123,6 @@
 .card:hover .card-img {
   transform: scale(1.5);
 }
-
-
 
 .card-img-overlay {
   position: absolute;
@@ -146,11 +145,19 @@
 .card-title {
   font-size: 2em;
   font-weight: bold;
+  color: white;
+  font-family: "Helvetica";
+  border-bottom: 1px;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 .category-text {
   font-size: 1.25em;
-  margin-top: 0.25em;
+  margin-top: 0;
+  color: white;
 }
 
 // .card-image:hover {
@@ -260,14 +267,15 @@
   position: absolute;
   display: block;
   width: 60%;
-  font-size: 12px;
+  font-size: 14px;
   animation-duration: 20s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   margin-left: 250px;
   color: #4F4F5F;
   font-size: normal;
-  font-style: "Helvetica";
+  font-family: "Helvetica";
+  text-transform: uppercase;
 }
 
 .item-1{
