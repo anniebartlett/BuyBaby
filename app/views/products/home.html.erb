@@ -116,6 +116,7 @@
         </div>
     </div>
 
+
   <div class="category-headings">
     <div class="row justify-content-center">
       <div class="col-md-4">
@@ -171,24 +172,30 @@
         </div>
     </div>
 
+  <div class="divider" style="display: flex;">
+    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+      <h4 class="title mb-3 mx-2">Search local items near you:</h4>
+    <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+  </div>
+  <div class= "position-relative"
+    id="map"
+    style="width: 100%; height: 400px; left:20%;"
+    data-markers="<%= @markers.to_json %>"
+    data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+  <br>
+
   <div class="section s4 p-3">
     <div class="divider" style="display: flex;">
       <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
         <h4 class="title mb-3 mx-2">Featured Items</h4>
       <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+      <br>
     </div>
 
-  <div class = "flex-wrap justify-content-around position-relative text-center"
-   <div id="map"
-     style="width: 100%; height: 400px;"
-     data-markers="<%= @markers.to_json %>"
-     data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-     </div>
-
-
-     <div class="cards d-flex flex-wrap justify-content-around position-relative text-center ml-1">
+     <div class="cards d-flex flex-wrap position-relative justify-content-center">
       <% @featured_products.each do |product| %>
-        <div class="card rounded-lg mb-4" style="width: 16rem; height: 28rem;">
+        <div class="card rounded-lg mb-4 mx-3" style="width: 16rem; height: 28rem;">
           <div class="card-body">
             <%= link_to product_path(product) do %>
               <% product.photos.each_with_index do |photo, index| %>
@@ -212,14 +219,6 @@
           </div>
         </div>
       <% end %>
-    </div>
-  </div>
-
-  <div class="flex-wrap justify-content-around position-relative text-center">
-    <div id="map"
-      style="width: 100%; height: 400px;"
-      data-markers="<%= @markers.to_json %>"
-      data-mapbox-api-key="<%#= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
 </div>

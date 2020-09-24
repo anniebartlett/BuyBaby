@@ -4,26 +4,24 @@ class ProductsController < ApplicationController
 
   def home
     @products = policy_scope(Product)
-    @featured_products = @products.all.sample(12)
-  end
-
-  def index
-
-    if params[:query].present?
-      @products = Product.search_by_product(params[:query])
-    else
-      @products = Product.where.not(latitude: nil, longitude: nil)
-    end
-
+    @products = Product.where.not(latitude: nil, longitude: nil)
     @markers = @products.geocoded.map do |product|
-     {
+      {
         lat: product.latitude,
         lng: product.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { product: product })
-     }
-   end
+      }
+    end
+    @featured_products = @products.all.sample(8)
   end
 
+  def index
+    if params[:query].present?
+    @products = Product.search_by_product(params[:query]).page(params[:page])
+    else
+    @products = Product.page(params[:page])
+    end
+  end
 
   def show
     @product_orders = ProductOrder.new

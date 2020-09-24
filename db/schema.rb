@@ -37,12 +37,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_214601) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "chatrooms", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "favorites", force: :cascade do |t|
     t.string "favoritable_type", null: false
     t.bigint "favoritable_id", null: false
@@ -58,16 +52,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_214601) do
     t.index ["favoritor_id", "favoritor_type"], name: "fk_favorites"
     t.index ["favoritor_type", "favoritor_id"], name: "index_favorites_on_favoritor_type_and_favoritor_id"
     t.index ["scope"], name: "index_favorites_on_scope"
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.text "content"
-    t.bigint "chatroom_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -139,8 +123,6 @@ ActiveRecord::Schema.define(version: 2020_09_22_214601) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "messages", "chatrooms"
-  add_foreign_key "messages", "users"
   add_foreign_key "product_orders", "orders"
   add_foreign_key "product_orders", "products"
   add_foreign_key "products", "users"
