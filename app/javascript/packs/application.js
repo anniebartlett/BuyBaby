@@ -54,8 +54,8 @@ document.addEventListener('turbolinks:load', () => {
       link.click();
     }
   })
+   initMapbox();
 });
-  initMapbox();
  // flatpickr(".datepicker", {});
   // flatpickr(".datepicker", {});
 

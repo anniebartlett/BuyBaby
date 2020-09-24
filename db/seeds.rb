@@ -35,17 +35,25 @@ def scrape_sell_product(product)
       img = element.search('img').attribute('data-src')&.value
 
       address = [
-        "138 Kingsland Road E2 8DY",
-        "7 Boundary Street, London, E2 7JE",
-        "54 Holywell Lane, London, E2A 3PQ",
-        "Bankside, London, SE1 9TG",
-        "Millbank, London, SW1P 4RG",
-        "Berkeley Square House, London, W1J 6BR",
-        "33 Nine Elms Lane, London, SW11 7US",
-        "188 Regent Street, London, W1B 5BT",
-        "7 Burlington Gardens London W1S 3ES",
-        "22 Wapping High Street, London, E1W 1NJ",
-        "Sloane Square, Chelsea, London SW1W 8EL",
+        "82a Jerningham Road, London, SE14 5NW",
+        "156 Lewisham High Street, London, SE13 6LG",
+        "4 Clarendon Rise, London, SE13 5ES",
+        "144 Lee High Road, Lonsdon, SE13 5PR",
+        "Lee Terrace, London, SE13 5DL",
+        "10A Wisteria Road, London, SE13 5HN",
+        "292 Lewisham High Street, London, SE13 6JZ",
+        "47 Vicars Hill, London, SE13 7JN",
+        "172 Adelaide Avenue, London, SE4 1JN",
+        "81 Tressillian Road, London, SE4 1XZ",
+        "12 Montague Avenue, London, SE4 1YP",
+        "54 Campshill Road, London, SE13 6QT",
+        "55 Ermine Road, London, SE13 7JJ",
+        "122 Marsala Road, London, SE13 7AF",
+        "267 Broadway, London, DA6 8DB",
+        "123 Mayday Gardens, London, SE3 8NP",
+        "64 Blackfen Road, Lonsdon, DA15 8SW",
+        "7 Newmarket Green, London, SE9 5ER",
+        "117 Burnt Ash Hill, London, SE12 0AJ",
       ]
 
       unless img.nil? || title.nil?
