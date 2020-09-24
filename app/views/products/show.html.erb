@@ -70,31 +70,32 @@
 <div class="container">
   <div class="seller-info">
     <%= image_tag("sandy.jpeg", class: "avatar", alt: "avatar")%>
-    <h5 style="display: inline; margin-left: 5px"> <%= @product.user.nickname %>:</h5>
-    <% total_ratings = [] %>
-    <% @product.user.reviews.each do |review| %>
-      <% total_ratings << review.rating %>
-    <% end %>
-    <% if total_ratings == [] %>
-        <% 5.times do %>
-          <span><i class="far fa-star"></i></span>
-        <% end %>
-    <% else %>
-      <% average_rating = total_ratings.sum / total_ratings.size %>
-      <div class="ratings">
-        <% average_rating.times do  %>
-          <span><i class="fas fa-star"></i></span>
-        <% end %>
-        <% (5 - average_rating).times do %>
-          <span><i class="far fa-star"></i></span>
-        <% end %>
-      </div>
-    <% end %>
+    <h5 style="display: inline; margin-left: 10px"> <%= @product.user.nickname %></h5>
+    <div class="col-2 d-flex justify-content-end">
+      <% total_ratings = [] %>
+      <% @product.user.reviews.each do |review| %>
+        <% total_ratings << review.rating %>
+      <% end %>
+      <% if total_ratings == [] %>
+          <% 5.times do %>
+            <span><i class="far fa-star"></i></span>
+          <% end %>
+      <% else %>
+        <% average_rating = total_ratings.sum / total_ratings.size %>
+        <div class="ratings">
+          <% average_rating.times do  %>
+            <span><i class="fas fa-star"></i></span>
+          <% end %>
+          <% (5 - average_rating).times do %>
+            <span><i class="far fa-star"></i></span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="links my-3">
     <%= link_to "View all seller reviews", user_review_path(@product.user, product:@product), class: "btn btn-primary text-white mb-1" %>
-    <%= link_to "Write a seller review", new_user_review_path(@product.user, product:@product), class: "btn btn-outline-primary mb-1 ask" %>
   </div>
 </div>
 
