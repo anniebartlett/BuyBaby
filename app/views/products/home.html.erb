@@ -92,7 +92,7 @@
         <div class="card text-white">
           <%= image_tag('toys.jpg', class: 'card-img', alt: 'Card image')%>
           <%= link_to products_path(query: "Playtime"), class: "card-img-overlay" do %>
-            <h5 class="card-title">Toys</h5>
+            <h5 class="card-title category-card-title">Toys</h5>
             <p class="card-text category-text">Playtime & Fun</p>
           <% end %>
         </div>
@@ -100,7 +100,7 @@
         <div class="card text-white" style="height:23rem; width:23rem;">
           <%= image_tag('nursery1.jpeg', class: 'card-img', alt: "Card image") %>
           <%= link_to products_path(query: "Nursery"), class: "card-img-overlay" do %>
-            <h5 class="card-title">Nursery</h5>
+            <h5 class="card-title category-card-title">Nursery</h5>
             <p class="card-text category-text">For your home</p>
           <% end %>
         </div>
@@ -109,7 +109,7 @@
         <div class="card text-white" style="height:23rem; width:23rem;">
           <%= image_tag('pushchair_forest.jpg', class: 'card-img', alt: "Card image") %>
           <%= link_to products_path(query: "Pushchairs"), class: "card-img-overlay" do %>
-            <h5 class="card-title">Pushchair</h5>
+            <h5 class="card-title category-card-title">Pushchair</h5>
             <p class="card-text category-text">Enjoy the outdoors</p>
           <% end %>
         </div>
@@ -148,7 +148,7 @@
         <div class="card text-white">
           <%= image_tag('sale.jpg', class: 'card-img', alt: 'Card image') %>
           <%= link_to products_path(query: "sell"), class: "card-img-overlay" do %>
-            <h5 class="card-title">Sale</h5>
+            <h5 class="card-title category-card-title">Sale</h5>
             <p class="card-text category-text">Up to 50% off</p>
           <% end %>
         </div>
@@ -156,7 +156,7 @@
         <div class="card text-white" style="height:23rem; width:23rem;">
           <%= image_tag('new arrivals.jpg', class: 'card-img', alt: 'Card image')  %>
           <%= link_to products_path, class: "card-img-overlay" do %>
-            <h5 class="card-title">New arrivals</h5>
+            <h5 class="card-title category-card-title">New arrivals</h5>
             <p class="card-text category-text">Discover more</p>
           <% end %>
         </div>
@@ -165,7 +165,7 @@
         <div class="card text-white" style="height:23rem; width:23rem;">
           <%= image_tag('swap.jpg', class: 'card-img', alt: 'Card image') %>
           <%= link_to products_path(query: "swap"), class: "card-img-overlay" do %>
-            <h5 class="card-title">Swap</h5>
+            <h5 class="card-title category-card-title">Swap</h5>
             <p class="card-text category-text">Preloved items</p>
           <% end %>
         </div>
@@ -220,4 +220,5 @@
       <% end %>
     </div>
   </div>
+
 </div>

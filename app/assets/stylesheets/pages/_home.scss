@@ -142,7 +142,7 @@
   transform: scale(1.5);
 }
 
-.card-title {
+.category-card-title {
   font-size: 2em;
   font-weight: bold;
   color: white;
@@ -158,6 +158,10 @@ a:link {
   font-size: 1.25em;
   margin-top: 0;
   color: white;
+}
+
+.card-product {
+  font-size: 10px;
 }
 
 // .card-image:hover {
