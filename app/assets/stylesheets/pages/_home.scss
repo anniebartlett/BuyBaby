@@ -8,46 +8,27 @@
   letter-spacing: 5px;
 }
 
-.buybaby-text {
-  margin-left: 280px;
-  margin-top: 70px;
-  margin-bottom: -20px;
-}
-
-.tagline {
-  margin-left: 280px;
-}
 
 .btn-lg {
   margin-left: 270px;
 }
 
-.title-1 {
-  display: inline-block;
-  color: #98dbeb;
-}
-
-.title-2 {
-  display: inline-block;
-  color: #ffafaf;
-}
-
-.title-3 {
-  display: inline-block;
-  color: #ffc200;
-}
-
 .logo {
   cursor: pointer;
-  animation: bounce 3s linear;
   display: block;
   margin-bottom: 10px;
   margin-left: 20px;
   margin-right: 20px;
+
+  -webkit-animation: bounce 3s infinite ease-in-out;
+    -o-animation: bounce 3s infinite ease-in-out;
+    -ms-animation: bounce 3s infinite ease-in-out;
+    -moz-animation: bounce 3s infinite ease-in-out;
+    animation: bounce 3s infinite ease-in-out;
 }
 
 .logo:hover {
-  animation: bounce 5s infinite;
+  animation: bounce 8s infinite;
 }
 
 .animated-logo {
@@ -58,6 +39,17 @@
    margin: 10px 0 20px;
 }
 
+@-webkit-keyframes bounce {
+    0% { transform: translateY(-5px)  }
+    50% { transform: translateY(10px) }
+    100% { transform: translateY(-5px) }
+}
+
+@keyframes bounce {
+    0% { transform: translateY(-5px)  }
+    50% { transform: translateY(10px) }
+    100% { transform: translateY(-5px) }
+}
 .divider {
   background-image: white;
   display: flex;
@@ -68,23 +60,6 @@
 
 
 
-@keyframes bounce {
-  20%,
-  50%,
-  80%,
-  to {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-30px);
-  }
-  70% {
-    transform: translateY(-30px);
-  }
-  90% {
-    transform: translateY(-4px);
-  }
-}
 
 .img-container {
   background-image: url("11332 (2).jpg");
@@ -121,22 +96,8 @@
   object-fit: cover;
 }
 
-.card-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 1.5s ease;
-  display: block;
-}
-
-.card-image:hover {
-  transform: scale(1.5);
-}
-
-.card-columns {
-  margin-left: 20px;
-  margin-right: 20px;
-  padding: 40px;
+.card-deck {
+  padding: 20px;
 }
 
 .card {
@@ -147,39 +108,91 @@
   display: inline-block;
 }
 
-.overlay {
-  position: absolute;
-  transition: all .3s ease;
-  opacity: 1;
+.card:hover {
+  width: 100%;
 }
-
-.card:hover .overlayFade .text{
-  opacity: 1;
-}
-
-.overlayFade {
+.card-img {
+  width: 100%;
   height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s ease;
 }
 
-.card:hover .overlayFade{
-  width: 100%;
-  background-color: transparent;
+.card:hover .card-img {
   transform: scale(1.5);
 }
 
 
-.text {
-  color: white;
+
+.card-img-overlay {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   opacity: 0;
+  transition: transform .2s;
 }
+
+.card-img-overlay:hover {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+.card-title {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+}
+
+// .card-image:hover {
+//   transform: scale(1.5);
+// }
+
+// .card-columns {
+//   margin-left: 20px;
+//   margin-right: 20px;
+//   padding: 40px;
+// }
+
+
+
+// .card:hover .overlayFade .image__title {
+//   opacity: 1;
+//   transition: all .3s ease;
+// }
+
+// .overlayFade {
+//   background: rgba(0, 0, 0, 0.6);
+//   height: 100%;
+//   width: 100%;
+//   top: 0;
+//   left: 0;
+// }
+
+// .card:hover .overlayFade{
+//   width: 100%;
+//   transform: scale(1.5);
+// }
+
+
+// .image__title {
+//   position: absolute;
+//   color: white;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   font-size: 20px;
+//   opacity: 0;
+// }
 
 .s2 {
   background-color: white;
@@ -222,14 +235,15 @@
   text-align: center;
 }
 
-.categories {
-  display: flex;
-  justify-content: center;
-  margin: 0 -30px;
-}
+// .categories {
+//   display: flex;
+//   justify-content: center;
+//   margin-top: 30px;
+// }
 
 .category {
   margin: 0 30px;
+  font-size: normal;
 }
 
 .fillwidth {
@@ -251,6 +265,9 @@
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   margin-left: 250px;
+  color: #4F4F5F;
+  font-size: normal;
+  font-style: "Helvetica";
 }
 
 .item-1{
