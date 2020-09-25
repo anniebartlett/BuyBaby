@@ -9,47 +9,47 @@
     <div class="col mb-3">
       <% if order.state == "completed" %>
       <div class="card shadow-none rounded-lg mb-3" style="width: 60rem; height: auto;">
-         <div class="card-header">
-          <div class="d-flex justify-content-between">
-          <p style="color:rgb(168,168,168);">Order date</p>
-          <p style="color:#343a40;"><%= order.updated_at.strftime("%d/%m/%Y") %></p>
+         <div class="card-header bg-transparent">
+          <div class="d-flex justify-content-between" style="color:#343a40;">
+          <h6>Order date</h6>
+          <h6><%= order.updated_at.strftime("%d/%m/%Y") %></h6>
           </div>
-          <div class="d-flex justify-content-between">
-            <p style="color:rgb(168,168,168);">Order #</p>
-            <p style="color:#343a40;"><%= order.id %></p>
+          <div class="d-flex justify-content-between" style="color:#343a40;">
+            <h6>Order #</h6>
+            <h6><%= order.id %></h6>
           </div>
-          <div class="d-flex justify-content-between">
-            <p style="color:rgb(168,168,168);">Order total</p>
-            <p style="color:#343a40;">£<%= order.total_price %> (<%= order.products.count%> items)</p>
+          <div class="d-flex justify-content-between" style="color:#343a40;">
+            <h6>Order total</h6>
+            <h6>£<%= order.total_price %> (<%= order.products.count%> items)</h6>
           </div>
-          <div class="d-flex justify-content-between">
-            <p style="color:rgb(168,168,168);">Paid by:</p>
-            <p style="color:#343a40;"><%= order.payment_option %></p>
+          <div class="d-flex justify-content-between" style="color:#343a40;">
+            <h6>Paid by:</h6>
+            <h6><%= order.payment_option %></h6>
           </div>
-          <div class="d-flex justify-content-between">
-            <p style="color:rgb(168,168,168);">Shipped by:</p>
-            <p style="color:#343a40;"><%= order.delivery_option %></p>
+          <div class="d-flex justify-content-between" style="color:#343a40;">
+            <h6>Shipped by:</h6>
+            <h6><%= order.delivery_option %></h6>
           </div>
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-12">
+            <div class="col">
               <p style="color:#237480;">Sold by: <%= order.products.first.user.nickname %></p>
               <p style="color:#237480;">Contact Seller: <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank"><i class="fab fa-whatsapp"></i></a></p>
                <%= link_to "Write a review", new_user_review_path(order.products.first.user), class: "btn btn-success text-white mb-1" %>
               <p class="my-3">Item(s) ordered:</p>
               <% order.products.each do |product_order| %>
               <div class="row">
-                <div class="col-8 mb-3 d-flex">
+                <div class="col-8 mb-3 d-flex align-items-center">
                   <% product_order.photos.each_with_index do |photo, index| %>
-                  <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
+                  <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill, gravity: :center %>
                   <% end %>
                   <div class="pl-3">
-                    <p><%= product_order.name %></p>
-                    <p>Price: £<%= product_order.price_cents %></p>
-                    <p>Description: <%= product_order.description %></p>
-                    <p>Condition: <%= product_order.condition %></p>
-                    <p>Sell Type: <%= product_order.sale_type %></p>
+                    <p class="my-0"><%= product_order.name %></p>
+                    <p class="my-0">Price: £<%= product_order.price_cents %></p>
+                    <p class="my-0">Description: <%= product_order.description %></p>
+                    <p class="my-0">Condition: <%= product_order.condition %></p>
+                    <p class="my-0">Sell Type: <%= product_order.sale_type %></p>
                   </div>
                 </div>
               </div>
