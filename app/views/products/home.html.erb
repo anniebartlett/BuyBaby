@@ -1,5 +1,5 @@
 <div class="container-main text-center m-3">
-   <div class="categories d-flex justify-content-center">
+  <div class="categories d-flex justify-content-center">
       <div class="category mb-2">
         <h5><%= link_to "Toys", products_path(query: "Playtime"), class: "category-links" %></h5>
       </div>
@@ -29,30 +29,60 @@
 
   <br>
 
-  <div class="container-carousel mb-3">
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+
+  <div class="col-sm-9 car-col">
+    <div id="buybaby" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#buybaby" data-slide-to="0" class="active"></li>
+        <li data-target="#buybaby" data-slide-to="1"></li>
+        <li data-target="#buybaby" data-slide-to="2"></li>
       </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <%= image_tag("babyplaying.jpg", class: "d-block homepage-image" )%>
+        <%= image_tag("babyplaying_resized.png", class: "d-block carousel-img" )%>
+        <div class="container">
+          <div class="carousel-caption text-left">
+            <h1 class="carousel-heading">New arrivals</h1>
+            <p>Check out our new finds this week!</p>
+            <p>
+              <a href="#" class="btn btn-sm btn-primary">View Items</a>
+            </p>
+          </div>
+        </div>
       </div>
 
       <div class="carousel-item">
-        <%= image_tag("cot.jpg", class: "d-block homepage-image" )%>
+        <%= image_tag("cot2_medium.jpg", class: "d-block carousel-img" )%>
+         <div class="container">
+           <div class="carousel-caption text-left">
+              <h1 class="carousel-heading">Sale items</h1>
+              <p>Bargains you will love</p>
+              <p>
+                <a href="#" class="btn btn-sm btn-primary">Go to sale</a>
+              </p>
+           </div>
+        </div>
       </div>
 
       <div class="carousel-item">
-        <%= image_tag("nursery1.jpeg", class: "d-block homepage-image" )%>
+        <%= image_tag("nursery_resized.png", class: "d-block carousel-img" )%>
+         <div class="container">
+           <div class="carousel-caption text-left">
+              <h1 class="carousel-heading">Swap & save</h1>
+              <p>Preloved items you don't want to miss!</p>
+              <p>
+                <a href="#" class="btn btn-sm btn-primary">Swap today</a>
+              </p>
+           </div>
+        </div>
       </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+
+      <a class="carousel-control-prev" href="#buybaby" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
       </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+
+      <a class="carousel-control-next" href="#buybaby" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
@@ -61,114 +91,114 @@
   </div>
 
 
+
   <div class="divider" style="display: flex;">
     <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 40px;">
       <%= image_tag("logo.png", width: "90px", height: "90px", class: "logo" )%>
     <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 40px;">
   </div>
 
+   <div class="category-headings">
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <div class="divider text-center">
-          <h3 class="mx-2">Toys</h3>
+        <div class="divider" style="margin: 0 auto">
+            <h3 class="mx-2">Toys</h3>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="divider text-center">
-          <h3 class="mx-2">Nursery</h3>
+        <div class="divider" style="margin: 0 auto">
+            <h3 class="mx-2">Nursery</h3>
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="divider text-center">
-          <h3 class="mx-2">Pushchairs</h3>
+        <div class="divider" style="margin: 0 auto">
+            <h3 class="mx-2">Pushchairs</h3>
         </div>
       </div>
     </div>
+  </div>
+
+    <div class="category-cards">
+      <div class="card-deck">
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('toys.jpg', class: 'card-img', alt: 'Card image')%>
+            <%= link_to products_path(query: "Playtime"), class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">Toys</h5>
+              <p class="card-text category-text">Playtime & Fun</p>
+            <% end %>
+          </div>
+
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('nursery1.jpeg', class: 'card-img', alt: "Card image") %>
+            <%= link_to products_path(query: "Nursery"), class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">Nursery</h5>
+              <p class="card-text category-text">For your home</p>
+            <% end %>
+          </div>
 
 
-    <div class="card-deck">
-        <div class="card text-white">
-          <%= image_tag('toys.jpg', class: 'card-img', alt: 'Card image')%>
-          <%= link_to products_path(query: "Playtime"), class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">Toys</h5>
-            <p class="card-text category-text">Playtime & Fun</p>
-          <% end %>
-        </div>
-
-        <div class="card text-white" style="height:23rem; width:23rem;">
-          <%= image_tag('nursery1.jpeg', class: 'card-img', alt: "Card image") %>
-          <%= link_to products_path(query: "Nursery"), class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">Nursery</h5>
-            <p class="card-text category-text">For your home</p>
-          <% end %>
-        </div>
-
-
-        <div class="card text-white" style="height:23rem; width:23rem;">
-          <%= image_tag('pushchair_forest.jpg', class: 'card-img', alt: "Card image") %>
-          <%= link_to products_path(query: "Pushchairs"), class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">Pushchair</h5>
-            <p class="card-text category-text">Enjoy the outdoors</p>
-          <% end %>
-        </div>
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('pushchair_forest.jpg', class: 'card-img', alt: "Card image") %>
+            <%= link_to products_path(query: "Pushchairs"), class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">Pushchair</h5>
+              <p class="card-text category-text">Enjoy the outdoors</p>
+            <% end %>
+          </div>
+      </div>
     </div>
 
 
   <div class="category-headings">
     <div class="row justify-content-center">
       <div class="col-md-4">
-        <div class="divider" style="display: flex;">
-          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+        <div class="divider" style="margin: 0 auto">
             <h3 class="mx-2">Sale</h3>
-          <hr style="width: 30%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="divider" style="display: flex;">
-          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+        <div class="divider" style="margin: 0 auto">
             <h3 class="mx-2">New in</h3>
-          <hr style="width: 30%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
         </div>
       </div>
 
       <div class="col-md-4">
-        <div class="divider" style="display: flex;">
-          <hr style="width: 28%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
+        <div class="divider" style="margin: 0 auto">
             <h3 class="mx-2">Swap</h3>
-          <hr style="width: 30%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
         </div>
       </div>
     </div>
   </div>
 
-  <div class="card-deck">
-        <div class="card text-white">
-          <%= image_tag('sale.jpg', class: 'card-img', alt: 'Card image') %>
-          <%= link_to products_path(query: "sell"), class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">Sale</h5>
-            <p class="card-text category-text">Up to 50% off</p>
-          <% end %>
-        </div>
+  <div class="category-cards">
+    <div class="card-deck">
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('sale.jpg', class: 'card-img', alt: 'Card image') %>
+            <%= link_to products_path(query: "sell"), class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">Sale</h5>
+              <p class="card-text category-text">Up to 50% off</p>
+            <% end %>
+          </div>
 
-        <div class="card text-white" style="height:23rem; width:23rem;">
-          <%= image_tag('new arrivals.jpg', class: 'card-img', alt: 'Card image')  %>
-          <%= link_to products_path, class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">New arrivals</h5>
-            <p class="card-text category-text">Discover more</p>
-          <% end %>
-        </div>
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('new arrivals.jpg', class: 'card-img', alt: 'Card image')  %>
+            <%= link_to products_path, class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">New arrivals</h5>
+              <p class="card-text category-text">Discover more</p>
+            <% end %>
+          </div>
 
 
-        <div class="card text-white" style="height:23rem; width:23rem;">
-          <%= image_tag('swap.jpg', class: 'card-img', alt: 'Card image') %>
-          <%= link_to products_path(query: "swap"), class: "card-img-overlay" do %>
-            <h5 class="card-title category-card-title">Swap</h5>
-            <p class="card-text category-text">Preloved items</p>
-          <% end %>
-        </div>
+          <div class="card text-white" style="height:16rem; width:16rem;">
+            <%= image_tag('swap.jpg', class: 'card-img', alt: 'Card image') %>
+            <%= link_to products_path(query: "swap"), class: "card-img-overlay" do %>
+              <h5 class="card-title category-card-title">Swap</h5>
+              <p class="card-text category-text">Preloved items</p>
+            <% end %>
+          </div>
+      </div>
     </div>
 
   <div class="divider" style="display: flex;">
@@ -176,6 +206,7 @@
       <h4 class="title mb-3 mx-2">Search local items near you:</h4>
     <hr style="width:32%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
   </div>
+
   <div class= "position-relative"
     id="map"
     style="width: 100%; height: 400px; left:20%;"
@@ -185,7 +216,7 @@
   <br>
 
   <div class="section s4 p-3">
-    <div class="divider" style="display: flex;">
+    <div class="divider" style="display: flex; margin-bottom: 25px;">
       <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
         <h4 class="title mb-3 mx-2">Featured Items</h4>
       <hr style="width:40%;text-align:left;margin-left:0;margin-right:0;margin-top: 15px;">
@@ -220,5 +251,4 @@
       <% end %>
     </div>
   </div>
-
 </div>

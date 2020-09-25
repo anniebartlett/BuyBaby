@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .container-main {
-  padding: px;
+  padding: 20px;
 }
 .inner-container h1 {
   font-size: 8.5rem;
@@ -62,22 +62,53 @@
 }
 
 
-.img-container {
-  background-image: url("11332 (2).jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: bottom;
-  height: 70vh;
-  padding: 80px 0px;
-  text-align: center;
+// .container {
+//   width: 60vw;
+// }
+.car-col {
+  margin: 0 auto;
 }
 
-.container-carousel {
-  background-color: #999;
-  height: auto;
-  width: 80vw;
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+
+.carousel-item {
+  color: black;
+  height: 400px;
+  bottom: 20px;
+  padding-bottom: 50px;
   margin: 0 auto;
+}
+
+.carousel-caption {
+  color: #237480;
+}
+.carousel-heading {
+  margin-bottom: 30px;
+}
+
+.carousel-caption > p {
+  margin-bottom: 2rem;
+}
+
+.carousel-heading {
+  margin-bottom: 1rem;
+}
+.btn {
+  margin-left: 0;
+  width: 100px;
+  border-radius: 5px;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: contain;
 }
 
 .carousel-indicators {
@@ -89,12 +120,6 @@
     text-align: center;
     list-style: none;
     position: absolute;
-}
-
-.homepage-image {
-  height: 100%;
-  width: 80vw;
-  object-fit: cover;
 }
 
 .card-deck {
@@ -162,6 +187,11 @@ a:link {
 
 .card-product {
   font-size: 10px;
+}
+
+.category-cards {
+  width: 90vw;
+  margin: 0 auto;
 }
 
 // .card-image:hover {
