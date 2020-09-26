@@ -19,7 +19,7 @@
             <h6><%= order.id %></h6>
           </div>
           <div class="d-flex justify-content-between" style="color:#343a40;">
-            <h6>Order total</h6>
+            <h6>Order total: </h6>
             <h6>£<%= order.total_price %> (<%= order.products.count%> items)</h6>
           </div>
           <div class="d-flex justify-content-between" style="color:#343a40;">
@@ -32,15 +32,13 @@
           </div>
         </div>
         <div class="card-body">
-          <div class="row">
+          <div class="row d-flex flex-wrap">
             <div class="col">
-              <p style="color:#237480;">Sold by: <%= order.products.first.user.nickname %></p>
-              <p style="color:#237480;">Contact Seller: <a href="https://wa.me/447731957278?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank"><i class="fab fa-whatsapp"></i></a></p>
-               <%= link_to "Write a review", new_user_review_path(order.products.first.user), class: "btn btn-success text-white mb-1" %>
-              <p class="my-3">Item(s) ordered:</p>
+              <h5 style="color:#237480;">SOLD BY: <%= order.products.first.user.nickname %></h5>
+              <h5 style="color:#237480;">CONTACT SELLER: <a href="https://wa.me/447731957278?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank"><i class="fab fa-whatsapp"></i></a></h5>
               <% order.products.each do |product_order| %>
-              <div class="row">
-                <div class="col-8 mb-3 d-flex align-items-center">
+              <div class="row mt-3">
+                <div class="col-9 mb-3 d-flex align-items-center">
                   <% product_order.photos.each_with_index do |photo, index| %>
                   <%= cl_image_tag photo.key, height: 150, width: 150, crop: :fill, gravity: :center %>
                   <% end %>
@@ -48,7 +46,7 @@
                     <p class="my-0"><%= product_order.name %></p>
                     <p class="my-0">Price: £<%= product_order.price_cents %></p>
                     <p class="my-0">Sell Type: <%= product_order.sale_type %></p>
-                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-warning text-white mb-1 mt-3" %>
+                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-secondary text-white mb-1 mt-3" %>
                   </div>
                 </div>
               </div>
