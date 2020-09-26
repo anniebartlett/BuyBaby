@@ -6,9 +6,9 @@
   </div>
   <h5>Hi <%= @order.user.name.capitalize %>!</h5>
   <% if @order.product_orders.count == 0 || @order.product_orders.count == 1 %>
-  <h5>You have <%= @order.product_orders.count %> item in your basket. </h5>
+  <h5>You have <%= @order.product_orders.count %> item in your basket</h5>
   <% else %>
-  <h5>You have <%= @order.product_orders.count %> items in your basket. </h5>
+  <h5>You have <%= @order.product_orders.count %> items in your basket</h5>
 <% end %>
   <div class="card-body mt-5">
     <div class="row align-items-center">
@@ -43,10 +43,8 @@
     </div>
     <div class="card-footer d-flex justify-content-between mt-3">
       <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
-
       <div>
-        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
-        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
+        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-warning text-white" %>
       </div>
       <span><h5 id="price-total">Total: £<%= @order.total_price %></h5></span>
     </div>
