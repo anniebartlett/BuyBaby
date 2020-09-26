@@ -4,28 +4,30 @@
   </div>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your Basket</span>
-        <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
-      </h4>
-      <% @order.product_orders.each do |item| %>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <% item.product.photos.each_with_index do |photo, index| %>
-            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, gravity: :center %>
+      <div class="sticky-basket">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your Basket</span>
+          <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
+        </h4>
+        <% @order.product_orders.each do |item| %>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <% item.product.photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, gravity: :center %>
+            <% end %>
+            <div class="pl-1">
+              <h6 class="my-0"><%= item.product.name %></h6>
+              <small class="text-muted"><%= item.product.description %></small>
+            </div>
+            <span class="text-muted">£<%= item.product.price_cents %></span>
+          </li>
           <% end %>
-          <div class="pl-1">
-            <h6 class="my-0"><%= item.product.name %></h6>
-            <small class="text-muted"><%= item.product.description %></small>
-          </div>
-          <span class="text-muted">£<%= item.product.price_cents %></span>
-        </li>
-        <% end %>
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (GBP)</span>
-          <strong><h6>£<%= @order.total_price %></h6></strong>
-        </li>
-      </ul>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (GBP)</span>
+            <strong><h6>£<%= @order.total_price %></h6></strong>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
