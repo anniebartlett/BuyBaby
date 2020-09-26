@@ -40,7 +40,11 @@
               <h5 class="card-title text-dark mt-1"><%= product.name.capitalize %></h5>
               <p class="card-text m-0" style="font-size: 14px"><%= product.category %></p>
               <p class="card-text m-0" style="font-size: 14px"><%= product.condition %></p>
-              <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% if product.sale_type == "Swap" %>
+                <p class="card-text m-0 pink-text" style="font-size: 14px"><%= product.sale_type %></p>
+              <% else %>
+                <p class="card-text m-0 yellow-text" style="font-size: 14px">Buy</p>
+              <% end %>
               <% if product.price_cents > 0 %>
                 <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
               <% end %>

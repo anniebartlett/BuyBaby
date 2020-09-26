@@ -22,7 +22,11 @@
         <div class="col-12 col-sm-12 col-md-5 text-sm-center text-md-left ">
           <h5><%= item.product.name %></h5>
           <p><%= item.product.description %></p>
-          <p>Sale type: <%= item.product.sale_type %></p>
+          <% if item.product.sale_type == "Swap" %>
+                <p class="pink-text">Sale type: <%= item.product.sale_type %></p>
+              <% else %>
+                <p class="yellow-text">Sale type: <%= item.product.sale_type %></p>
+              <% end %>
         </div>
         <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row justify-content-between">
           <div class="col-3 col-sm-3 col-md-6 text-md-right">
