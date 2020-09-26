@@ -26,7 +26,7 @@
               <h1 class="carousel-heading caption-1">New arrivals</h1>
               <p class="caption-1" style="font-size: 20px;">Check out our new finds this week!</p>
               <p>
-                <a href="#" class="btn btn-warning text-white">View Items</a>
+                <%= link_to "View Items", products_path, class: "btn btn-warning text-white"%>
               </p>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 <h1 class="carousel-heading caption-2">Sale items</h1>
                 <p class="caption-2" style="font-size: 20px;">Bargains you will love</p>
                 <p>
-                  <a href="#" class="btn btn-danger text-white">Go to sale</a>
+                  <%= link_to "View Sales", products_path(query: "sell"), class: "btn btn-danger text-white"%>
                 </p>
              </div>
         </div>
@@ -46,7 +46,7 @@
                 <h1 class="carousel-heading caption-3">Swap & save</h1>
                 <p class="caption-3" style="font-size: 20px;">Preloved items you don't want to miss!</p>
                 <p>
-                  <a href="#" class="btn btn-success text-white">Swap today</a>
+                   <%= link_to "View Swaps", products_path(query: "swap"), class: "btn btn-successs text-white"%>
                 </p>
              </div>
         </div>
@@ -203,7 +203,11 @@
               <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
               <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
               <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
-              <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% if product.sale_type == "Swap" %>
+                <p class="card-text m-0 pink-text" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% else %>
+                <p class="card-text m-0 yellow-text" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+              <% end %>
               <% if product.price_cents > 0 %>
                 <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
               <% end %>
