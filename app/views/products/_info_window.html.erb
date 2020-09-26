@@ -7,9 +7,4 @@
   <% end %>
   <a href= "<%= product_path(product) %>">
   <h5><%= product.name %></h5>
-   <% if product.sale_type == "Swap" %>
-    <p class="pink-text" style="font-size: 16px">Sale type: <%= product.sale_type %></p>
-   <% else %>
-    <p class="yellow-text" style="font-size: 16px">Sale type: Buy </p>
-   <% end %>
 </div>
