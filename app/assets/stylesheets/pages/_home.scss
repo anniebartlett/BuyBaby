@@ -165,9 +165,6 @@ a:link {
 //   opacity: 0;
 // }
 
-.s2 {
-  background-color: white;
-}
 
 .descriptive-boxes {
   display: flex;
@@ -228,6 +225,7 @@ a:link {
   animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+  text-align: center;
 }
 
 .center {
