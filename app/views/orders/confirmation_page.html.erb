@@ -1,6 +1,6 @@
-<div class="container text-center">
-  <div class="row">
-    <div class="col-8 mt-5 text-center">
+<div class="container text-center ">
+  <div class="row d-flex justify-content-center">
+    <div class="col-12 mt-5 text-center">
       <h1 class="main mb-3">Thank you for your order!</h1>
       <h4>Order ref # <%= @order.id %></h4>
       <h4>Delivered via: <span class="order-option"><%= @order.delivery_option %></span></h4>
@@ -8,7 +8,8 @@
       <h4>A confirmation was sent to <%= @order.user.email %></h4>
     </div>
   </div>
-    <div class="col-8 mt-5">
+  <div class="row justify-content-center">
+    <div class="col-8 mt-5 ">
       <h3 class="mb-3"> Order summary: </h3>
       <% @order.product_orders.each do |item| %>
       <div class="d-flex flex-column">
@@ -27,6 +28,7 @@
       <% end %>
       <hr>
       <h4>Total: £<%= @order.total_price %></h4>
-      <%= link_to 'Back to Accounts', my_account_path, class: "btn btn-success text-white mb-5" %>
+      <%= link_to 'Back to Accounts', my_account_path, class: "btn btn-primary text-white mb-5" %>
     </div>
+  </div>
 </div>

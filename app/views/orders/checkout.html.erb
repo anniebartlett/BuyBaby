@@ -4,28 +4,30 @@
   </div>
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
-      <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your Basket</span>
-        <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
-      </h4>
-      <% @order.product_orders.each do |item| %>
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <% item.product.photos.each_with_index do |photo, index| %>
-            <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, gravity: :center %>
+      <div class="sticky-basket">
+        <h4 class="d-flex justify-content-between align-items-center mb-3">
+          <span class="text-muted">Your Basket</span>
+          <span class="badge badge-secondary badge-pill"><%= current_user.orders.find_by(state:"pending").product_orders.count %></span>
+        </h4>
+        <% @order.product_orders.each do |item| %>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <% item.product.photos.each_with_index do |photo, index| %>
+              <%= cl_image_tag photo.key, height: 100, width: 100, crop: :fill, gravity: :center %>
+            <% end %>
+            <div class="pl-1">
+              <h6 class="my-0"><%= item.product.name %></h6>
+              <small class="text-muted"><%= item.product.description %></small>
+            </div>
+            <span class="text-muted">£<%= item.product.price_cents %></span>
+          </li>
           <% end %>
-          <div class="pl-1">
-            <h6 class="my-0"><%= item.product.name %></h6>
-            <small class="text-muted"><%= item.product.description %></small>
-          </div>
-          <span class="text-muted">£<%= item.product.price_cents %></span>
-        </li>
-        <% end %>
-        <li class="list-group-item d-flex justify-content-between">
-          <span>Total (GBP)</span>
-          <strong><h6>£<%= @order.total_price %></h6></strong>
-        </li>
-      </ul>
+          <li class="list-group-item d-flex justify-content-between">
+            <span>Total (GBP)</span>
+            <strong><h6>£<%= @order.total_price %></h6></strong>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Billing address</h4>
@@ -76,7 +78,7 @@
           </div>
           <div class="col-md-3 mb-3">
             <label for="postcode">Postcode</label>
-            <input type="text" class="form-control" id="postcode" placeholder="E2 8DY" required="">
+            <input type="text" class="form-control" id="postcode" placeholder="" required="">
             <div class="invalid-feedback">
               Postcode code required.
             </div>
@@ -88,10 +90,10 @@
         </div>
         <hr class="mb-4">
         </form>
-        <h6 style="text-align: center;color:#237480;">⭐️ YOU HAVE ITEMS FOR SWAP IN YOUR BASKET ⭐️</h6>
+        <h6 style="text-align: center;color:#237480;">⭐️ YOU HAVE ITEM(S) FOR SWAP IN YOUR BASKET ⭐️</h6>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="swap-options" checked>
-          <label style="color:#237480;" class="custom-control-label" for="swap-options">Items Swapped for: TOYS</label>
+          <label style="color:#237480;" class="custom-control-label" for="swap-options">Item(s) Swapped for: TOYS</label>
         </div>
         <div class="custom-control custom-checkbox">
           <input type="checkbox" class="custom-control-input" id="swap" checked>
