@@ -45,8 +45,13 @@
                   <div class="pl-3">
                     <p class="my-0"><%= product_order.name %></p>
                     <p class="my-0">Price: £<%= product_order.price_cents %></p>
-                    <p class="my-0">Sell Type: <%= product_order.sale_type %></p>
-                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-secondary text-white mb-1 mt-3" %>
+                    <p class="my-0">Description: <%= product_order.description %></p>
+                    <% if product_order.sale_type == "Swap" %>
+                      <p class="my-0">Sale Type: <%= product_order.sale_type %></p>
+                    <% else %>
+                      <p class="my-0">Sale Type: Buy</p>
+                    <% end %>
+                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-warning text-white mb-1" %>
                   </div>
                 </div>
               </div>

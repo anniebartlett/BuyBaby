@@ -34,7 +34,11 @@
         </tr>
         <tr>
           <th><h5 class="text-dark">Sale type:</h5></th>
-          <td><h5 class="text-dark"><%= @product.sale_type %></h5></td>
+          <% if @product.sale_type == "Swap" %>
+            <td><h5 class="text-dark"><%= @product.sale_type %></h5></td>
+          <% else %>
+            <td><h5 class="text-dark">Buy</h5></td>
+          <% end %>
         </tr>
         <tr>
           <th><h5 class="text-dark">Size:</h5></th>
