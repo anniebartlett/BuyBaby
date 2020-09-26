@@ -26,7 +26,7 @@
               <h1 class="carousel-heading caption-1">New arrivals</h1>
               <p class="caption-1" style="font-size: 20px;">Check out our new finds this week!</p>
               <p>
-                <a href="#" class="btn btn-warning text-white">View Items</a>
+                <%= link_to "View Items", products_path, class: "btn btn-warning text-white"%>
               </p>
             </div>
         </div>
@@ -36,7 +36,7 @@
                 <h1 class="carousel-heading caption-2">Sale items</h1>
                 <p class="caption-2" style="font-size: 20px;">Bargains you will love</p>
                 <p>
-                  <a href="#" class="btn btn-danger text-white">Go to sale</a>
+                  <%= link_to "View Sales", products_path(query: "sell"), class: "btn btn-danger text-white"%>
                 </p>
              </div>
         </div>
@@ -46,7 +46,7 @@
                 <h1 class="carousel-heading caption-3">Swap & save</h1>
                 <p class="caption-3" style="font-size: 20px;">Preloved items you don't want to miss!</p>
                 <p>
-                  <a href="#" class="btn btn-success text-white">Swap today</a>
+                   <%= link_to "View Swaps", products_path(query: "swap"), class: "btn btn-success text-white"%>
                 </p>
              </div>
         </div>
