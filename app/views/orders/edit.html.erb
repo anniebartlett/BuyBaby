@@ -45,8 +45,8 @@
       <% unless current_user.orders.find_by(state:"pending").product_orders.count.zero? %>
 
       <div>
-        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-success" %>
-        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-success text-white" %>
+        <%= link_to 'Checkout', order_checkout_path(@order), class: "btn btn-warning text-white" %>
+        <%= link_to "Back", request.referer.present? ? request.referer : default_path, class: "btn btn-warning text-white" %>
       </div>
       <span><h5 id="price-total">Total: £<%= @order.total_price %></h5></span>
     </div>
