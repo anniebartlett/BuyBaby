@@ -6,7 +6,7 @@
           <% @user.reviews.each do |review| %>
             <div class="cards d-flex flex-wrap position-relative text-center ml-1">
               <div class="card-item">
-                <div class="card rounded-lg mx-3 mb-4" style="width: 30rem; height: auto;">
+                <div class="card border-rounded mx-3 mb-4" style="width: 30rem; height: auto;">
                   <div class="card-body">
                       <h6><%= review.comment %></h6>
                       <h6>Rating: <%= review.rating %></h6>

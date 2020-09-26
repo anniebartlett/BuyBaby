@@ -1,15 +1,8 @@
 // Specific CSS for your home-page
-.container-main {
-  padding: 20px;
-}
 .inner-container h1 {
   font-size: 8.5rem;
   font-weight: 600;
   letter-spacing: 5px;
-}
-
-.categories {
-  justify-content: center;
 }
 
 .btn-lg {
@@ -53,6 +46,7 @@
     50% { transform: translateY(10px) }
     100% { transform: translateY(-5px) }
 }
+
 .divider {
   background-image: white;
   display: flex;
@@ -61,82 +55,23 @@
   justify-content: center;
 }
 
-
-// .container {
-//   width: 60vw;
-// }
-.car-col {
-  margin: 0 auto;
-}
-
-.container {
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-
-.carousel-item {
-  color: black;
-  height: 400px;
-  bottom: 20px;
-  padding-bottom: 50px;
-  margin: 0 auto;
-}
-
-.carousel-caption {
-  color: #237480;
-}
-.carousel-heading {
-  margin-bottom: 30px;
-}
-
-.carousel-caption > p {
-  margin-bottom: 2rem;
-}
-
-.carousel-heading {
-  margin-bottom: 1rem;
-}
-.btn {
-  margin-left: 0;
-  width: 100px;
-  border-radius: 5px;
-}
-
-.carousel-img {
-  width: 100%;
-  object-fit: contain;
-}
-
-.carousel-indicators {
-   left: 50%;
-    z-index: 15;
-    width: 60%;
-    padding-left: 0;
-    margin-left: -30%;
-    text-align: center;
-    list-style: none;
-    position: absolute;
-}
-
 .card-deck {
-  padding: 20px;
+  margin-right: 180px;
   margin-bottom: 20px;
+
 }
 
 .card {
   overflow: hidden;
   position: relative;
   display: inline-block;
-  border-radius: 20px;
+  border-radius: 15px;
 }
 
 .card:hover {
   width: 100%;
 }
+
 .card-img {
   width: 100%;
   height: 100%;
@@ -168,10 +103,9 @@
 }
 
 .category-card-title {
-  font-size: 2em;
+  font-size: 1.6em;
   font-weight: bold;
   color: white;
-  font-family: "Helvetica";
   border-bottom: 1px;
 }
 
@@ -180,7 +114,7 @@ a:link {
 }
 
 .category-text {
-  font-size: 1.25em;
+  font-size: 1em;
   margin-top: 0;
   color: white;
 }
@@ -189,10 +123,6 @@ a:link {
   font-size: 10px;
 }
 
-.category-cards {
-  width: 90vw;
-  margin: 0 auto;
-}
 
 // .card-image:hover {
 //   transform: scale(1.5);
@@ -282,11 +212,6 @@ a:link {
 //   margin-top: 30px;
 // }
 
-.category {
-  margin: 0 30px;
-  font-size: normal;
-}
-
 .fillwidth {
   border-radius: 50%;
 }
@@ -298,18 +223,16 @@ a:link {
 .item-1,
 .item-2,
 .item-3 {
-  position: absolute;
-  display: block;
-  width: 60%;
-  font-size: 14px;
-  animation-duration: 20s;
+  font-size: 16px;
+  color: #4F4F5F;
+  animation-duration: 10s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  margin-left: 250px;
-  color: #4F4F5F;
-  font-size: normal;
-  font-family: "Helvetica";
-  text-transform: uppercase;
+}
+
+.center {
+  margin: auto;
+  width: 40%;
 }
 
 .item-1{

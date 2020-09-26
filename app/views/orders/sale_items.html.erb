@@ -6,7 +6,7 @@
         <div class="sale_items">
           <div class="cards d-flex text-center ml-1">
             <% @user.products.each do |product| %>
-              <div class="card rounded-lg mb-4 ml-4" style="width: 16rem; height: 28rem;">
+              <div class="card border-rounded mb-4 ml-4" style="width: 16rem; height: 28rem;">
                 <div class="card-body">
                   <%= link_to product_path(product) do %>
                     <% product.photos.each_with_index do |photo, index| %>
