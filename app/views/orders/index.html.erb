@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container justify-content-center">
   <div class="row">
     <div class="col">
       <h1 class="mt-3 text-center">Your Orders</h1>
@@ -36,7 +36,6 @@
             <div class="col">
               <p style="color:#237480;">Sold by: <%= order.products.first.user.nickname %></p>
               <p style="color:#237480;">Contact Seller: <a href="https://wa.me/447709793973?text=Please%20contact%20me%20about%20this%20product%20listing" target="blank"><i class="fab fa-whatsapp"></i></a></p>
-               <%= link_to "Write a review", new_user_review_path(order.products.first.user), class: "btn btn-success text-white mb-1" %>
               <p class="my-3">Item(s) ordered:</p>
               <% order.products.each do |product_order| %>
               <div class="row">
@@ -48,8 +47,8 @@
                     <p class="my-0"><%= product_order.name %></p>
                     <p class="my-0">Price: £<%= product_order.price_cents %></p>
                     <p class="my-0">Description: <%= product_order.description %></p>
-                    <p class="my-0">Condition: <%= product_order.condition %></p>
                     <p class="my-0">Sell Type: <%= product_order.sale_type %></p>
+                   <%= link_to "Write a review", new_user_review_path(product_order.user, product:product_order), class: "btn btn-warning text-white mb-1" %>
                   </div>
                 </div>
               </div>
