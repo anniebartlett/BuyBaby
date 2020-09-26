@@ -26,17 +26,17 @@
               <h1 class="carousel-heading caption-1">New arrivals</h1>
               <p class="caption-1" style="font-size: 20px;">Check out our new finds this week!</p>
               <p>
-                <%= link_to "View Items", products_path, class: "btn btn-warning text-white"%>
+                <%= link_to "View all products", products_path, class: "btn btn-warning text-white"%>
               </p>
             </div>
         </div>
         <div class="carousel-item">
           <%= image_tag("carousel_2.jpg", class: "d-block carousel-img" )%>
              <div class="carousel-caption text-left">
-                <h1 class="carousel-heading caption-2">Sale items</h1>
-                <p class="caption-2" style="font-size: 20px;">Bargains you will love</p>
+                <h1 class="carousel-heading caption-2">Find a bargain</h1>
+                <p class="caption-2" style="font-size: 20px;">Search for bargains that you'll love for your little one</p>
                 <p>
-                  <%= link_to "View Sales", products_path(query: "sell"), class: "btn btn-danger text-white"%>
+                  <%= link_to "Buy a product", products_path(query: "sell"), class: "btn btn-danger text-white"%>
                 </p>
              </div>
         </div>
@@ -46,7 +46,7 @@
                 <h1 class="carousel-heading caption-3">Swap & save</h1>
                 <p class="caption-3" style="font-size: 20px;">Preloved items you don't want to miss!</p>
                 <p>
-                   <%= link_to "View Swaps", products_path(query: "swap"), class: "btn btn-successs text-white"%>
+                   <%= link_to "View all swap items", products_path(query: "swap"), class: "btn btn-success text-white"%>
                 </p>
              </div>
         </div>
