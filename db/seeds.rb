@@ -16,10 +16,19 @@ end
 
 def create_user
   puts "Creating user..."
+
   user_1 = User.create(name: 'lisa', email: 'lisa@me.com', password: '123456', nickname: 'lisa_buys_stuff', description: 'Good buyer')
   user_2 = User.create(name: 'sandy', email: 'sandy@me.com', password: '123456', nickname: 'sandy_sells_stuff', description: 'Good seller')
+  user_3 = User.create(name: 'sandra',email: 'sandra@me.com', password: '123456', nickname: 'sandra_sells-stuff',description:'Good seller')
   puts "Created #{user_1.name}"
   puts "Created #{user_2.name}"
+  puts "Created #{user_3.name}"
+
+   user = [
+  user_1.id,
+  user_2.id,
+  user_3.id,
+  ]
 end
 
 def scrape_sell_product(product)
@@ -59,7 +68,7 @@ def scrape_sell_product(product)
       unless img.nil? || title.nil?
 
         products = Product.create(
-          user_id: User.last.id,
+          user: User.all.sample,
           name: title,
           description: "In good condition",
           address: address.sample,
