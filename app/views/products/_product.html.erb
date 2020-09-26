@@ -8,6 +8,11 @@
       <h5 class="card-title mt-1 text-dark"><%= product.name.capitalize %></h5>
       <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
       <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
+      <% if product.sale_type == "Swap" %>
+        <p class="card-text m-0 pink-text" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+      <% else %>
+        <p class="card-text m-0 yellow-text" style="font-size: 14px">Sale type: Buy </p>
+      <% end %>
       <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
       <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>
       <div class="rating text-center position-absolute">

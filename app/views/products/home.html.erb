@@ -206,7 +206,7 @@
               <% if product.sale_type == "Swap" %>
                 <p class="card-text m-0 pink-text" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
               <% else %>
-                <p class="card-text m-0 yellow-text" style="font-size: 14px">Sale type: <%= product.sale_type %></p>
+                <p class="card-text m-0 yellow-text" style="font-size: 14px">Sale type: Buy</p>
               <% end %>
               <% if product.price_cents > 0 %>
                 <p class="card-text m-0" style="font-size: 20px">£<%= product.price_cents %></p>

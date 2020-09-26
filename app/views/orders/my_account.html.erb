@@ -25,7 +25,11 @@
             <div class="card-product-infos">
               <h2 class="text-dark"><%= product.name %></h2>
               <p><%= product.description %></p>
-              <p>Sale type: <%= product.sale_type %></p>
+              <% if product.sale_type == "Swap" %>
+                <p class="pink-text"><%= product.sale_type %></p>
+              <% else %>
+                <p class="yellow-text"><%= product.sale_type %></p>
+              <% end %>
               <% if product.price_cents > 0 %>
                 <p>£<%= product.price_cents %></p>
               <% end %>
