@@ -1,11 +1,11 @@
-  <div class="card rounded-lg mx-1 mb-4" style="width: 16rem; height: 28rem;">
+  <div class="card border-rounded mx-1 mb-4" style="width: 16rem; height: 28rem;">
     <div class="card-body">
       <%= link_to product_path(product) do %>
         <% product.photos.each_with_index do |photo, index| %>
           <%= cl_image_tag photo.key, height: 200, width: 200, crop: :fill, gravity: :center %>
         <% end %>
       <% end %>
-      <h5 class="card-title mt-1"><%= product.name.capitalize %></h5>
+      <h5 class="card-title mt-1 text-dark"><%= product.name.capitalize %></h5>
       <p class="card-text m-0" style="font-size: 14px">Category: <%= product.category %></p>
       <p class="card-text m-0" style="font-size: 14px">Condition: <%= product.condition %></p>
       <p class="card-text m-0" style="font-size: 14px">Sale type: <%= product.sale_type %></p>

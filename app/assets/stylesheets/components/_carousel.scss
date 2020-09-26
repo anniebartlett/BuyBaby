@@ -1,0 +1,49 @@
+.carousel-indicators {
+  left: 50%;
+  z-index: 15;
+  width: 60%;
+  padding-left: 0;
+  margin-left: -30%;
+  text-align: center;
+  list-style: none;
+  position: absolute;
+}
+.carousel-item {
+  height: 600px;
+  width: 100%;
+  margin-top: 40px;
+  // opacity: 0.8;
+}
+.carousel-caption {
+  top: 30%;
+}
+
+.caption-1 {
+  color: #e67e22;
+}
+
+.caption-2 {
+  color: #FF7070;
+}
+
+.caption-3 {
+  color: #9CF6F6;
+}
+
+.carousel-heading {
+  margin-bottom: 30px;
+}
+
+.carousel-caption > p {
+  margin-bottom: 2rem;
+}
+
+.carousel-heading {
+  margin-bottom: 1rem;
+}
+
+.carousel-img {
+  width: 100%;
+  object-fit: contain;
+}
+
